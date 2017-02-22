@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		51C6CB7D1E5D6A1300225E1F /* multipleshaders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CB7C1E5D6A1300225E1F /* multipleshaders.cpp */; };
+		51C6CB801E5D79D600225E1F /* uniform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CB7F1E5D79D600225E1F /* uniform.cpp */; };
+		51C6CB831E5D7D5A00225E1F /* coord+color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CB821E5D7D5A00225E1F /* coord+color.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,6 +27,8 @@
 		5192B59D1E5C3C7200CC9A3B /* playground-modern */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "playground-modern"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5192B5A01E5C3C7200CC9A3B /* hellomodern.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = hellomodern.cpp; sourceTree = "<group>"; };
 		51C6CB7C1E5D6A1300225E1F /* multipleshaders.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = multipleshaders.cpp; sourceTree = "<group>"; };
+		51C6CB7F1E5D79D600225E1F /* uniform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = uniform.cpp; sourceTree = "<group>"; };
+		51C6CB821E5D7D5A00225E1F /* coord+color.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "coord+color.cpp"; sourceTree = "<group>"; };
 		51F36AC71E5CEE8000210C78 /* vertex_shader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vertex_shader.glsl; sourceTree = "<group>"; };
 		51F36AC81E5CF0F200210C78 /* fragment_shader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = fragment_shader.glsl; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -60,6 +63,8 @@
 		5192B59F1E5C3C7200CC9A3B /* playground-modern */ = {
 			isa = PBXGroup;
 			children = (
+				51C6CB811E5D7D1700225E1F /* coord+color */,
+				51C6CB7E1E5D79B300225E1F /* uniform */,
 				51C6CB7B1E5D69E100225E1F /* excercises */,
 				51F36AC61E5CEE6700210C78 /* hellomodern */,
 			);
@@ -72,6 +77,22 @@
 				51C6CB7C1E5D6A1300225E1F /* multipleshaders.cpp */,
 			);
 			name = excercises;
+			sourceTree = "<group>";
+		};
+		51C6CB7E1E5D79B300225E1F /* uniform */ = {
+			isa = PBXGroup;
+			children = (
+				51C6CB7F1E5D79D600225E1F /* uniform.cpp */,
+			);
+			name = uniform;
+			sourceTree = "<group>";
+		};
+		51C6CB811E5D7D1700225E1F /* coord+color */ = {
+			isa = PBXGroup;
+			children = (
+				51C6CB821E5D7D5A00225E1F /* coord+color.cpp */,
+			);
+			name = "coord+color";
 			sourceTree = "<group>";
 		};
 		51F36AC61E5CEE6700210C78 /* hellomodern */ = {
@@ -141,7 +162,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51C6CB7D1E5D6A1300225E1F /* multipleshaders.cpp in Sources */,
+				51C6CB801E5D79D600225E1F /* uniform.cpp in Sources */,
+				51C6CB831E5D7D5A00225E1F /* coord+color.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

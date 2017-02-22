@@ -9,6 +9,7 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <sstream>
+#include <cmath>
 using namespace std;
 
 void keyboardCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
@@ -26,9 +27,10 @@ const char *vertexShaderString =
 
 const char *fragmentShaderString =
 "	#version 330 core\n"
+" uniform vec4 thecolor;\n"
 " out vec4 color;\n"
 " void main() {\n"
-"  color = vec4(1.0, 0.5, 0.2, 1.0);\n"
+"  color = thecolor;\n"
 " }" ;
 
 GLint getShaderProgram() {
@@ -142,10 +144,12 @@ int main(int argc, char * argv[]) {
     glClearColor(0.3, 0.4, 0.6, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
     
+    GLint thecolorUniform = glGetUniformLocation(shaderProgram, "thecolor");
+    glUniform4f(thecolorUniform, 0.5*sin(glfwGetTime()/2) + 0.5, 0.05, 0.05, 1.0);
     glUseProgram(shaderProgram);
     glBindVertexArray(VAO);
     {
-      glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+      glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
       glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
     }
     glBindVertexArray(0);
