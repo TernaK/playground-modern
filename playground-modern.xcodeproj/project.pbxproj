@@ -6,10 +6,6 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		5192B5A11E5C3C7200CC9A3B /* hellomodern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5192B5A01E5C3C7200CC9A3B /* hellomodern.cpp */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		5192B59B1E5C3C7200CC9A3B /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -25,6 +21,8 @@
 /* Begin PBXFileReference section */
 		5192B59D1E5C3C7200CC9A3B /* playground-modern */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "playground-modern"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5192B5A01E5C3C7200CC9A3B /* hellomodern.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = hellomodern.cpp; sourceTree = "<group>"; };
+		51F36AC71E5CEE8000210C78 /* vertex_shader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vertex_shader.glsl; sourceTree = "<group>"; };
+		51F36AC81E5CF0F200210C78 /* fragment_shader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = fragment_shader.glsl; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,9 +55,19 @@
 		5192B59F1E5C3C7200CC9A3B /* playground-modern */ = {
 			isa = PBXGroup;
 			children = (
-				5192B5A01E5C3C7200CC9A3B /* hellomodern.cpp */,
+				51F36AC61E5CEE6700210C78 /* hellomodern */,
 			);
 			path = "playground-modern";
+			sourceTree = "<group>";
+		};
+		51F36AC61E5CEE6700210C78 /* hellomodern */ = {
+			isa = PBXGroup;
+			children = (
+				5192B5A01E5C3C7200CC9A3B /* hellomodern.cpp */,
+				51F36AC81E5CF0F200210C78 /* fragment_shader.glsl */,
+				51F36AC71E5CEE8000210C78 /* vertex_shader.glsl */,
+			);
+			name = hellomodern;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,7 +127,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5192B5A11E5C3C7200CC9A3B /* hellomodern.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,6 +229,8 @@
 				OTHER_LDFLAGS = (
 					"-lglfw",
 					"-lGLEW",
+					"-framework",
+					OPENGL,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -236,6 +245,8 @@
 				OTHER_LDFLAGS = (
 					"-lglfw",
 					"-lGLEW",
+					"-framework",
+					OPENGL,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -260,6 +271,7 @@
 				5192B5A61E5C3C7200CC9A3B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
