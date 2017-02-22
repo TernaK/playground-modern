@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		51C6CB801E5D79D600225E1F /* uniform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CB7F1E5D79D600225E1F /* uniform.cpp */; };
 		51C6CB831E5D7D5A00225E1F /* coord+color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CB821E5D7D5A00225E1F /* coord+color.cpp */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +62,7 @@
 		5192B59F1E5C3C7200CC9A3B /* playground-modern */ = {
 			isa = PBXGroup;
 			children = (
+				51C6CB841E5D811C00225E1F /* util */,
 				51C6CB811E5D7D1700225E1F /* coord+color */,
 				51C6CB7E1E5D79B300225E1F /* uniform */,
 				51C6CB7B1E5D69E100225E1F /* excercises */,
@@ -93,6 +93,13 @@
 				51C6CB821E5D7D5A00225E1F /* coord+color.cpp */,
 			);
 			name = "coord+color";
+			sourceTree = "<group>";
+		};
+		51C6CB841E5D811C00225E1F /* util */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = util;
 			sourceTree = "<group>";
 		};
 		51F36AC61E5CEE6700210C78 /* hellomodern */ = {
@@ -162,7 +169,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51C6CB801E5D79D600225E1F /* uniform.cpp in Sources */,
 				51C6CB831E5D7D5A00225E1F /* coord+color.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
