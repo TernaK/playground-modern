@@ -9,6 +9,7 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <sstream>
+#include <vector>
 using namespace std;
 
 void keyboardCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
@@ -24,54 +25,60 @@ const char *vertexShaderString =
 "  gl_Position = vec4(position, 1.0);\n"
 " }" ;
 
-const char *fragmentShaderString =
+const char *fragmentShader1String =
 "	#version 330 core\n"
 " out vec3 color;\n"
 " void main() {\n"
 "  color = vec3(1.0, 0.5, 0.2);\n"
 " }" ;
 
-GLint getShaderProgram() {
-  GLint success;
-  GLchar infoLog[512];
+const char *fragmentShader2String =
+"	#version 330 core\n"
+" out vec3 color;\n"
+" void main() {\n"
+"  color = vec3(0.5, 1.0, 0.2);\n"
+" }" ;
+
+vector<GLint> getShaderPrograms() {
+  vector<GLint> shaderPrograms;
   
   GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
   glShaderSource(vertexShader, 1, &vertexShaderString, NULL);
   glCompileShader(vertexShader);
-  glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
-  if(!success) {
-    glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-    std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << std::endl;
-  }
   
-  GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-  glShaderSource(fragmentShader, 1, &fragmentShaderString, NULL);
-  glCompileShader(fragmentShader);
-  glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &success);
-  if(!success) {
-    glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
-    std::cout << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n" << infoLog << std::endl;
-  }
+  GLuint fragmentShader1 = glCreateShader(GL_FRAGMENT_SHADER);
+  glShaderSource(fragmentShader1, 1, &fragmentShader1String, NULL);
+  glCompileShader(fragmentShader1);
   
-  GLint shaderProgram = glCreateProgram();
-  glAttachShader(shaderProgram, vertexShader);
-  glAttachShader(shaderProgram, fragmentShader);
-  glLinkProgram(shaderProgram);
-  glGetProgramiv(shaderProgram, GL_COMPILE_STATUS, &success);
-  if(!success) {
-    glGetShaderInfoLog(shaderProgram, 512, NULL, infoLog);
-    std::cout << "ERROR::SHADER::PROGRAM::COMPILATION_FAILED\n" << infoLog << std::endl;
-  }
+  GLuint fragmentShader2 = glCreateShader(GL_FRAGMENT_SHADER);
+  glShaderSource(fragmentShader2, 1, &fragmentShader2String, NULL);
+  glCompileShader(fragmentShader2);
+  
+  GLint shaderProgram1 = glCreateProgram();
+  glAttachShader(shaderProgram1, vertexShader);
+  glAttachShader(shaderProgram1, fragmentShader1);
+  glLinkProgram(shaderProgram1);
+  shaderPrograms.push_back(shaderProgram1);
+  
+  GLint shaderProgram2 = glCreateProgram();
+  glAttachShader(shaderProgram2, vertexShader);
+  glAttachShader(shaderProgram2, fragmentShader2);
+  glLinkProgram(shaderProgram2);
+  shaderPrograms.push_back(shaderProgram2);
   
   glDeleteShader(vertexShader);
-  glDeleteShader(fragmentShader);
+  glDeleteShader(fragmentShader1);
   
-  return shaderProgram;
+  return shaderPrograms;
+  
+	//  GLint success;
+  //  GLchar infoLog[512];
+  //  glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
+  //  if(!success) {
+  //    glGetShaderInfoLog(fragmentShader2, 512, NULL, infoLog);
+  //    std::cout << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n" << infoLog << std::endl;
+  //  }
 }
-
-void drawTriangle() {
-}
-
 
 int main(int argc, char * argv[]) {
   
@@ -106,7 +113,7 @@ int main(int argc, char * argv[]) {
   glfwSetKeyCallback(window, keyboardCallback);
   
   //shader program
-  GLuint shaderProgram = getShaderProgram();
+  vector<GLint> shaderPrograms = getShaderPrograms();
   
   GLfloat vertices[] = {
     -0.5,-0.5,0,
@@ -142,11 +149,19 @@ int main(int argc, char * argv[]) {
     glClearColor(0.3, 0.4, 0.6, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
     
-    glUseProgram(shaderProgram);
+    glUseProgram(shaderPrograms[0]);
     glBindVertexArray(VAO);
     {
       glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-      glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+      glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, (GLvoid *)0);
+    }
+    glBindVertexArray(0);
+    
+    glUseProgram(shaderPrograms[1]);
+    glBindVertexArray(VAO);
+    {
+      glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+      glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, (GLvoid *)(3*sizeof(GLint)));
     }
     glBindVertexArray(0);
     

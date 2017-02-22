@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		51C6CB7A1E5D61B500225E1F /* hellomodern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5192B5A01E5C3C7200CC9A3B /* hellomodern.cpp */; };
+		51C6CB7D1E5D6A1300225E1F /* multipleshaders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CB7C1E5D6A1300225E1F /* multipleshaders.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +25,7 @@
 /* Begin PBXFileReference section */
 		5192B59D1E5C3C7200CC9A3B /* playground-modern */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "playground-modern"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5192B5A01E5C3C7200CC9A3B /* hellomodern.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = hellomodern.cpp; sourceTree = "<group>"; };
+		51C6CB7C1E5D6A1300225E1F /* multipleshaders.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = multipleshaders.cpp; sourceTree = "<group>"; };
 		51F36AC71E5CEE8000210C78 /* vertex_shader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vertex_shader.glsl; sourceTree = "<group>"; };
 		51F36AC81E5CF0F200210C78 /* fragment_shader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = fragment_shader.glsl; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -59,9 +60,18 @@
 		5192B59F1E5C3C7200CC9A3B /* playground-modern */ = {
 			isa = PBXGroup;
 			children = (
+				51C6CB7B1E5D69E100225E1F /* excercises */,
 				51F36AC61E5CEE6700210C78 /* hellomodern */,
 			);
 			path = "playground-modern";
+			sourceTree = "<group>";
+		};
+		51C6CB7B1E5D69E100225E1F /* excercises */ = {
+			isa = PBXGroup;
+			children = (
+				51C6CB7C1E5D6A1300225E1F /* multipleshaders.cpp */,
+			);
+			name = excercises;
 			sourceTree = "<group>";
 		};
 		51F36AC61E5CEE6700210C78 /* hellomodern */ = {
@@ -131,7 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51C6CB7A1E5D61B500225E1F /* hellomodern.cpp in Sources */,
+				51C6CB7D1E5D6A1300225E1F /* multipleshaders.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
