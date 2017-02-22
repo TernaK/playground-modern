@@ -13,10 +13,20 @@
 #include <sstream>
 using namespace std;
 
+GLfloat mixLevel = 0.1;
+
 void keyboardCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
   if(action == GLFW_PRESS && key == GLFW_KEY_ESCAPE) {
     glfwSetWindowShouldClose(window, GL_TRUE);
   }
+  if(action == GLFW_PRESS && key == GLFW_KEY_UP) {
+    mixLevel += 0.1;
+  }
+  if(action == GLFW_PRESS && key == GLFW_KEY_DOWN) {
+    mixLevel -= 0.1;
+  }
+  mixLevel = mixLevel < 0 ? 0 : mixLevel;
+  mixLevel = mixLevel > 1 ? 1 : mixLevel;
 }
 
 
@@ -87,18 +97,30 @@ int main(int argc, char * argv[]) {
   }
   glBindVertexArray(0);
   
-  GLuint texture;
-  glGenTextures(1, &texture);
-  glBindTexture(GL_TEXTURE_2D, texture);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+  GLuint texture1, texture2;
+  glGenTextures(1, &texture1);
+  glBindTexture(GL_TEXTURE_2D, texture1);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
   int tw, th;
-  unsigned char *image = SOIL_load_image("texture.jpg", &tw, &th, 0, SOIL_LOAD_RGB);
-  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, tw, th, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
+  unsigned char *image1 = SOIL_load_image("texture1.jpg", &tw, &th, 0, SOIL_LOAD_RGB);
+  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, tw, th, 0, GL_RGB, GL_UNSIGNED_BYTE, image1);
   glGenerateMipmap(GL_TEXTURE_2D);
-  SOIL_free_image_data(image);
+  SOIL_free_image_data(image1);
+  glBindTexture(GL_TEXTURE_2D, 0);
+  
+  glGenTextures(1, &texture2);
+  glBindTexture(GL_TEXTURE_2D, texture2);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+  unsigned char *image2 = SOIL_load_image("texture2.jpg", &tw, &th, 0, SOIL_LOAD_RGB);
+  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, tw, th, 0, GL_RGB, GL_UNSIGNED_BYTE, image2);
+  glGenerateMipmap(GL_TEXTURE_2D);
+  SOIL_free_image_data(image2);
   glBindTexture(GL_TEXTURE_2D, 0);
   
   while(!glfwWindowShouldClose(window)){
@@ -108,7 +130,13 @@ int main(int argc, char * argv[]) {
     glClear(GL_COLOR_BUFFER_BIT);
     
     shader.use();
-    glBindTexture(GL_TEXTURE_2D, texture);
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, texture1);
+    glUniform1i(glGetUniformLocation(shader.program, "customTexture1"), 0);
+    glActiveTexture(GL_TEXTURE1);
+    glBindTexture(GL_TEXTURE_2D, texture2);
+    glUniform1i(glGetUniformLocation(shader.program, "customTexture2"), 1);
+    glUniform1f(glGetUniformLocation(shader.program, "mixLevel"), mixLevel);
     glBindVertexArray(VAO);
     {
       glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);

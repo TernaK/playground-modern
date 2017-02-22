@@ -13,7 +13,8 @@
 		51F36AD81E5E1ADE00210C78 /* texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51F36ACF1E5E0C5B00210C78 /* texture.cpp */; };
 		51F36AD91E5E1B1F00210C78 /* fragment_shaderTexture.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AD71E5E138000210C78 /* fragment_shaderTexture.glsl */; };
 		51F36ADA1E5E1B2100210C78 /* vertex_shaderTexture.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AD61E5E136A00210C78 /* vertex_shaderTexture.glsl */; };
-		51F36AE11E5E1FC000210C78 /* texture.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AE01E5E1FB900210C78 /* texture.jpg */; };
+		51F36AE11E5E1FC000210C78 /* texture1.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AE01E5E1FB900210C78 /* texture1.jpg */; };
+		51F36AE31E5E20F200210C78 /* texture2.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AE21E5E20E500210C78 /* texture2.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,7 +24,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 6;
 			files = (
-				51F36AE11E5E1FC000210C78 /* texture.jpg in CopyFiles */,
+				51F36AE11E5E1FC000210C78 /* texture1.jpg in CopyFiles */,
+				51F36AE31E5E20F200210C78 /* texture2.jpg in CopyFiles */,
 				51C6CB8A1E5D86E100225E1F /* fragment_shader.glsl in CopyFiles */,
 				51C6CB8B1E5D86E300225E1F /* vertex_shader.glsl in CopyFiles */,
 				51F36AD91E5E1B1F00210C78 /* fragment_shaderTexture.glsl in CopyFiles */,
@@ -47,7 +49,8 @@
 		51F36ACF1E5E0C5B00210C78 /* texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = texture.cpp; sourceTree = "<group>"; };
 		51F36AD61E5E136A00210C78 /* vertex_shaderTexture.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vertex_shaderTexture.glsl; sourceTree = "<group>"; };
 		51F36AD71E5E138000210C78 /* fragment_shaderTexture.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fragment_shaderTexture.glsl; sourceTree = "<group>"; };
-		51F36AE01E5E1FB900210C78 /* texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = texture.jpg; sourceTree = "<group>"; };
+		51F36AE01E5E1FB900210C78 /* texture1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = texture1.jpg; sourceTree = "<group>"; };
+		51F36AE21E5E20E500210C78 /* texture2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = texture2.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,7 +143,8 @@
 				51F36ACF1E5E0C5B00210C78 /* texture.cpp */,
 				51F36AD61E5E136A00210C78 /* vertex_shaderTexture.glsl */,
 				51F36AD71E5E138000210C78 /* fragment_shaderTexture.glsl */,
-				51F36AE01E5E1FB900210C78 /* texture.jpg */,
+				51F36AE01E5E1FB900210C78 /* texture1.jpg */,
+				51F36AE21E5E20E500210C78 /* texture2.jpg */,
 			);
 			name = texture;
 			sourceTree = "<group>";
