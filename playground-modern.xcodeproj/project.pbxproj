@@ -7,18 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		51C6CB831E5D7D5A00225E1F /* coord+color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CB821E5D7D5A00225E1F /* coord+color.cpp */; };
+		51C6CB871E5D816700225E1F /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CB851E5D816700225E1F /* Shader.cpp */; };
+		51C6CB891E5D864200225E1F /* shaderTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CB881E5D864200225E1F /* shaderTest.cpp */; };
+		51C6CB8A1E5D86E100225E1F /* fragment_shader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AC81E5CF0F200210C78 /* fragment_shader.glsl */; };
+		51C6CB8B1E5D86E300225E1F /* vertex_shader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AC71E5CEE8000210C78 /* vertex_shader.glsl */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		5192B59B1E5C3C7200CC9A3B /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 6;
 			files = (
+				51C6CB8A1E5D86E100225E1F /* fragment_shader.glsl in CopyFiles */,
+				51C6CB8B1E5D86E300225E1F /* vertex_shader.glsl in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -28,6 +33,9 @@
 		51C6CB7C1E5D6A1300225E1F /* multipleshaders.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = multipleshaders.cpp; sourceTree = "<group>"; };
 		51C6CB7F1E5D79D600225E1F /* uniform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = uniform.cpp; sourceTree = "<group>"; };
 		51C6CB821E5D7D5A00225E1F /* coord+color.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "coord+color.cpp"; sourceTree = "<group>"; };
+		51C6CB851E5D816700225E1F /* Shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
+		51C6CB861E5D816700225E1F /* Shader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Shader.hpp; sourceTree = "<group>"; };
+		51C6CB881E5D864200225E1F /* shaderTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = shaderTest.cpp; sourceTree = "<group>"; };
 		51F36AC71E5CEE8000210C78 /* vertex_shader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vertex_shader.glsl; sourceTree = "<group>"; };
 		51F36AC81E5CF0F200210C78 /* fragment_shader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = fragment_shader.glsl; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,6 +106,11 @@
 		51C6CB841E5D811C00225E1F /* util */ = {
 			isa = PBXGroup;
 			children = (
+				51C6CB851E5D816700225E1F /* Shader.cpp */,
+				51C6CB861E5D816700225E1F /* Shader.hpp */,
+				51C6CB881E5D864200225E1F /* shaderTest.cpp */,
+				51F36AC71E5CEE8000210C78 /* vertex_shader.glsl */,
+				51F36AC81E5CF0F200210C78 /* fragment_shader.glsl */,
 			);
 			name = util;
 			sourceTree = "<group>";
@@ -106,8 +119,6 @@
 			isa = PBXGroup;
 			children = (
 				5192B5A01E5C3C7200CC9A3B /* hellomodern.cpp */,
-				51F36AC81E5CF0F200210C78 /* fragment_shader.glsl */,
-				51F36AC71E5CEE8000210C78 /* vertex_shader.glsl */,
 			);
 			name = hellomodern;
 			sourceTree = "<group>";
@@ -169,7 +180,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51C6CB831E5D7D5A00225E1F /* coord+color.cpp in Sources */,
+				51C6CB891E5D864200225E1F /* shaderTest.cpp in Sources */,
+				51C6CB871E5D816700225E1F /* Shader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
