@@ -13,6 +13,7 @@ Shader::Shader(std::string vertexShaderPath, std::string fragmentShaderPath) {
   stringstream ss;
   GLint success;
   GLchar infoLog[512];
+  string fileText;
   
   //vertex shader
   ifs = ifstream(vertexShaderPath);
@@ -20,9 +21,9 @@ Shader::Shader(std::string vertexShaderPath, std::string fragmentShaderPath) {
     puts("ERROR::SHADER::could not find vertex shader");
     exit(-1);
   }
-  
   ss << ifs.rdbuf();
-  const GLchar *vertexShaderStr = ss.str().c_str();
+  fileText = ss.str();
+  const GLchar *vertexShaderStr = fileText.c_str();
   
   GLint vertexShader = glCreateShader(GL_VERTEX_SHADER);
   glShaderSource(vertexShader, 1, &vertexShaderStr, nullptr);
@@ -43,7 +44,8 @@ Shader::Shader(std::string vertexShaderPath, std::string fragmentShaderPath) {
   }
   ss.str("");
   ss << ifs.rdbuf();
-  const GLchar *fragmentShaderStr = ss.str().c_str();
+  fileText = ss.str();
+  const GLchar *fragmentShaderStr = fileText.c_str();
   
   GLint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
   glShaderSource(fragmentShader, 1, &fragmentShaderStr, nullptr);
