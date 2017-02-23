@@ -32,6 +32,12 @@ void keyboardCallback(GLFWwindow* window, int key, int scancode, int action, int
   mixLevel = mixLevel > 1 ? 1 : mixLevel;
 }
 
+glm::vec3 getCameraUp(const glm::vec3& target, const glm::vec3& position) {
+  glm::vec3 right = glm::normalize(glm::cross(-position, glm::vec3(0,1,0)));
+  glm::vec3 up = glm::normalize(glm::cross(right, -position));
+  return up;
+};
+
 
 int main(int argc, char * argv[]) {
   
@@ -147,9 +153,11 @@ int main(int argc, char * argv[]) {
     shader.use();
     
     glm::mat4 view, projection, model;
-    view = glm::lookAt(glm::vec3(0.0f,0.0f,4.0f), glm::vec3(0,0,0), glm::vec3(0,1,0));
+    glm::vec3 target(0,0,0);
+    glm::vec3 position(0.0f,4.0f,4.0f);
+    view = glm::lookAt(position, target, getCameraUp(target, position));
     projection = glm::perspective(glm::radians(45.0f), 1.0f, 0.1f, 50.0f);
-    model = glm::rotate(model, GLfloat(glfwGetTime()*M_PI), glm::vec3(0.2f, 1.0f, 0.3f));
+    model = glm::rotate(model, GLfloat(glfwGetTime()*M_PI), glm::vec3(0.2f, -1.0f, 0.3f));
     glUniformMatrix4fv(glGetUniformLocation(shader.program, "model"), 1, GL_FALSE, glm::value_ptr(model));
     glUniformMatrix4fv(glGetUniformLocation(shader.program, "view"), 1, GL_FALSE, glm::value_ptr(view));
     glUniformMatrix4fv(glGetUniformLocation(shader.program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
