@@ -31,7 +31,7 @@ int main(int argc, char * argv[]) {
   glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
   glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
   
-  GLFWwindow *window = glfwCreateWindow(640, 480, "hello modern opengl", nullptr, nullptr);
+  GLFWwindow *window = glfwCreateWindow(600, 600, "hello modern opengl", nullptr, nullptr);
   if(window == nullptr){
     puts("failed to create glfw window");
     glfwTerminate();
@@ -102,14 +102,26 @@ int main(int argc, char * argv[]) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     shader.use();
-    cube.draw();
-    glm::mat4 model = glm::rotate(glm::mat4(1.0f), GLfloat(glfwGetTime()*M_PI), glm::vec3(0.0f, -1.0f, 0.0f));
     glm::mat4 view = camera.lookAt(glm::vec3(0,1,5));
     glm::mat4 projection = glm::perspective(glm::radians(45.0f), 1.0f, 0.1f, 50.0f);
     
-    glUniformMatrix4fv(glGetUniformLocation(shader.program, "model"), 1, GL_FALSE, glm::value_ptr(model));
     glUniformMatrix4fv(glGetUniformLocation(shader.program, "view"), 1, GL_FALSE, glm::value_ptr(view));
     glUniformMatrix4fv(glGetUniformLocation(shader.program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+    
+    cube.position = glm::vec3(0,0,0);
+    cube.rotation = glm::vec3(0, -GLfloat(glfwGetTime()*M_PI), 0);
+    cube.scale = glm::vec3(1,1,1);
+    cube.draw(shader);
+    
+    cube.rotation = glm::vec3(-GLfloat(glfwGetTime()*M_PI), 0, 0);
+    cube.position = glm::vec3(-2.5,0,0);
+    cube.scale = glm::vec3(0.5,0.2,0.5);
+    cube.draw(shader);
+    
+    cube.rotation = glm::vec3(0, 0, -GLfloat(glfwGetTime()*M_PI));
+    cube.position = glm::vec3(2.5,0,0);
+    cube.scale = glm::vec3(0.5,0.5,0.2);
+    cube.draw(shader);
     
     glfwSwapBuffers(window);
   }

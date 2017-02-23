@@ -23,14 +23,17 @@ private:
   std::vector<GLfloat> vertices, colors;
   std::vector<GLuint> indices;
   bool ready = false;
+  glm::mat4 model;
   
 public:
-  glm::mat4 model;
+  glm::vec3 rotation = glm::vec3(0,0,0);
+  glm::vec3 position = glm::vec3(0,0,0);
+  glm::vec3 scale = glm::vec3(1,1,1);
   GLNode();
   GLNode(const std::vector<GLfloat>& vertices, const std::vector<GLfloat>& colors, const std::vector<GLuint>& indices);
   ~GLNode();
   void init();
-  void draw();
+  void draw(const Shader& shader);
 };
 
 #endif /* GLNode_hpp */

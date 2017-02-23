@@ -67,11 +67,18 @@ void GLNode::init(){
 }
 
 
-void GLNode::draw() {
+void GLNode::draw(const Shader& shader) {
   if(!ready) {
     puts("ERROR::GLNode::object not initialized");
   }
   
+  model = glm::scale(glm::mat4(1.0f), scale);
+  model = glm::translate(model, position);
+  model = glm::rotate(model, rotation.x, glm::vec3(1.0f, 0.0f, 0.0f));
+  model = glm::rotate(model, rotation.y, glm::vec3(0.0f, 1.0f, 0.0f));
+  model = glm::rotate(model, rotation.z, glm::vec3(0.0f, 0.0f, 1.0f));
+  
+  glUniformMatrix4fv(glGetUniformLocation(shader.program, "model"), 1, GL_FALSE, glm::value_ptr(model));
   glBindVertexArray(VAO);
   {
     glDrawElements(GL_TRIANGLES, GLuint(indices.size()), GL_UNSIGNED_INT, 0);
