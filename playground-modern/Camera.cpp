@@ -22,8 +22,8 @@ glm::mat4 Camera::lookAt(glm::vec3 eye){
 glm::mat4 Camera::lookAt(glm::vec3 eye, glm::vec3 target) {
   this->eye = eye;
   this->target = target;
-  glm::vec3 right = glm::normalize(glm::cross(eye-target, glm::vec3(0,1,0)));
- 	up = glm::normalize(glm::cross(right, eye-target));
+  glm::vec3 right = glm::normalize(glm::cross(target-eye, glm::vec3(0,1,0)));
+ 	up = glm::normalize(glm::cross(right, target-eye));
   view = glm::lookAt(eye, target, up);
   return view;
 }

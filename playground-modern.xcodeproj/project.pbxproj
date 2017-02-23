@@ -11,7 +11,8 @@
 		51C6CB8A1E5D86E100225E1F /* fragment_shader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AC81E5CF0F200210C78 /* fragment_shader.glsl */; };
 		51C6CB8B1E5D86E300225E1F /* vertex_shader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AC71E5CEE8000210C78 /* vertex_shader.glsl */; };
 		51C6CB911E5EB50100225E1F /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CB8F1E5EB50100225E1F /* Camera.cpp */; };
-		51C6CB941E5EB50E00225E1F /* cameraTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CB921E5EB50E00225E1F /* cameraTest.cpp */; };
+		51C6CB9E1E5ED9AF00225E1F /* GLNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CB9B1E5ED9AF00225E1F /* GLNode.cpp */; };
+		51C6CB9F1E5ED9AF00225E1F /* objectTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CB9D1E5ED9AF00225E1F /* objectTest.cpp */; };
 		51F36AD91E5E1B1F00210C78 /* fragment_shaderTexture.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AD71E5E138000210C78 /* fragment_shaderTexture.glsl */; };
 		51F36ADA1E5E1B2100210C78 /* vertex_shaderTexture.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AD61E5E136A00210C78 /* vertex_shaderTexture.glsl */; };
 		51F36AE11E5E1FC000210C78 /* texture1.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AE01E5E1FB900210C78 /* texture1.jpg */; };
@@ -57,6 +58,9 @@
 		51C6CB8F1E5EB50100225E1F /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
 		51C6CB901E5EB50100225E1F /* Camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = "<group>"; };
 		51C6CB921E5EB50E00225E1F /* cameraTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cameraTest.cpp; sourceTree = "<group>"; };
+		51C6CB9B1E5ED9AF00225E1F /* GLNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GLNode.cpp; path = "playground-modern/GLNode.cpp"; sourceTree = "<group>"; };
+		51C6CB9C1E5ED9AF00225E1F /* GLNode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GLNode.hpp; path = "playground-modern/GLNode.hpp"; sourceTree = "<group>"; };
+		51C6CB9D1E5ED9AF00225E1F /* objectTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = objectTest.cpp; path = "playground-modern/objectTest.cpp"; sourceTree = "<group>"; };
 		51F36AC71E5CEE8000210C78 /* vertex_shader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vertex_shader.glsl; sourceTree = "<group>"; };
 		51F36AC81E5CF0F200210C78 /* fragment_shader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = fragment_shader.glsl; sourceTree = "<group>"; };
 		51F36ACF1E5E0C5B00210C78 /* texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = texture.cpp; sourceTree = "<group>"; };
@@ -86,6 +90,7 @@
 		5192B5941E5C3C7200CC9A3B = {
 			isa = PBXGroup;
 			children = (
+				51C6CB951E5EC80700225E1F /* experiments */,
 				5192B59F1E5C3C7200CC9A3B /* playground-modern */,
 				5192B59E1E5C3C7200CC9A3B /* Products */,
 			);
@@ -151,6 +156,16 @@
 				51C6CB921E5EB50E00225E1F /* cameraTest.cpp */,
 			);
 			name = util;
+			sourceTree = "<group>";
+		};
+		51C6CB951E5EC80700225E1F /* experiments */ = {
+			isa = PBXGroup;
+			children = (
+				51C6CB9B1E5ED9AF00225E1F /* GLNode.cpp */,
+				51C6CB9C1E5ED9AF00225E1F /* GLNode.hpp */,
+				51C6CB9D1E5ED9AF00225E1F /* objectTest.cpp */,
+			);
+			name = experiments;
 			sourceTree = "<group>";
 		};
 		51F36AC61E5CEE6700210C78 /* hellomodern */ = {
@@ -253,7 +268,8 @@
 			files = (
 				51C6CB911E5EB50100225E1F /* Camera.cpp in Sources */,
 				51C6CB871E5D816700225E1F /* Shader.cpp in Sources */,
-				51C6CB941E5EB50E00225E1F /* cameraTest.cpp in Sources */,
+				51C6CB9F1E5ED9AF00225E1F /* objectTest.cpp in Sources */,
+				51C6CB9E1E5ED9AF00225E1F /* GLNode.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
