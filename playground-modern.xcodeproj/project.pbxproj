@@ -179,8 +179,8 @@
 			isa = PBXGroup;
 			children = (
 				51F36AEC1E5E4C4500210C78 /* camera.cpp */,
-				51F36AEE1E5E4C8B00210C78 /* fragment_shaderCamera.glsl */,
 				51F36AEF1E5E4C8B00210C78 /* vertex_shaderCamera.glsl */,
+				51F36AEE1E5E4C8B00210C78 /* fragment_shaderCamera.glsl */,
 			);
 			name = camera;
 			sourceTree = "<group>";
