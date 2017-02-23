@@ -14,9 +14,11 @@
 		51F36ADA1E5E1B2100210C78 /* vertex_shaderTexture.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AD61E5E136A00210C78 /* vertex_shaderTexture.glsl */; };
 		51F36AE11E5E1FC000210C78 /* texture1.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AE01E5E1FB900210C78 /* texture1.jpg */; };
 		51F36AE31E5E20F200210C78 /* texture2.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AE21E5E20E500210C78 /* texture2.jpg */; };
-		51F36AE61E5E319800210C78 /* transform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51F36AE51E5E319800210C78 /* transform.cpp */; };
 		51F36AE91E5E31BB00210C78 /* fragment_shaderTranslate.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AE71E5E31A700210C78 /* fragment_shaderTranslate.glsl */; };
 		51F36AEA1E5E31BE00210C78 /* vertex_shaderTranslate.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AE81E5E31A700210C78 /* vertex_shaderTranslate.glsl */; };
+		51F36AED1E5E4C4500210C78 /* camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51F36AEC1E5E4C4500210C78 /* camera.cpp */; };
+		51F36AF01E5E4F4600210C78 /* fragment_shaderCamera.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AEE1E5E4C8B00210C78 /* fragment_shaderCamera.glsl */; };
+		51F36AF11E5E4F4900210C78 /* vertex_shaderCamera.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AEF1E5E4C8B00210C78 /* vertex_shaderCamera.glsl */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,6 +28,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 6;
 			files = (
+				51F36AF01E5E4F4600210C78 /* fragment_shaderCamera.glsl in CopyFiles */,
 				51F36AEA1E5E31BE00210C78 /* vertex_shaderTranslate.glsl in CopyFiles */,
 				51F36AE91E5E31BB00210C78 /* fragment_shaderTranslate.glsl in CopyFiles */,
 				51F36AE11E5E1FC000210C78 /* texture1.jpg in CopyFiles */,
@@ -33,6 +36,7 @@
 				51C6CB8A1E5D86E100225E1F /* fragment_shader.glsl in CopyFiles */,
 				51C6CB8B1E5D86E300225E1F /* vertex_shader.glsl in CopyFiles */,
 				51F36AD91E5E1B1F00210C78 /* fragment_shaderTexture.glsl in CopyFiles */,
+				51F36AF11E5E4F4900210C78 /* vertex_shaderCamera.glsl in CopyFiles */,
 				51F36ADA1E5E1B2100210C78 /* vertex_shaderTexture.glsl in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -58,6 +62,9 @@
 		51F36AE51E5E319800210C78 /* transform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = transform.cpp; sourceTree = "<group>"; };
 		51F36AE71E5E31A700210C78 /* fragment_shaderTranslate.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fragment_shaderTranslate.glsl; sourceTree = "<group>"; };
 		51F36AE81E5E31A700210C78 /* vertex_shaderTranslate.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vertex_shaderTranslate.glsl; sourceTree = "<group>"; };
+		51F36AEC1E5E4C4500210C78 /* camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = camera.cpp; sourceTree = "<group>"; };
+		51F36AEE1E5E4C8B00210C78 /* fragment_shaderCamera.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fragment_shaderCamera.glsl; sourceTree = "<group>"; };
+		51F36AEF1E5E4C8B00210C78 /* vertex_shaderCamera.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vertex_shaderCamera.glsl; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +97,7 @@
 		5192B59F1E5C3C7200CC9A3B /* playground-modern */ = {
 			isa = PBXGroup;
 			children = (
+				51F36AEB1E5E4C3000210C78 /* camera */,
 				51F36AE41E5E314000210C78 /* transform */,
 				51F36ACE1E5E0C4600210C78 /* texture */,
 				51C6CB841E5D811C00225E1F /* util */,
@@ -167,6 +175,16 @@
 			name = transform;
 			sourceTree = "<group>";
 		};
+		51F36AEB1E5E4C3000210C78 /* camera */ = {
+			isa = PBXGroup;
+			children = (
+				51F36AEC1E5E4C4500210C78 /* camera.cpp */,
+				51F36AEE1E5E4C8B00210C78 /* fragment_shaderCamera.glsl */,
+				51F36AEF1E5E4C8B00210C78 /* vertex_shaderCamera.glsl */,
+			);
+			name = camera;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -224,7 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51F36AE61E5E319800210C78 /* transform.cpp in Sources */,
+				51F36AED1E5E4C4500210C78 /* camera.cpp in Sources */,
 				51C6CB871E5D816700225E1F /* Shader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
