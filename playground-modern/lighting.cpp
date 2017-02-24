@@ -148,6 +148,7 @@ int main(int argc, char * argv[]) {
     glUniform3f(glGetUniformLocation(shader.program, "lightColor"), lightColor.x, lightColor.y, lightColor.z);
     glUniform3f(glGetUniformLocation(shader.program, "lightPosition"), light.position.x, light.position.y, light.position.z);
     
+    cube.rotation += glm::vec3(0.01, 0,0);
     cube.draw(shader);
     
     glfwSwapBuffers(window);

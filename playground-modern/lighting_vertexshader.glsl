@@ -13,7 +13,8 @@ uniform mat4 projection;
 
 void main() {
   fPosition = (model * vec4(position, 1.0)).xyz;
-  gl_Position = projection * view * vec4(fPosition, 1.0);;
+  gl_Position = projection * view * vec4(fPosition, 1.0);
   fColor = vColor;
-  fNormal = normalize(normal);
+  mat3 normalTransform = mat3(inverse(transpose(model)));
+  fNormal = normalize(normalTransform*normal);
 }

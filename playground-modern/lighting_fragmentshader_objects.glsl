@@ -15,7 +15,7 @@ void main() {
   float diffuseStrength = max(dot(normalToLight, fNormal), 0.0);
   vec3 diffuse = diffuseStrength * lightColor;
   
-  float ambientStrength = 0.5f;
+  float ambientStrength = 0.3f;
   vec3 ambient = ambientStrength * lightColor;
   vec3 result = (ambient + diffuse) * fColor;
   
