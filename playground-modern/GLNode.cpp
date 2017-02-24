@@ -34,7 +34,7 @@ void GLNode::init(){
   glGenBuffers(1, &VBO);
   glGenBuffers(1, &EBO);
   
-  calculateNormals();
+//  calculateNormals();
   
   //concatenate vertex color and normal data (vcn)
   vector<GLfloat> vertColNor = vertices;
@@ -65,11 +65,12 @@ void GLNode::init(){
     
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3*sizeof(GLfloat), (GLvoid*)0);
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3*sizeof(GLfloat), (GLvoid*)colorOffset);
-    glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 3*sizeof(GLfloat), (GLvoid*)normalsOffset);
     glEnableVertexAttribArray(0);
     glEnableVertexAttribArray(1);
-    glEnableVertexAttribArray(2);
-//    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0); DON'T!
+    if(!normals.empty()){
+      glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 3*sizeof(GLfloat), (GLvoid*)normalsOffset);
+      glEnableVertexAttribArray(2);
+    }
     glBindBuffer(GL_ARRAY_BUFFER, 0);
   }
   glBindVertexArray(0);
@@ -96,19 +97,6 @@ void GLNode::draw(const Shader& shader) {
   glBindVertexArray(0);
 }
 
-void GLNode::calculateNormals() {
-  for(int i = 0; i < indices.size()/3; i++) {
-    int index = indices[i*3] * 3; //index in the vertices array
-    glm::vec3 p0(vertices[index], vertices[index+1], vertices[index+2]);
-    index = indices[i*3+1] * 3;
-    glm::vec3 p1(vertices[index], vertices[index+1], vertices[index+2]);
-    index = indices[i*3+2] * 3;
-    glm::vec3 p2(vertices[index], vertices[index+1], vertices[index+2]);
-    glm::vec3 v1 = p1 - p0;
-    glm::vec3 v2 = p2 - p0;
-    glm::vec3 normal = glm::normalize(glm::cross(v2, v1));
-    normals.push_back(normal.x);
-    normals.push_back(normal.y);
-    normals.push_back(normal.z);
-  }
+void GLNode::setNormals(const std::vector<GLfloat>& normals) {
+  this->normals = normals;
 }

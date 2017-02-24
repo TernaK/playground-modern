@@ -12,8 +12,8 @@ uniform mat4 view;
 uniform mat4 projection;
 
 void main() {
-  gl_Position = projection * view * model* vec4(position, 1.0);
+  fPosition = (model * vec4(position, 1.0)).xyz;
+  gl_Position = projection * view * vec4(fPosition, 1.0);;
   fColor = vColor;
-  fNormal = normal;
-  fPosition = position;
+  fNormal = normalize(normal);
 }

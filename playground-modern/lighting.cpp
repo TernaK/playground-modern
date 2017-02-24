@@ -114,8 +114,10 @@ int main(int argc, char * argv[]) {
   Camera camera(glm::vec3(1.6,2.5,5));
   
   cube = GLNode(vertices, colors, indices);
-  light = GLNode(vertices, colors, indices);
+  cube.setNormals(vertices);
   cube.init();
+  
+  light = GLNode(vertices, colors, indices);
   light.init();
   
   light.position = glm::vec3(0, 0, 2);
@@ -146,7 +148,6 @@ int main(int argc, char * argv[]) {
     glUniform3f(glGetUniformLocation(shader.program, "lightColor"), lightColor.x, lightColor.y, lightColor.z);
     glUniform3f(glGetUniformLocation(shader.program, "lightPosition"), light.position.x, light.position.y, light.position.z);
     
-    cube.scale = glm::vec3(1,1,1);
     cube.draw(shader);
     
     glfwSwapBuffers(window);

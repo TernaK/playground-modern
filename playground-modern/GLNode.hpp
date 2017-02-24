@@ -26,9 +26,6 @@ private:
   bool ready = false;
   glm::mat4 model;
   
-  //calculate normals to every vertex
-  void calculateNormals();
-  
 public:
   glm::vec3 rotation = glm::vec3(0,0,0);
   glm::vec3 position = glm::vec3(0,0,0);
@@ -43,6 +40,8 @@ public:
   
   //render using a shader
   void draw(const Shader& shader);
+  
+  void setNormals(const std::vector<GLfloat>& normals);
 };
 
 #endif /* GLNode_hpp */
