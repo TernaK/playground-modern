@@ -11,8 +11,9 @@
 		51C6CB8A1E5D86E100225E1F /* fragment_shader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AC81E5CF0F200210C78 /* fragment_shader.glsl */; };
 		51C6CB8B1E5D86E300225E1F /* vertex_shader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AC71E5CEE8000210C78 /* vertex_shader.glsl */; };
 		51C6CB911E5EB50100225E1F /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CB8F1E5EB50100225E1F /* Camera.cpp */; };
-		51C6CB9E1E5ED9AF00225E1F /* GLNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CB9B1E5ED9AF00225E1F /* GLNode.cpp */; };
-		51C6CB9F1E5ED9AF00225E1F /* objectTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CB9D1E5ED9AF00225E1F /* objectTest.cpp */; };
+		51C6CBA41E60096100225E1F /* lighting_fragmentshader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51C6CBA01E60065D00225E1F /* lighting_fragmentshader.glsl */; };
+		51C6CBA61E600B2900225E1F /* GLNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CB9B1E5ED9AF00225E1F /* GLNode.cpp */; };
+		51C6CBA71E600B3200225E1F /* lighting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBA21E6006FD00225E1F /* lighting.cpp */; };
 		51F36AD91E5E1B1F00210C78 /* fragment_shaderTexture.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AD71E5E138000210C78 /* fragment_shaderTexture.glsl */; };
 		51F36ADA1E5E1B2100210C78 /* vertex_shaderTexture.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AD61E5E136A00210C78 /* vertex_shaderTexture.glsl */; };
 		51F36AE11E5E1FC000210C78 /* texture1.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AE01E5E1FB900210C78 /* texture1.jpg */; };
@@ -35,6 +36,7 @@
 				51F36AE91E5E31BB00210C78 /* fragment_shaderTranslate.glsl in CopyFiles */,
 				51F36AE11E5E1FC000210C78 /* texture1.jpg in CopyFiles */,
 				51F36AE31E5E20F200210C78 /* texture2.jpg in CopyFiles */,
+				51C6CBA41E60096100225E1F /* lighting_fragmentshader.glsl in CopyFiles */,
 				51C6CB8A1E5D86E100225E1F /* fragment_shader.glsl in CopyFiles */,
 				51C6CB8B1E5D86E300225E1F /* vertex_shader.glsl in CopyFiles */,
 				51F36AD91E5E1B1F00210C78 /* fragment_shaderTexture.glsl in CopyFiles */,
@@ -58,22 +60,24 @@
 		51C6CB8F1E5EB50100225E1F /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
 		51C6CB901E5EB50100225E1F /* Camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = "<group>"; };
 		51C6CB921E5EB50E00225E1F /* cameraTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cameraTest.cpp; sourceTree = "<group>"; };
-		51C6CB9B1E5ED9AF00225E1F /* GLNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GLNode.cpp; path = "playground-modern/GLNode.cpp"; sourceTree = "<group>"; };
-		51C6CB9C1E5ED9AF00225E1F /* GLNode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GLNode.hpp; path = "playground-modern/GLNode.hpp"; sourceTree = "<group>"; };
+		51C6CB9B1E5ED9AF00225E1F /* GLNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLNode.cpp; sourceTree = "<group>"; };
+		51C6CB9C1E5ED9AF00225E1F /* GLNode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GLNode.hpp; sourceTree = "<group>"; };
 		51C6CB9D1E5ED9AF00225E1F /* objectTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = objectTest.cpp; path = "playground-modern/objectTest.cpp"; sourceTree = "<group>"; };
-		51F36AC71E5CEE8000210C78 /* vertex_shader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vertex_shader.glsl; sourceTree = "<group>"; };
-		51F36AC81E5CF0F200210C78 /* fragment_shader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = fragment_shader.glsl; sourceTree = "<group>"; };
+		51C6CBA01E60065D00225E1F /* lighting_fragmentshader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lighting_fragmentshader.glsl; path = "playground-modern/lighting_fragmentshader.glsl"; sourceTree = "<group>"; };
+		51C6CBA21E6006FD00225E1F /* lighting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lighting.cpp; sourceTree = "<group>"; };
+		51F36AC71E5CEE8000210C78 /* vertex_shader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vertex_shader.glsl; path = "playground-modern/vertex_shader.glsl"; sourceTree = "<group>"; };
+		51F36AC81E5CF0F200210C78 /* fragment_shader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fragment_shader.glsl; path = "playground-modern/fragment_shader.glsl"; sourceTree = "<group>"; };
 		51F36ACF1E5E0C5B00210C78 /* texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = texture.cpp; sourceTree = "<group>"; };
-		51F36AD61E5E136A00210C78 /* vertex_shaderTexture.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vertex_shaderTexture.glsl; sourceTree = "<group>"; };
-		51F36AD71E5E138000210C78 /* fragment_shaderTexture.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fragment_shaderTexture.glsl; sourceTree = "<group>"; };
+		51F36AD61E5E136A00210C78 /* vertex_shaderTexture.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vertex_shaderTexture.glsl; path = "playground-modern/vertex_shaderTexture.glsl"; sourceTree = "<group>"; };
+		51F36AD71E5E138000210C78 /* fragment_shaderTexture.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fragment_shaderTexture.glsl; path = "playground-modern/fragment_shaderTexture.glsl"; sourceTree = "<group>"; };
 		51F36AE01E5E1FB900210C78 /* texture1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = texture1.jpg; sourceTree = "<group>"; };
 		51F36AE21E5E20E500210C78 /* texture2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = texture2.jpg; sourceTree = "<group>"; };
 		51F36AE51E5E319800210C78 /* transform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = transform.cpp; sourceTree = "<group>"; };
-		51F36AE71E5E31A700210C78 /* fragment_shaderTranslate.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fragment_shaderTranslate.glsl; sourceTree = "<group>"; };
-		51F36AE81E5E31A700210C78 /* vertex_shaderTranslate.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vertex_shaderTranslate.glsl; sourceTree = "<group>"; };
+		51F36AE71E5E31A700210C78 /* fragment_shaderTranslate.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fragment_shaderTranslate.glsl; path = "playground-modern/fragment_shaderTranslate.glsl"; sourceTree = "<group>"; };
+		51F36AE81E5E31A700210C78 /* vertex_shaderTranslate.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vertex_shaderTranslate.glsl; path = "playground-modern/vertex_shaderTranslate.glsl"; sourceTree = "<group>"; };
 		51F36AEC1E5E4C4500210C78 /* cameraview.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cameraview.cpp; sourceTree = "<group>"; };
-		51F36AEE1E5E4C8B00210C78 /* fragment_shaderCamera.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fragment_shaderCamera.glsl; sourceTree = "<group>"; };
-		51F36AEF1E5E4C8B00210C78 /* vertex_shaderCamera.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vertex_shaderCamera.glsl; sourceTree = "<group>"; };
+		51F36AEE1E5E4C8B00210C78 /* fragment_shaderCamera.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fragment_shaderCamera.glsl; path = "playground-modern/fragment_shaderCamera.glsl"; sourceTree = "<group>"; };
+		51F36AEF1E5E4C8B00210C78 /* vertex_shaderCamera.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vertex_shaderCamera.glsl; path = "playground-modern/vertex_shaderCamera.glsl"; sourceTree = "<group>"; };
 		51F36AF21E5FB72500210C78 /* render.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = render.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				51F36AF21E5FB72500210C78 /* render.png */,
+				51C6CBA11E6006BA00225E1F /* shaders */,
 				51C6CB951E5EC80700225E1F /* experiments */,
 				5192B59F1E5C3C7200CC9A3B /* playground-modern */,
 				5192B59E1E5C3C7200CC9A3B /* Products */,
@@ -125,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				51C6CB7C1E5D6A1300225E1F /* multipleshaders.cpp */,
+				51C6CBA21E6006FD00225E1F /* lighting.cpp */,
 			);
 			name = excercises;
 			sourceTree = "<group>";
@@ -148,11 +154,11 @@
 		51C6CB841E5D811C00225E1F /* util */ = {
 			isa = PBXGroup;
 			children = (
+				51C6CB9B1E5ED9AF00225E1F /* GLNode.cpp */,
+				51C6CB9C1E5ED9AF00225E1F /* GLNode.hpp */,
 				51C6CB851E5D816700225E1F /* Shader.cpp */,
 				51C6CB861E5D816700225E1F /* Shader.hpp */,
 				51C6CB881E5D864200225E1F /* shaderTest.cpp */,
-				51F36AC71E5CEE8000210C78 /* vertex_shader.glsl */,
-				51F36AC81E5CF0F200210C78 /* fragment_shader.glsl */,
 				51C6CB8F1E5EB50100225E1F /* Camera.cpp */,
 				51C6CB901E5EB50100225E1F /* Camera.hpp */,
 				51C6CB921E5EB50E00225E1F /* cameraTest.cpp */,
@@ -163,11 +169,25 @@
 		51C6CB951E5EC80700225E1F /* experiments */ = {
 			isa = PBXGroup;
 			children = (
-				51C6CB9B1E5ED9AF00225E1F /* GLNode.cpp */,
-				51C6CB9C1E5ED9AF00225E1F /* GLNode.hpp */,
 				51C6CB9D1E5ED9AF00225E1F /* objectTest.cpp */,
 			);
 			name = experiments;
+			sourceTree = "<group>";
+		};
+		51C6CBA11E6006BA00225E1F /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				51F36AEF1E5E4C8B00210C78 /* vertex_shaderCamera.glsl */,
+				51F36AEE1E5E4C8B00210C78 /* fragment_shaderCamera.glsl */,
+				51F36AE71E5E31A700210C78 /* fragment_shaderTranslate.glsl */,
+				51F36AE81E5E31A700210C78 /* vertex_shaderTranslate.glsl */,
+				51F36AD61E5E136A00210C78 /* vertex_shaderTexture.glsl */,
+				51F36AD71E5E138000210C78 /* fragment_shaderTexture.glsl */,
+				51F36AC81E5CF0F200210C78 /* fragment_shader.glsl */,
+				51F36AC71E5CEE8000210C78 /* vertex_shader.glsl */,
+				51C6CBA01E60065D00225E1F /* lighting_fragmentshader.glsl */,
+			);
+			name = shaders;
 			sourceTree = "<group>";
 		};
 		51F36AC61E5CEE6700210C78 /* hellomodern */ = {
@@ -182,8 +202,6 @@
 			isa = PBXGroup;
 			children = (
 				51F36ACF1E5E0C5B00210C78 /* texture.cpp */,
-				51F36AD61E5E136A00210C78 /* vertex_shaderTexture.glsl */,
-				51F36AD71E5E138000210C78 /* fragment_shaderTexture.glsl */,
 				51F36AE01E5E1FB900210C78 /* texture1.jpg */,
 				51F36AE21E5E20E500210C78 /* texture2.jpg */,
 			);
@@ -194,8 +212,6 @@
 			isa = PBXGroup;
 			children = (
 				51F36AE51E5E319800210C78 /* transform.cpp */,
-				51F36AE71E5E31A700210C78 /* fragment_shaderTranslate.glsl */,
-				51F36AE81E5E31A700210C78 /* vertex_shaderTranslate.glsl */,
 			);
 			name = transform;
 			sourceTree = "<group>";
@@ -205,8 +221,6 @@
 			children = (
 				51F36AEC1E5E4C4500210C78 /* cameraview.cpp */,
 				51C6CB8C1E5E9B4A00225E1F /* camerarevolve.cpp */,
-				51F36AEF1E5E4C8B00210C78 /* vertex_shaderCamera.glsl */,
-				51F36AEE1E5E4C8B00210C78 /* fragment_shaderCamera.glsl */,
 			);
 			name = camera;
 			sourceTree = "<group>";
@@ -268,10 +282,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51C6CBA61E600B2900225E1F /* GLNode.cpp in Sources */,
 				51C6CB911E5EB50100225E1F /* Camera.cpp in Sources */,
 				51C6CB871E5D816700225E1F /* Shader.cpp in Sources */,
-				51C6CB9F1E5ED9AF00225E1F /* objectTest.cpp in Sources */,
-				51C6CB9E1E5ED9AF00225E1F /* GLNode.cpp in Sources */,
+				51C6CBA71E600B3200225E1F /* lighting.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

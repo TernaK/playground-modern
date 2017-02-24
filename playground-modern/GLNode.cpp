@@ -71,8 +71,8 @@ void GLNode::draw(const Shader& shader) {
     puts("ERROR::GLNode::object not initialized");
   }
   
-  model = glm::scale(glm::mat4(1.0f), scale);
-  model = glm::translate(model, position);
+  model = glm::translate(glm::mat4(1.0f), position);
+  model = glm::scale(model, scale);
   model = glm::rotate(model, rotation.x, glm::vec3(1.0f, 0.0f, 0.0f));
   model = glm::rotate(model, rotation.y, glm::vec3(0.0f, 1.0f, 0.0f));
   model = glm::rotate(model, rotation.z, glm::vec3(0.0f, 0.0f, 1.0f));
