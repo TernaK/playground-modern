@@ -90,7 +90,7 @@ int main(int argc, char * argv[]) {
   
   glEnable(GL_DEPTH_TEST);
   
-  Camera camera(glm::vec3(0,0,5));
+  Camera camera(glm::vec3(2,3,5));
   
   GLNode cube(vertices, colors, indices);
   cube.init();
@@ -106,20 +106,16 @@ int main(int argc, char * argv[]) {
     glClearColor(0.2, 0.3, 0.5, 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    camera.lookFrom(glm::vec3(0,1,5));
+    camera.look();
     camera.perspective(glm::radians(45.0f), GLfloat(width)/GLfloat(height), 0.1f, 50.0f);
     
     lightShader.use();
+    camera.setViewAndProjection(lightShader);
     
-    //consider moving to Camera
-    glUniformMatrix4fv(glGetUniformLocation(lightShader.program, "view"), 1, GL_FALSE, glm::value_ptr(camera.view));
-    glUniformMatrix4fv(glGetUniformLocation(lightShader.program, "projection"), 1, GL_FALSE, glm::value_ptr(camera.projection));
     light.draw(lightShader);
     
     shader.use();
-    
-    glUniformMatrix4fv(glGetUniformLocation(shader.program, "view"), 1, GL_FALSE, glm::value_ptr(camera.view));
-    glUniformMatrix4fv(glGetUniformLocation(shader.program, "projection"), 1, GL_FALSE, glm::value_ptr(camera.projection));
+    camera.setViewAndProjection(shader);
     
     cube.scale = glm::vec3(1,1,1);
     cube.draw(shader);

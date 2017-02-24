@@ -53,3 +53,8 @@ glm::mat4 Camera::perspective(GLfloat fov_rad, GLfloat aspect, GLfloat zNear, GL
   projection = glm::perspective(fov, aspect, zNear, zFar);
   return projection;
 }
+
+void Camera::setViewAndProjection(Shader shader) {
+  glUniformMatrix4fv(glGetUniformLocation(shader.program, "view"), 1, GL_FALSE, glm::value_ptr(view));
+  glUniformMatrix4fv(glGetUniformLocation(shader.program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+}

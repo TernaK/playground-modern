@@ -9,6 +9,7 @@
 #ifndef Camera_hpp
 #define Camera_hpp
 
+#include "Shader.hpp"
 #include <GL/glew.h>
 #include <iostream>
 #include <glm/glm.hpp>
@@ -48,6 +49,9 @@ public:
   
   //set the state for the projection
   glm::mat4 perspective(GLfloat fov_radians, GLfloat aspect, GLfloat zNear, GLfloat zFar);
+  
+  //pass the view and projection matrices to a shader
+  void setViewAndProjection(Shader shader);
   
 //  glm::mat4 getView() { return view; };
 //  glm::vec3 getEye() { return eye; }
