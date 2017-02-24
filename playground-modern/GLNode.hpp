@@ -29,10 +29,15 @@ public:
   glm::vec3 rotation = glm::vec3(0,0,0);
   glm::vec3 position = glm::vec3(0,0,0);
   glm::vec3 scale = glm::vec3(1,1,1);
+  
   GLNode();
   GLNode(const std::vector<GLfloat>& vertices, const std::vector<GLfloat>& colors, const std::vector<GLuint>& indices);
   ~GLNode();
+  
+  //bind buffers and arrays
   void init();
+  
+  //render using a shader
   void draw(const Shader& shader);
 };
 

@@ -89,8 +89,7 @@ int main(int argc, char * argv[]) {
   
   glEnable(GL_DEPTH_TEST);
   
-  Camera camera;
-  camera.eye = glm::vec3(0,0,5);
+  Camera camera(glm::vec3(0,0,5));
   
   GLNode cube(vertices, colors, indices);
   cube.init();
@@ -102,7 +101,7 @@ int main(int argc, char * argv[]) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     shader.use();
-//    camera.eye += glm::vec3(0,0.05,0);
+    
     camera.look();
     camera.perspective(glm::radians(45.0f), GLfloat(width)/GLfloat(height), 0.1f, 50.0f);
     
