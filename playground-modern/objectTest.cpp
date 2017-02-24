@@ -31,7 +31,7 @@ int main(int argc, char * argv[]) {
   glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
   glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
   
-  GLFWwindow *window = glfwCreateWindow(600, 600, "hello modern opengl", nullptr, nullptr);
+  GLFWwindow *window = glfwCreateWindow(600, 400, "hello modern opengl", nullptr, nullptr);
   if(window == nullptr){
     puts("failed to create glfw window");
     glfwTerminate();
@@ -90,6 +90,7 @@ int main(int argc, char * argv[]) {
   glEnable(GL_DEPTH_TEST);
   
   Camera camera;
+  camera.eye = glm::vec3(0,0,5);
   
   GLNode cube(vertices, colors, indices);
   cube.init();
@@ -97,16 +98,16 @@ int main(int argc, char * argv[]) {
   while(!glfwWindowShouldClose(window)){
     glfwPollEvents();
     
-    
     glClearColor(0.2, 0.3, 0.5, 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     shader.use();
-    glm::mat4 view = camera.lookAt(glm::vec3(0,1,5));
-    glm::mat4 projection = glm::perspective(glm::radians(45.0f), 1.0f, 0.1f, 50.0f);
+//    camera.eye += glm::vec3(0,0.05,0);
+    camera.look();
+    camera.perspective(glm::radians(45.0f), GLfloat(width)/GLfloat(height), 0.1f, 50.0f);
     
-    glUniformMatrix4fv(glGetUniformLocation(shader.program, "view"), 1, GL_FALSE, glm::value_ptr(view));
-    glUniformMatrix4fv(glGetUniformLocation(shader.program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+    glUniformMatrix4fv(glGetUniformLocation(shader.program, "view"), 1, GL_FALSE, glm::value_ptr(camera.view));
+    glUniformMatrix4fv(glGetUniformLocation(shader.program, "projection"), 1, GL_FALSE, glm::value_ptr(camera.projection));
     
     cube.position = glm::vec3(0,0,0);
     cube.rotation = glm::vec3(0, -GLfloat(glfwGetTime()*M_PI), 0);
