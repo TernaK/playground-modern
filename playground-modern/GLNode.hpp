@@ -22,8 +22,12 @@ private:
   GLuint VAO, VBO, EBO;
   std::vector<GLfloat> vertices, colors;
   std::vector<GLuint> indices;
+  std::vector<GLfloat> normals;
   bool ready = false;
   glm::mat4 model;
+  
+  //calculate normals to every vertex
+  void calculateNormals();
   
 public:
   glm::vec3 rotation = glm::vec3(0,0,0);

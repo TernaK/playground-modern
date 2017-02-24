@@ -15,9 +15,30 @@
 #include <vector>
 using namespace std;
 
+GLNode cube;
+GLNode light;
+
 void keyboardCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
   if(action == GLFW_PRESS && key == GLFW_KEY_ESCAPE) {
     glfwSetWindowShouldClose(window, GL_TRUE);
+  }
+  if(action == GLFW_PRESS && key == GLFW_KEY_UP) {
+    light.position.z -= 0.05;
+  }
+  if(action == GLFW_PRESS && key == GLFW_KEY_DOWN) {
+    light.position.z += 0.05;
+  }
+  if(action == GLFW_PRESS && key == GLFW_KEY_LEFT) {
+    light.position.x -= 0.05;
+  }
+  if(action == GLFW_PRESS && key == GLFW_KEY_RIGHT) {
+    light.position.x += 0.05;
+  }
+  if(action == GLFW_PRESS && key == GLFW_KEY_U) {
+    light.position.y += 0.05;
+  }
+  if(action == GLFW_PRESS && key == GLFW_KEY_D) {
+    light.position.y -= 0.05;
   }
 }
 
@@ -80,25 +101,25 @@ int main(int argc, char * argv[]) {
     0.1f, 0.7f, 0.5f,
   };
   vector<GLuint> indices = {
-    0,1,2, 1,2,3,
-    1,5,3, 5,3,7,
-    5,4,7, 4,7,6,
-    4,0,6, 0,6,2,
-    2,3,6, 3,6,7,
-    4,5,0, 5,0,1
+    0,1,2, 3,2,1,//front
+    5,4,7, 6,7,4,//back
+    4,0,6, 2,6,0,//left
+    1,5,3, 7,3,5,//rigt
+    2,3,6, 7,6,3,//top
+    4,5,0, 1,0,5//bottom
   };
   
   glEnable(GL_DEPTH_TEST);
   
-  Camera camera(glm::vec3(2,3,5));
+  Camera camera(glm::vec3(1.6,2.5,5));
   
-  GLNode cube(vertices, colors, indices);
+  cube = GLNode(vertices, colors, indices);
+  light = GLNode(vertices, colors, indices);
   cube.init();
-  
-  GLNode light(vertices, colors, indices);
   light.init();
-  light.position = glm::vec3(1.2,1,2);
-  light.scale = glm::vec3(0.2,0.2,0.2);
+  
+  light.position = glm::vec3(0, 0, 2);
+  light.scale = glm::vec3(0.1,0.1,0.1);
   
   while(!glfwWindowShouldClose(window)){
     glfwPollEvents();
@@ -117,12 +138,13 @@ int main(int argc, char * argv[]) {
     glUniform3f(glGetUniformLocation(lightShader.program, "lightColor"), lightColor.x, lightColor.y, lightColor.z);
     light.draw(lightShader);
     
-    
     //cube
     shader.use();
     camera.setViewAndProjection(shader);
     
+    glUniform3f(glGetUniformLocation(shader.program, "eyePosition"), camera.eye.x, camera.eye.y, camera.eye.z);
     glUniform3f(glGetUniformLocation(shader.program, "lightColor"), lightColor.x, lightColor.y, lightColor.z);
+    glUniform3f(glGetUniformLocation(shader.program, "lightPosition"), light.position.x, light.position.y, light.position.z);
     
     cube.scale = glm::vec3(1,1,1);
     cube.draw(shader);
