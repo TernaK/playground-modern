@@ -14,6 +14,8 @@
 		51C6CBA41E60096100225E1F /* lighting_fragmentshader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51C6CBA01E60065D00225E1F /* lighting_fragmentshader.glsl */; };
 		51C6CBA61E600B2900225E1F /* GLNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CB9B1E5ED9AF00225E1F /* GLNode.cpp */; };
 		51C6CBA71E600B3200225E1F /* lighting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBA21E6006FD00225E1F /* lighting.cpp */; };
+		51C6CBAA1E60118000225E1F /* lighting_fragmentshader_objects.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51C6CBA91E60113000225E1F /* lighting_fragmentshader_objects.glsl */; };
+		51C6CBAC1E60125E00225E1F /* lighting_vertexshader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51C6CBAB1E60121A00225E1F /* lighting_vertexshader.glsl */; };
 		51F36AD91E5E1B1F00210C78 /* fragment_shaderTexture.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AD71E5E138000210C78 /* fragment_shaderTexture.glsl */; };
 		51F36ADA1E5E1B2100210C78 /* vertex_shaderTexture.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AD61E5E136A00210C78 /* vertex_shaderTexture.glsl */; };
 		51F36AE11E5E1FC000210C78 /* texture1.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AE01E5E1FB900210C78 /* texture1.jpg */; };
@@ -34,8 +36,10 @@
 				51F36AF01E5E4F4600210C78 /* fragment_shaderCamera.glsl in CopyFiles */,
 				51F36AEA1E5E31BE00210C78 /* vertex_shaderTranslate.glsl in CopyFiles */,
 				51F36AE91E5E31BB00210C78 /* fragment_shaderTranslate.glsl in CopyFiles */,
+				51C6CBAC1E60125E00225E1F /* lighting_vertexshader.glsl in CopyFiles */,
 				51F36AE11E5E1FC000210C78 /* texture1.jpg in CopyFiles */,
 				51F36AE31E5E20F200210C78 /* texture2.jpg in CopyFiles */,
+				51C6CBAA1E60118000225E1F /* lighting_fragmentshader_objects.glsl in CopyFiles */,
 				51C6CBA41E60096100225E1F /* lighting_fragmentshader.glsl in CopyFiles */,
 				51C6CB8A1E5D86E100225E1F /* fragment_shader.glsl in CopyFiles */,
 				51C6CB8B1E5D86E300225E1F /* vertex_shader.glsl in CopyFiles */,
@@ -65,6 +69,8 @@
 		51C6CB9D1E5ED9AF00225E1F /* objectTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = objectTest.cpp; path = "playground-modern/objectTest.cpp"; sourceTree = "<group>"; };
 		51C6CBA01E60065D00225E1F /* lighting_fragmentshader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lighting_fragmentshader.glsl; path = "playground-modern/lighting_fragmentshader.glsl"; sourceTree = "<group>"; };
 		51C6CBA21E6006FD00225E1F /* lighting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lighting.cpp; sourceTree = "<group>"; };
+		51C6CBA91E60113000225E1F /* lighting_fragmentshader_objects.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lighting_fragmentshader_objects.glsl; path = "playground-modern/lighting_fragmentshader_objects.glsl"; sourceTree = "<group>"; };
+		51C6CBAB1E60121A00225E1F /* lighting_vertexshader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lighting_vertexshader.glsl; path = "playground-modern/lighting_vertexshader.glsl"; sourceTree = "<group>"; };
 		51F36AC71E5CEE8000210C78 /* vertex_shader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vertex_shader.glsl; path = "playground-modern/vertex_shader.glsl"; sourceTree = "<group>"; };
 		51F36AC81E5CF0F200210C78 /* fragment_shader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fragment_shader.glsl; path = "playground-modern/fragment_shader.glsl"; sourceTree = "<group>"; };
 		51F36ACF1E5E0C5B00210C78 /* texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = texture.cpp; sourceTree = "<group>"; };
@@ -186,6 +192,8 @@
 				51F36AC81E5CF0F200210C78 /* fragment_shader.glsl */,
 				51F36AC71E5CEE8000210C78 /* vertex_shader.glsl */,
 				51C6CBA01E60065D00225E1F /* lighting_fragmentshader.glsl */,
+				51C6CBA91E60113000225E1F /* lighting_fragmentshader_objects.glsl */,
+				51C6CBAB1E60121A00225E1F /* lighting_vertexshader.glsl */,
 			);
 			name = shaders;
 			sourceTree = "<group>";

@@ -39,7 +39,6 @@ glm::mat4 Camera::lookAt(glm::vec3 eye, glm::vec3 target, glm::vec3 up) {
   return view;
 }
 
-
 glm::mat4 Camera::perspective() {
   projection = glm::perspective(glm::radians(fov), aspect, zNear, zFar);
   return projection;

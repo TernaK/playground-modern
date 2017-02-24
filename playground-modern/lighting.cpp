@@ -54,8 +54,8 @@ int main(int argc, char * argv[]) {
   glfwSetKeyCallback(window, keyboardCallback);
   
   //shader programs
-  Shader shader("vertex_shader.glsl","fragment_shader.glsl");
-  Shader lightShader("vertex_shader.glsl","lighting_fragmentshader.glsl");
+  Shader shader("lighting_vertexshader.glsl","lighting_fragmentshader_objects.glsl");
+  Shader lightShader("lighting_vertexshader.glsl","lighting_fragmentshader.glsl");
   
   vector<GLfloat> vertices = {
     -0.5f, -0.5f, 0.5f,
@@ -109,13 +109,20 @@ int main(int argc, char * argv[]) {
     camera.look();
     camera.perspective(glm::radians(45.0f), GLfloat(width)/GLfloat(height), 0.1f, 50.0f);
     
+    //light
     lightShader.use();
     camera.setViewAndProjection(lightShader);
     
+    glm::vec3 lightColor(1.0,1.0,1.0);
+    glUniform3f(glGetUniformLocation(lightShader.program, "lightColor"), lightColor.x, lightColor.y, lightColor.z);
     light.draw(lightShader);
     
+    
+    //cube
     shader.use();
     camera.setViewAndProjection(shader);
+    
+    glUniform3f(glGetUniformLocation(shader.program, "lightColor"), lightColor.x, lightColor.y, lightColor.z);
     
     cube.scale = glm::vec3(1,1,1);
     cube.draw(shader);
