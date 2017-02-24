@@ -74,6 +74,7 @@
 		51F36AEC1E5E4C4500210C78 /* cameraview.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cameraview.cpp; sourceTree = "<group>"; };
 		51F36AEE1E5E4C8B00210C78 /* fragment_shaderCamera.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = fragment_shaderCamera.glsl; sourceTree = "<group>"; };
 		51F36AEF1E5E4C8B00210C78 /* vertex_shaderCamera.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vertex_shaderCamera.glsl; sourceTree = "<group>"; };
+		51F36AF21E5FB72500210C78 /* render.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = render.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +91,7 @@
 		5192B5941E5C3C7200CC9A3B = {
 			isa = PBXGroup;
 			children = (
+				51F36AF21E5FB72500210C78 /* render.png */,
 				51C6CB951E5EC80700225E1F /* experiments */,
 				5192B59F1E5C3C7200CC9A3B /* playground-modern */,
 				5192B59E1E5C3C7200CC9A3B /* Products */,
