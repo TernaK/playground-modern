@@ -36,7 +36,7 @@ void GLNode::init(){
   
   vector<GLfloat> vertCol = vertices;
   vertCol.insert(vertCol.end(), colors.begin(), colors.end());
-//  GLfloat *verticesColorArray = &vertices[0];
+//  GLfloat *verticesColorArray = &vertices[0]; DON'T
 //  GLuint *indicesArray = &indices[0];
   GLfloat verticesColorArray[vertCol.size()];
   for(int i = 0 ; i < vertCol.size(); i++)
@@ -58,8 +58,7 @@ void GLNode::init(){
     glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3*sizeof(GLfloat), (GLvoid*)colorOffset);
     glEnableVertexAttribArray(0);
     glEnableVertexAttribArray(1);
-    
-//    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+//    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0); DON'T!
     glBindBuffer(GL_ARRAY_BUFFER, 0);
   }
   glBindVertexArray(0);
