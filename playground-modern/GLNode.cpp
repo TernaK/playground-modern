@@ -13,17 +13,22 @@ GLNode::GLNode() {
   
 }
 
-GLNode::GLNode(const std::vector<GLfloat>& vertices, const std::vector<GLfloat>& colors, const std::vector<GLuint>& indices) {
-  assert(vertices.size() == colors.size() && vertices.size() > 0);
+//GLNode::GLNode(const std::vector<GLfloat>& vertices, const std::vector<GLuint>& indices) {
+//  assert(vertices.size() > 0 && indices.size() > 0);
+//  this->vertices = vertices;
+//  this->indices = indices;
+//}
+
+GLNode::GLNode(const std::vector<GLfloat>& vertices, const std::vector<GLuint>& indices, const std::vector<GLfloat>& normals) {
+  assert(vertices.size() > 0 && indices.size() > 0);
   this->vertices = vertices;
-  this->colors = colors;
   this->indices = indices;
+  this->normals = normals;
 }
 
 
 GLNode::~GLNode(){
   if(ready){
-    glDeleteBuffers(1, &EBO);
     glDeleteBuffers(1, &VBO);
     glDeleteVertexArrays(1, &VAO);
   }
@@ -32,44 +37,36 @@ GLNode::~GLNode(){
 void GLNode::init(){
   glGenVertexArrays(1, &VAO);
   glGenBuffers(1, &VBO);
-  glGenBuffers(1, &EBO);
-  
-//  calculateNormals();
   
   //concatenate vertex color and normal data (vcn)
-  vector<GLfloat> vertColNor = vertices;
-  vertColNor.insert(vertColNor.end(), colors.begin(), colors.end());
-  vertColNor.insert(vertColNor.end(), normals.begin(), normals.end());
+  vector<GLfloat> vertColNor;// = vertices;
+  for(auto index: indices) {
+    vertColNor.push_back(vertices[index * 3]);
+    vertColNor.push_back(vertices[index * 3 + 1]);
+    vertColNor.push_back(vertices[index * 3 +2]);
+  }
+  
+  if(!normals.empty())
+  	vertColNor.insert(vertColNor.end(), normals.begin(), normals.end());
   
   //convert vcn to c array
-  GLfloat verticesColorArray[vertColNor.size()];
+  GLfloat verticesNormalArray[vertColNor.size()];
   for(int i = 0 ; i < vertColNor.size(); i++)
-    verticesColorArray[i] = vertColNor[i];
-  
-  //convert to c array
-  GLuint indicesArray[indices.size()];
-  for(int i = 0 ; i < indices.size(); i++)
-    indicesArray[i] = indices[i];
+    verticesNormalArray[i] = vertColNor[i];
   
   //offsets in the vcn array
-  auto colorOffset = sizeof(GLfloat) * vertices.size();
-  auto normalsOffset = colorOffset + sizeof(GLfloat) * colors.size();
+  auto normalsOffset = 3 * sizeof(GLfloat) * indices.size();
   
   glBindVertexArray(VAO);
   {
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(verticesColorArray), verticesColorArray, GL_STATIC_DRAW);
-    
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indicesArray), indicesArray, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(verticesNormalArray), verticesNormalArray, GL_STATIC_DRAW);
     
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3*sizeof(GLfloat), (GLvoid*)0);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3*sizeof(GLfloat), (GLvoid*)colorOffset);
     glEnableVertexAttribArray(0);
-    glEnableVertexAttribArray(1);
     if(!normals.empty()){
-      glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 3*sizeof(GLfloat), (GLvoid*)normalsOffset);
-      glEnableVertexAttribArray(2);
+      glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 3*sizeof(GLfloat), (GLvoid*)normalsOffset);
+      glEnableVertexAttribArray(1);
     }
     glBindBuffer(GL_ARRAY_BUFFER, 0);
   }
@@ -90,9 +87,10 @@ void GLNode::draw(const Shader& shader) {
   model = glm::rotate(model, rotation.z, glm::vec3(0.0f, 0.0f, 1.0f));
   
   glUniformMatrix4fv(glGetUniformLocation(shader.program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+  glUniform3f(glGetUniformLocation(shader.program, "objectColor"), color.x, color.y, color.z);
   glBindVertexArray(VAO);
   {
-    glDrawElements(GL_TRIANGLES, GLuint(indices.size()), GL_UNSIGNED_INT, 0);
+    glDrawArrays(GL_TRIANGLES, 0, GLint(indices.size()));
   }
   glBindVertexArray(0);
 }

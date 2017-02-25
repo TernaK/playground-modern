@@ -52,7 +52,7 @@ int main(int argc, char * argv[]) {
   glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
   glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
   
-  GLFWwindow *window = glfwCreateWindow(600, 400, "hello modern opengl", nullptr, nullptr);
+  GLFWwindow *window = glfwCreateWindow(600, 600, "hello modern opengl", nullptr, nullptr);
   if(window == nullptr){
     puts("failed to create glfw window");
     glfwTerminate();
@@ -89,17 +89,7 @@ int main(int argc, char * argv[]) {
     -0.5f, 0.5f, -0.5f,
     0.5f, 0.5f, -0.5f,
   };
-  vector<GLfloat> colors = {
-    0.5f, 0.9f, 0.5f,
-    0.8f, 0.1f, 0.5f,
-    0.1f, 0.5, 1.0f,
-    0.1f, 0.7f, 0.5f,
-    
-    0.8f, 0.1f, 0.5f,
-    0.5f, 0.9f, 0.5f,
-    0.1f, 0.5f, 1.0f,
-    0.1f, 0.7f, 0.5f,
-  };
+  
   vector<GLuint> indices = {
     0,1,2, 3,2,1,//front
     5,4,7, 6,7,4,//back
@@ -109,18 +99,62 @@ int main(int argc, char * argv[]) {
     4,5,0, 1,0,5//bottom
   };
   
+  vector<GLfloat> normals = {
+    0.0f,  0.0f, 1.0f,
+    0.0f,  0.0f, 1.0f,
+    0.0f,  0.0f, 1.0f,
+    0.0f,  0.0f, 1.0f,
+    0.0f,  0.0f, 1.0f,
+    0.0f,  0.0f, 1.0f,
+    
+    0.0f,  0.0f, -1.0f,
+    0.0f,  0.0f, -1.0f,
+    0.0f,  0.0f, -1.0f,
+    0.0f,  0.0f, -1.0f,
+    0.0f,  0.0f, -1.0f,
+    0.0f,  0.0f, -1.0f,
+    
+   	-1.0f,  0.0f,  0.0f,
+    -1.0f,  0.0f,  0.0f,
+    -1.0f,  0.0f,  0.0f,
+    -1.0f,  0.0f,  0.0f,
+    -1.0f,  0.0f,  0.0f,
+    -1.0f,  0.0f,  0.0f,
+    
+    1.0f,  0.0f,  0.0f,
+    1.0f,  0.0f,  0.0f,
+    1.0f,  0.0f,  0.0f,
+    1.0f,  0.0f,  0.0f,
+    1.0f,  0.0f,  0.0f,
+    1.0f,  0.0f,  0.0f,
+    
+    0.0f,  1.0f,  0.0f,
+    0.0f,  1.0f,  0.0f,
+    0.0f,  1.0f,  0.0f,
+    0.0f,  1.0f,  0.0f,
+    0.0f,  1.0f,  0.0f,
+    0.0f,  1.0f,  0.0f,
+    
+    0.0f, -1.0f,  0.0f,
+    0.0f, -1.0f,  0.0f,
+    0.0f, -1.0f,  0.0f,
+    0.0f, -1.0f,  0.0f,
+    0.0f, -1.0f,  0.0f,
+    0.0f, -1.0f,  0.0f
+  };
+  
   glEnable(GL_DEPTH_TEST);
   
   Camera camera(glm::vec3(1.6,2.5,5));
   
-  cube = GLNode(vertices, colors, indices);
-  cube.setNormals(vertices);
+  cube = GLNode(vertices, indices, normals);
+  cube.color = glm::vec3(1.0, 0.2, 0.2);
   cube.init();
   
-  light = GLNode(vertices, colors, indices);
+  light = GLNode(vertices, indices, normals);
   light.init();
   
-  light.position = glm::vec3(0, 0, 2);
+  light.position = glm::vec3(0.45, 0.6, 1.4);
   light.scale = glm::vec3(0.1,0.1,0.1);
   
   while(!glfwWindowShouldClose(window)){
@@ -148,7 +182,8 @@ int main(int argc, char * argv[]) {
     glUniform3f(glGetUniformLocation(shader.program, "lightColor"), lightColor.x, lightColor.y, lightColor.z);
     glUniform3f(glGetUniformLocation(shader.program, "lightPosition"), light.position.x, light.position.y, light.position.z);
     
-    cube.rotation += glm::vec3(0.01, 0,0);
+//    cube.rotation += glm::vec3(0.01, 0,0);
+    cube.scale = glm::vec3(1.5,1.5,1.5);
     cube.draw(shader);
     
     glfwSwapBuffers(window);
