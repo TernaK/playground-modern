@@ -1,0 +1,40 @@
+//
+//  Material.hpp
+//  playground-modern
+//
+//  Created by Terna Kpamber on 2/24/17.
+//  Copyright © 2017 Terna Kpamber. All rights reserved.
+//
+
+#ifndef Material_hpp
+#define Material_hpp
+
+#include <OpenGL/OpenGL.h>
+#include <glm/glm.hpp>
+#include <vector>
+#include <map>
+
+enum StockMaterialsEnum {
+  EMERALD=0
+};
+
+class Material {
+  
+public:
+  glm::vec3 ambient;
+  glm::vec3 diffuse;
+  glm::vec3 specular;
+  GLfloat shininess;
+  
+  Material();
+  Material(glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular, GLfloat shininess);
+};
+
+/******** MATERIALS ********
+Material emerald = Material(glm::vec3(0.0215,0.1745,0.0215),
+                            glm::vec3(0.07568,0.61424,0.07568),
+                            glm::vec3(0.633,0.727811,0.633),
+														0.6);
+ **************************/
+
+#endif /* Material_hpp */

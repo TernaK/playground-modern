@@ -87,7 +87,17 @@ void GLNode::draw(const Shader& shader) {
   model = glm::scale(model, scale);
   
   glUniformMatrix4fv(glGetUniformLocation(shader.program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-  glUniform3f(glGetUniformLocation(shader.program, "objectColor"), color.x, color.y, color.z);
+  
+  GLint matAmbientLoc  = glGetUniformLocation(shader.program, "material.ambient");
+  GLint matDiffuseLoc  = glGetUniformLocation(shader.program, "material.diffuse");
+  GLint matSpecularLoc = glGetUniformLocation(shader.program, "material.specular");
+  GLint matShineLoc    = glGetUniformLocation(shader.program, "material.shininess");
+  
+  glUniform3fv(matAmbientLoc, 1, glm::value_ptr(material.ambient));
+  glUniform3fv(matDiffuseLoc, 1, glm::value_ptr(material.diffuse));
+  glUniform3fv(matSpecularLoc, 1, glm::value_ptr(material.specular));
+  glUniform1f(matShineLoc, material.shininess);
+  
   glBindVertexArray(VAO);
   {
     glDrawArrays(GL_TRIANGLES, 0, GLint(indices.size()));
