@@ -81,10 +81,10 @@ void GLNode::draw(const Shader& shader) {
   }
   
   model = glm::translate(glm::mat4(1.0f), position);
-  model = glm::scale(model, scale);
   model = glm::rotate(model, rotation.x, glm::vec3(1.0f, 0.0f, 0.0f));
   model = glm::rotate(model, rotation.y, glm::vec3(0.0f, 1.0f, 0.0f));
   model = glm::rotate(model, rotation.z, glm::vec3(0.0f, 0.0f, 1.0f));
+  model = glm::scale(model, scale);
   
   glUniformMatrix4fv(glGetUniformLocation(shader.program, "model"), 1, GL_FALSE, glm::value_ptr(model));
   glUniform3f(glGetUniformLocation(shader.program, "objectColor"), color.x, color.y, color.z);

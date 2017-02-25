@@ -30,7 +30,7 @@ void main() {
   float shininess = 32; //TODO: move to GLNode
   vec3 normalizedVertexToEye = normalize(eyePosition - fPosition);
   vec3 reflectDir = reflect(-normalizedVertexToEye, fNormal);
-  float specularStrengthAtEye = pow(max(dot(normalizedVertexToEye, reflectDir), 0), shinyness);
+  float specularStrengthAtEye = pow(max(dot(normalizedVertexToEye, reflectDir), 0), shininess);
   vec3 specular = specularStrength * specularStrengthAtEye * lightColor;
   
   vec3 result = (diffuse + ambient + specular) * fColor;
