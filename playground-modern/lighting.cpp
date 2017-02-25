@@ -145,8 +145,8 @@ int main(int argc, char * argv[]) {
   
   glEnable(GL_DEPTH_TEST);
   
-//  Camera camera(glm::vec3(1.6,2.5,5));
-  Camera camera(glm::vec3(-2,-2,5));
+  Camera camera(glm::vec3(1.6,2.5,5));
+//  Camera camera(glm::vec3(-2,-2,5));
   
   cube = GLNode(vertices, indices, normals);
   cube.scale = glm::vec3(1.5,1.5,1.5);
@@ -157,6 +157,9 @@ int main(int argc, char * argv[]) {
   
   light.position = glm::vec3(1, 0.9, 2);
   light.scale = glm::vec3(0.02,0.02,0.1);
+  
+  Light light0 = Light(glm::vec3(0.1), glm::vec3(1), glm::vec3(0.3), glm::vec3(1));
+  cube.light = &light0;
   
   while(!glfwWindowShouldClose(window)){
     glfwPollEvents();
@@ -171,19 +174,25 @@ int main(int argc, char * argv[]) {
     lightShader.use();
     camera.setViewAndProjection(lightShader);
     
-    glm::vec3 lightColor(0.8,0.8,0.8);
-    glUniform3f(glGetUniformLocation(lightShader.program, "lightColor"), lightColor.x, lightColor.y, lightColor.z);
+    glm::vec3 lightColor;
+    lightColor.x = sin(glfwGetTime() * 2.0f);
+    lightColor.y = sin(glfwGetTime() * 0.7f);
+    lightColor.z = sin(glfwGetTime() * 1.3f);
+    light0.position = light.position;
+    
+    light0.diffuse = lightColor * glm::vec3(0.5); // Decrease the influence
+    light0.ambient = lightColor * glm::vec3(0.2f); // Low influence
+    
+    glUniform3fv(glGetUniformLocation(lightShader.program, "lightColor"), 1, glm::value_ptr(lightColor));
     light.draw(lightShader);
     
     //cube
     shader.use();
     camera.setViewAndProjection(shader);
     
-    glUniform3f(glGetUniformLocation(shader.program, "eyePosition"), camera.eye.x, camera.eye.y, camera.eye.z);
-    glUniform3f(glGetUniformLocation(shader.program, "lightColor"), lightColor.x, lightColor.y, lightColor.z);
-    glUniform3f(glGetUniformLocation(shader.program, "lightPosition"), light.position.x, light.position.y, light.position.z);
+    glUniform3fv(glGetUniformLocation(shader.program, "eyePosition"), 1,  glm::value_ptr(camera.eye));
     
-//    cube.rotation += glm::vec3(0.01, 0,0);
+    cube.rotation += glm::vec3(0.01, 0,0);
     cube.draw(shader);
     
     glfwSwapBuffers(window);

@@ -80,6 +80,7 @@ void GLNode::draw(const Shader& shader) {
     puts("ERROR::GLNode::object not initialized");
   }
   
+  //model
   model = glm::translate(glm::mat4(1.0f), position);
   model = glm::rotate(model, rotation.x, glm::vec3(1.0f, 0.0f, 0.0f));
   model = glm::rotate(model, rotation.y, glm::vec3(0.0f, 1.0f, 0.0f));
@@ -88,6 +89,7 @@ void GLNode::draw(const Shader& shader) {
   
   glUniformMatrix4fv(glGetUniformLocation(shader.program, "model"), 1, GL_FALSE, glm::value_ptr(model));
   
+  //material
   GLint matAmbientLoc  = glGetUniformLocation(shader.program, "material.ambient");
   GLint matDiffuseLoc  = glGetUniformLocation(shader.program, "material.diffuse");
   GLint matSpecularLoc = glGetUniformLocation(shader.program, "material.specular");
@@ -97,6 +99,17 @@ void GLNode::draw(const Shader& shader) {
   glUniform3fv(matDiffuseLoc, 1, glm::value_ptr(material.diffuse));
   glUniform3fv(matSpecularLoc, 1, glm::value_ptr(material.specular));
   glUniform1f(matShineLoc, material.shininess);
+  
+  //light
+  GLint lightAmbientLoc  = glGetUniformLocation(shader.program, "light.ambient");
+  GLint lightDiffuseLoc  = glGetUniformLocation(shader.program, "light.diffuse");
+  GLint lightSpecularLoc = glGetUniformLocation(shader.program, "light.specular");
+  GLint lightPositionLoc    = glGetUniformLocation(shader.program, "light.position");
+  
+  glUniform3fv(lightAmbientLoc, 1, glm::value_ptr(light->ambient));
+  glUniform3fv(lightDiffuseLoc, 1, glm::value_ptr(light->diffuse));
+  glUniform3fv(lightSpecularLoc, 1, glm::value_ptr(light->specular));
+  glUniform3fv(lightPositionLoc, 1, glm::value_ptr(light->position));
   
   glBindVertexArray(VAO);
   {

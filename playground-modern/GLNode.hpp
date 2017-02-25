@@ -17,6 +17,7 @@
 #include <glm/gtc/type_ptr.hpp>
 #include "Shader.hpp"
 #include "Material.hpp"
+#include "Light.hpp"
 
 class GLNode {
 private:
@@ -29,6 +30,7 @@ private:
   
 
 public:
+  Light* light;
   glm::vec3 color = glm::vec3(1,1,1);//remove?
   glm::vec3 rotation = glm::vec3(0,0,0);
   glm::vec3 position = glm::vec3(0,0,0);
@@ -50,6 +52,8 @@ public:
   void draw(const Shader& shader);
   
   void setNormals(const std::vector<GLfloat>& normals);
+  
+  void setLight(Light* light) { this->light = light; };
 };
 
 #endif /* GLNode_hpp */
