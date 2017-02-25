@@ -20,7 +20,7 @@
 #include "Light.hpp"
 
 class GLNode {
-private:
+protected:
   GLuint VAO, VBO;
   std::vector<GLfloat> vertices;
   std::vector<GLuint> indices;
@@ -30,7 +30,7 @@ private:
   
 
 public:
-  Light* light;
+  Light* light;//TODO: implement multiple lights
   glm::vec3 color = glm::vec3(1,1,1);//remove?
   glm::vec3 rotation = glm::vec3(0,0,0);
   glm::vec3 position = glm::vec3(0,0,0);

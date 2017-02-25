@@ -22,7 +22,7 @@ in vec3 fPosition;
 out vec4 color;
 
 uniform Material material;
-uniform Light light;
+uniform Light light;//TODO: implement multiple lights
 uniform vec3 eyePosition;
 
 void main() {

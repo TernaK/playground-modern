@@ -146,7 +146,7 @@ int main(int argc, char * argv[]) {
   glEnable(GL_DEPTH_TEST);
   
   Camera camera(glm::vec3(1.6,2.5,5));
-//  Camera camera(glm::vec3(-2,-2,5));
+  //  Camera camera(glm::vec3(-2,-2,5));
   
   cube = GLNode(vertices, indices, normals);
   cube.scale = glm::vec3(1.5,1.5,1.5);
@@ -175,10 +175,10 @@ int main(int argc, char * argv[]) {
     camera.setViewAndProjection(lightShader);
     
     glm::vec3 lightColor(1.0);
-//    lightColor.x = sin(glfwGetTime() * 2.0f);
-//    lightColor.y = sin(glfwGetTime() * 0.7f);
-//    lightColor.z = sin(glfwGetTime() * 1.3f);Image result for opengl cube
-//    light0.position = light.position;
+    //    lightColor.x = sin(glfwGetTime() * 2.0f);
+    //    lightColor.y = sin(glfwGetTime() * 0.7f);
+    //    lightColor.z = sin(glfwGetTime() * 1.3f);Image result for opengl cube
+    //    light0.position = light.position;
     
     light0.diffuse = lightColor * glm::vec3(1); // Decrease the influence
     light0.ambient = lightColor * glm::vec3(0.2f); // Low influence
