@@ -145,22 +145,24 @@ int main(int argc, char * argv[]) {
   
   glEnable(GL_DEPTH_TEST);
   
-  Camera camera(glm::vec3(1.6,2.5,5));
+//  Camera camera(glm::vec3(1.6,2.5,5));
+  Camera camera(glm::vec3(-2,0,5));
   
   cube = GLNode(vertices, indices, normals);
   cube.color = glm::vec3(1.0, 0.2, 0.2);
+  cube.scale = glm::vec3(1.5,1.5,1.5);
   cube.init();
   
   light = GLNode(vertices, indices, normals);
   light.init();
   
-  light.position = glm::vec3(0.45, 0.6, 1.4);
+  light.position = glm::vec3(1, 0.9, 1);
   light.scale = glm::vec3(0.1,0.1,0.1);
   
   while(!glfwWindowShouldClose(window)){
     glfwPollEvents();
     
-    glClearColor(0.2, 0.3, 0.5, 1.0);
+    glClearColor(0.05, 0.07, 0.05, 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     camera.look();
@@ -183,7 +185,6 @@ int main(int argc, char * argv[]) {
     glUniform3f(glGetUniformLocation(shader.program, "lightPosition"), light.position.x, light.position.y, light.position.z);
     
 //    cube.rotation += glm::vec3(0.01, 0,0);
-    cube.scale = glm::vec3(1.5,1.5,1.5);
     cube.draw(shader);
     
     glfwSwapBuffers(window);

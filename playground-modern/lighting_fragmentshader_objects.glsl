@@ -26,10 +26,11 @@ void main() {
   vec3 ambient = ambientStrength * lightColor;
   
   //specular
-  float specularStrength = 0.3;
+  float specularStrength = 0.5;
+  float shininess = 32; //TODO: move to GLNode
   vec3 normalizedVertexToEye = normalize(eyePosition - fPosition);
   vec3 reflectDir = reflect(-normalizedVertexToEye, fNormal);
-  float specularStrengthAtEye = pow(max(dot(normalizedVertexToEye, reflectDir), 0), 32);
+  float specularStrengthAtEye = pow(max(dot(normalizedVertexToEye, reflectDir), 0), shinyness);
   vec3 specular = specularStrength * specularStrengthAtEye * lightColor;
   
   vec3 result = (diffuse + ambient + specular) * fColor;
