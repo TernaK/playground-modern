@@ -20,7 +20,10 @@
 		51C6CBBA1E618C4F00225E1F /* GLTextureNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBB81E618C4F00225E1F /* GLTextureNode.cpp */; };
 		51C6CBBF1E6272C600225E1F /* TextureMaterial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBBD1E6272C600225E1F /* TextureMaterial.cpp */; };
 		51C6CBC71E62893700225E1F /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBC61E62893700225E1F /* Texture.cpp */; };
-		51C6CBC91E628F9B00225E1F /* texturelighting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBBB1E618C5E00225E1F /* texturelighting.cpp */; };
+		51C6CBCF1E62C6E900225E1F /* lightcasters.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBCD1E62C6E900225E1F /* lightcasters.cpp */; };
+		51C6CBD51E62D26A00225E1F /* specular.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51C6CBD41E62D26200225E1F /* specular.jpg */; };
+		51C6CBD81E62D38C00225E1F /* wood_diffuse.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51C6CBD61E62D38200225E1F /* wood_diffuse.jpg */; };
+		51C6CBD91E62D38F00225E1F /* wood_spec.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51C6CBD71E62D38200225E1F /* wood_spec.jpg */; };
 		51F36AD91E5E1B1F00210C78 /* fragment_shaderTexture.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AD71E5E138000210C78 /* fragment_shaderTexture.glsl */; };
 		51F36ADA1E5E1B2100210C78 /* vertex_shaderTexture.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AD61E5E136A00210C78 /* vertex_shaderTexture.glsl */; };
 		51F36AE11E5E1FC000210C78 /* texture1.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AE01E5E1FB900210C78 /* texture1.jpg */; };
@@ -44,6 +47,9 @@
 				51C6CBAC1E60125E00225E1F /* lighting_vertexshader.glsl in CopyFiles */,
 				51F36AE11E5E1FC000210C78 /* texture1.jpg in CopyFiles */,
 				51F36AE31E5E20F200210C78 /* texture2.jpg in CopyFiles */,
+				51C6CBD51E62D26A00225E1F /* specular.jpg in CopyFiles */,
+				51C6CBD81E62D38C00225E1F /* wood_diffuse.jpg in CopyFiles */,
+				51C6CBD91E62D38F00225E1F /* wood_spec.jpg in CopyFiles */,
 				51C6CBAA1E60118000225E1F /* lighting_fragmentshader_objects.glsl in CopyFiles */,
 				51C6CBA41E60096100225E1F /* lighting_fragmentshader.glsl in CopyFiles */,
 				51C6CB8A1E5D86E100225E1F /* fragment_shader.glsl in CopyFiles */,
@@ -88,6 +94,10 @@
 		51C6CBC11E62733000225E1F /* Texture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Texture.hpp; sourceTree = "<group>"; };
 		51C6CBC61E62893700225E1F /* Texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
 		51C6CBCC1E62B4FE00225E1F /* render.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = render.gif; sourceTree = "<group>"; };
+		51C6CBCD1E62C6E900225E1F /* lightcasters.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lightcasters.cpp; sourceTree = "<group>"; };
+		51C6CBD41E62D26200225E1F /* specular.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = specular.jpg; sourceTree = "<group>"; };
+		51C6CBD61E62D38200225E1F /* wood_diffuse.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wood_diffuse.jpg; sourceTree = "<group>"; };
+		51C6CBD71E62D38200225E1F /* wood_spec.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wood_spec.jpg; sourceTree = "<group>"; };
 		51F36AC71E5CEE8000210C78 /* vertex_shader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vertex_shader.glsl; path = "playground-modern/vertex_shader.glsl"; sourceTree = "<group>"; };
 		51F36AC81E5CF0F200210C78 /* fragment_shader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fragment_shader.glsl; path = "playground-modern/fragment_shader.glsl"; sourceTree = "<group>"; };
 		51F36ACF1E5E0C5B00210C78 /* textureexample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = textureexample.cpp; sourceTree = "<group>"; };
@@ -156,6 +166,7 @@
 				51C6CB7C1E5D6A1300225E1F /* multipleshaders.cpp */,
 				51C6CBA21E6006FD00225E1F /* lighting.cpp */,
 				51C6CBBB1E618C5E00225E1F /* texturelighting.cpp */,
+				51C6CBCD1E62C6E900225E1F /* lightcasters.cpp */,
 			);
 			name = excercises;
 			path = "playground-modern";
@@ -239,9 +250,12 @@
 		51F36ACE1E5E0C4600210C78 /* texture */ = {
 			isa = PBXGroup;
 			children = (
-				51F36ACF1E5E0C5B00210C78 /* textureexample.cpp */,
+				51C6CBD61E62D38200225E1F /* wood_diffuse.jpg */,
+				51C6CBD71E62D38200225E1F /* wood_spec.jpg */,
 				51F36AE01E5E1FB900210C78 /* texture1.jpg */,
 				51F36AE21E5E20E500210C78 /* texture2.jpg */,
+				51C6CBD41E62D26200225E1F /* specular.jpg */,
+				51F36ACF1E5E0C5B00210C78 /* textureexample.cpp */,
 			);
 			name = texture;
 			sourceTree = "<group>";
@@ -325,9 +339,9 @@
 				51C6CBBA1E618C4F00225E1F /* GLTextureNode.cpp in Sources */,
 				51C6CBC71E62893700225E1F /* Texture.cpp in Sources */,
 				51C6CB911E5EB50100225E1F /* Camera.cpp in Sources */,
-				51C6CBC91E628F9B00225E1F /* texturelighting.cpp in Sources */,
 				51C6CBBF1E6272C600225E1F /* TextureMaterial.cpp in Sources */,
 				51C6CB871E5D816700225E1F /* Shader.cpp in Sources */,
+				51C6CBCF1E62C6E900225E1F /* lightcasters.cpp in Sources */,
 				51C6CBB41E61759B00225E1F /* Material.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -109,15 +109,19 @@ void GLTextureNode::draw(Shader shader) {
   glUniform1f(matShineLoc, material.shininess);
   
   //light
-  GLint lightAmbientLoc  = glGetUniformLocation(shader.program, "light.ambient");
-  GLint lightDiffuseLoc  = glGetUniformLocation(shader.program, "light.diffuse");
-  GLint lightSpecularLoc = glGetUniformLocation(shader.program, "light.specular");
-  GLint lightPositionLoc    = glGetUniformLocation(shader.program, "light.position");
+  GLint lightAmbientLoc  	= glGetUniformLocation(shader.program, "light.ambient");
+  GLint lightDiffuseLoc  	= glGetUniformLocation(shader.program, "light.diffuse");
+  GLint lightSpecularLoc 	= glGetUniformLocation(shader.program, "light.specular");
+  GLint lightPositionLoc 	= glGetUniformLocation(shader.program, "light.position");
+  GLint lightDirectionLoc = glGetUniformLocation(shader.program, "light.direction");
+  GLint lightTypeLoc 			= glGetUniformLocation(shader.program, "light.type");
   
   glUniform3fv(lightAmbientLoc, 1, glm::value_ptr(light->ambient));
   glUniform3fv(lightDiffuseLoc, 1, glm::value_ptr(light->diffuse));
   glUniform3fv(lightSpecularLoc, 1, glm::value_ptr(light->specular));
   glUniform3fv(lightPositionLoc, 1, glm::value_ptr(light->position));
+  glUniform3fv(lightDirectionLoc, 1, glm::value_ptr(light->direction));
+  glUniform1i(lightTypeLoc, light->type);
   
   glBindVertexArray(VAO);
   {

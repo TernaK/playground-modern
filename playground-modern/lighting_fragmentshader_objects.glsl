@@ -8,9 +8,11 @@ struct Material {
 
 struct Light {
   vec3 position;
+  vec3 direction;
   vec3 ambient;
   vec3 diffuse;
   vec3 specular;
+  int type;
 };
 
 in vec3 fColor;
@@ -32,7 +34,16 @@ void main() {
   vec3 ambient = light.ambient * texColor;
 
   //diffuse
-  vec3 normalizedVertexToLight = normalize(light.position - fPosition);
+  vec3 normalizedVertexToLight;
+  switch (light.type) {
+  case 0:
+    normalizedVertexToLight = normalize(-light.direction);
+    break;
+    
+  default:
+    normalizedVertexToLight = normalize(light.direction - fPosition);
+    break;
+  }
   float normalComponent = max(dot(normalizedVertexToLight, fNormal), 0);
   vec3 diffuse = light.diffuse * (normalComponent * texColor);
 

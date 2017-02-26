@@ -12,14 +12,22 @@
 #include <OpenGL/OpenGL.h>
 #include <glm/glm.hpp>
 
+enum LightType {
+  DIRECTIONAL=0,POINT=1
+};
+
 class Light {
 public:
   glm::vec3 position = glm::vec3(0,0,5);
+  glm::vec3 direction = glm::vec3(0,0,-1);
   glm::vec3 ambient = glm::vec3(0.1);
   glm::vec3 diffuse = glm::vec3(1);
   glm::vec3 specular = glm::vec3(0.2);
+  LightType type = LightType::DIRECTIONAL;
+  
   Light();
-  Light(glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular, glm::vec3 position);
+  
+  Light(glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular, glm::vec3 position = glm::vec3(0,0,5), glm::vec3 direction = glm::vec3(0,0,-1));
 };
 
 #endif /* Light_hpp */
