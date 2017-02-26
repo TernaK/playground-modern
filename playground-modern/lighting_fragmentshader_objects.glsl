@@ -9,9 +9,15 @@ struct Material {
 struct Light {
   vec3 position;
   vec3 direction;
+  
   vec3 ambient;
   vec3 diffuse;
   vec3 specular;
+  
+  float constant;
+  float linear;
+  float quadratic;
+  
   int type;
 };
 
@@ -41,7 +47,7 @@ void main() {
     break;
     
   default:
-    normalizedVertexToLight = normalize(light.direction - fPosition);
+    normalizedVertexToLight = normalize(light.position - fPosition);
     break;
   }
   float normalComponent = max(dot(normalizedVertexToLight, fNormal), 0);
