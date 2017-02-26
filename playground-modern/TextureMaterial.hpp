@@ -15,12 +15,12 @@
 
 class TextureMaterial {
 public:
-  Texture texture;
-  glm::vec3 specular;
+  Texture diffuse;
+  Texture specular;
   GLfloat shininess;
   
   TextureMaterial();
-  TextureMaterial(Texture texture, glm::vec3 specular, GLfloat shininess);
+  TextureMaterial(Texture texture, Texture specular, GLfloat shininess);
 };
 
 #endif /* TextureMaterial_hpp */

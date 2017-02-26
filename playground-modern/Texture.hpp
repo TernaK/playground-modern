@@ -43,7 +43,7 @@ public:
   
   void init();
   
-  void activate(Shader shader);
+  void activate(Shader shader, GLenum texture);
   
 };
 

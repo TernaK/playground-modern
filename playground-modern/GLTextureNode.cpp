@@ -9,6 +9,9 @@
 #include "GLTextureNode.hpp"
 using namespace std;
 
+GLTextureNode::GLTextureNode() {
+}
+
 GLTextureNode::GLTextureNode(TextureMaterial material, const std::vector<GLfloat>& vertices, const std::vector<GLuint>& indices, const std::vector<GLfloat>& normals, const std::vector<GLfloat>& texCoords)
 :	GLNode(vertices, indices, normals),
 	texCoords(texCoords) {
@@ -23,12 +26,13 @@ GLTextureNode::GLTextureNode(TextureMaterial material, const std::vector<GLfloat
 GLTextureNode::GLTextureNode(std::string image, const std::vector<GLfloat>& vertices, const std::vector<GLuint>& indices, const std::vector<GLfloat>& normals, const std::vector<GLfloat>& texCoords)
 :	GLNode(vertices, indices, normals),
 	texCoords(texCoords) {
-  this->material = TextureMaterial(image, glm::vec3(1.0), 32);
+  this->material = TextureMaterial(Texture(image), Texture(image), 32);
 }
 
 void GLTextureNode::init() {
-  material.texture.init();
-  assert(material.texture.ready);
+  material.diffuse.init();
+  material.specular.init();
+  assert(material.diffuse.ready && material.specular.ready);
   
   glGenVertexArrays(1, &VAO);
   glGenBuffers(1, &VBO);
@@ -80,7 +84,7 @@ void GLTextureNode::init() {
 
 void GLTextureNode::draw(Shader shader) {
   
-  assert(ready && material.texture.ready);
+  assert(ready && material.diffuse.ready && material.specular.ready);
   
   //model
   model = glm::translate(glm::mat4(1.0f), position);
@@ -96,9 +100,12 @@ void GLTextureNode::draw(Shader shader) {
   GLint matShineLoc    = glGetUniformLocation(shader.program, "material.shininess");
   
   //texture
-  material.texture.activate(shader);
+  material.diffuse.activate(shader, 0);
   glUniform1i(matDiffuseLoc, 0);
-  glUniform3fv(matSpecularLoc, 1, glm::value_ptr(material.specular));
+  
+  material.specular.activate(shader, 1);
+  glUniform1i(matSpecularLoc, 1);
+  
   glUniform1f(matShineLoc, material.shininess);
   
   //light
