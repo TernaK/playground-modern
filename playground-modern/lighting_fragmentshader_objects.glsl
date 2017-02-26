@@ -34,6 +34,9 @@ uniform vec3 eyePosition;
 
 void main() {
   
+  float distance = length(light.position - fPosition);
+  float attenuation = 1.0f/(light.constant + light.linear * distance + light.quadratic * distance * distance);
+  
   vec3 texColor = vec3(texture(material.diffuse, fTexCoord));
   
   //ambient
@@ -59,7 +62,7 @@ void main() {
   float specularStrengthAtEye = pow(max(dot(normalizedVertexToEye, reflectDir), 0), material.shininess);
   vec3 specular = light.specular * (specularStrengthAtEye * vec3(texture(material.specular, fTexCoord)));
   
-  vec3 result = (diffuse + ambient + specular);
+  vec3 result = attenuation * (diffuse + ambient + specular);
   
   color = vec4(result, 1.0f);
 }
