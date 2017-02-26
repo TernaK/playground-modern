@@ -87,6 +87,7 @@
 		51C6CBBE1E6272C600225E1F /* TextureMaterial.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextureMaterial.hpp; sourceTree = "<group>"; };
 		51C6CBC11E62733000225E1F /* Texture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Texture.hpp; sourceTree = "<group>"; };
 		51C6CBC61E62893700225E1F /* Texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
+		51C6CBCC1E62B4FE00225E1F /* render.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = render.gif; sourceTree = "<group>"; };
 		51F36AC71E5CEE8000210C78 /* vertex_shader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vertex_shader.glsl; path = "playground-modern/vertex_shader.glsl"; sourceTree = "<group>"; };
 		51F36AC81E5CF0F200210C78 /* fragment_shader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fragment_shader.glsl; path = "playground-modern/fragment_shader.glsl"; sourceTree = "<group>"; };
 		51F36ACF1E5E0C5B00210C78 /* textureexample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = textureexample.cpp; sourceTree = "<group>"; };
@@ -118,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				51F36AF21E5FB72500210C78 /* render.png */,
+				51C6CBCC1E62B4FE00225E1F /* render.gif */,
 				51C6CBA11E6006BA00225E1F /* shaders */,
 				51C6CB951E5EC80700225E1F /* experiments */,
 				5192B59F1E5C3C7200CC9A3B /* playground-modern */,

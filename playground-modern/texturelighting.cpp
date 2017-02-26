@@ -18,7 +18,7 @@ using namespace std;
 GLTextureNode cube;
 GLNode light;
 
-Camera camera(glm::vec3(0,0,5));
+Camera camera(glm::vec3(-0.1,0,5));
 //  Camera camera(glm::vec3(-2,-2,5));
 
 void keyboardCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
@@ -166,10 +166,11 @@ int main(int argc, char * argv[]) {
 //  light = GLNode(vertices, indices, normals , texCoords);
 //  light.init();
   
-  light.position = glm::vec3(1, 0.9, 2);
+//  light.position = glm::vec3(-1, 0.9, 2);
   light.scale = glm::vec3(0.02,0.02,0.1);
   
   Light light0 = Light(glm::vec3(0.1), glm::vec3(1), glm::vec3(0.3), glm::vec3(1));
+//  light0.position = glm::vec3(-0.5, 0.9, 3);
   cube.light = &light0;
   
   while(!glfwWindowShouldClose(window)){
@@ -204,7 +205,7 @@ int main(int argc, char * argv[]) {
     
     glUniform3fv(glGetUniformLocation(shader.program, "eyePosition"), 1,  glm::value_ptr(camera.eye));
     
-//    cube.rotation += glm::vec3(0.01, 0,0);
+    cube.rotation += glm::vec3(0, 0.01, 0);
     cube.draw(shader);
     
     glfwSwapBuffers(window);
