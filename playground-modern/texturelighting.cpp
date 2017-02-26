@@ -7,7 +7,7 @@
 
 #include "Camera.hpp"
 #include "Shader.hpp"
-#include "GLNode.hpp"
+#include "GLTextureNode.hpp"
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
@@ -15,30 +15,33 @@
 #include <vector>
 using namespace std;
 
-GLNode cube;
+GLTextureNode cube;
 GLNode light;
+
+Camera camera(glm::vec3(0,0,5));
+//  Camera camera(glm::vec3(-2,-2,5));
 
 void keyboardCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
   if(action == GLFW_PRESS && key == GLFW_KEY_ESCAPE) {
     glfwSetWindowShouldClose(window, GL_TRUE);
   }
   if(action == GLFW_PRESS && key == GLFW_KEY_UP) {
-    light.position.z -= 0.05;
+    camera.eye.z -= 0.05;
   }
   if(action == GLFW_PRESS && key == GLFW_KEY_DOWN) {
-    light.position.z += 0.05;
+    camera.eye.z += 0.05;
   }
   if(action == GLFW_PRESS && key == GLFW_KEY_LEFT) {
-    light.position.x -= 0.05;
+    camera.eye.x -= 0.05;
   }
   if(action == GLFW_PRESS && key == GLFW_KEY_RIGHT) {
-    light.position.x += 0.05;
+    camera.eye.x += 0.05;
   }
   if(action == GLFW_PRESS && key == GLFW_KEY_U) {
-    light.position.y += 0.05;
+    camera.eye.y += 0.05;
   }
   if(action == GLFW_PRESS && key == GLFW_KEY_D) {
-    light.position.y -= 0.05;
+    camera.eye.y -= 0.05;
   }
 }
 
@@ -143,17 +146,24 @@ int main(int argc, char * argv[]) {
     0.0f, -1.0f,  0.0f
   };
   
+  
+  vector<GLfloat> texCoords = {
+    1,1, 0,0, 1,1,  1,0, 1,1, 0,0, //front
+    1,1, 0,0, 1,1,  1,0, 1,1, 0,0, //back
+    1,1, 0,0, 1,1,  1,0, 1,1, 0,0, //left
+    1,1, 0,0, 1,1,  1,0, 1,1, 0,0, //rigt
+    1,1, 0,0, 1,1,  1,0, 1,1, 0,0, //top
+    1,1, 0,0, 1,1,  1,0, 1,1, 0,0 //bottom
+  };
+  
   glEnable(GL_DEPTH_TEST);
   
-  Camera camera(glm::vec3(1.6,2.5,5));
-  //  Camera camera(glm::vec3(-2,-2,5));
-  
-  cube = GLNode(vertices, indices, normals);
+  cube = GLTextureNode("texture1.jpg", vertices, indices, normals, texCoords);
   cube.scale = glm::vec3(1.5,1.5,1.5);
   cube.init();
   
-  light = GLNode(vertices, indices, normals);
-  light.init();
+//  light = GLNode(vertices, indices, normals , texCoords);
+//  light.init();
   
   light.position = glm::vec3(1, 0.9, 2);
   light.scale = glm::vec3(0.02,0.02,0.1);
@@ -171,8 +181,8 @@ int main(int argc, char * argv[]) {
     camera.perspective(glm::radians(45.0f), GLfloat(width)/GLfloat(height), 0.1f, 50.0f);
     
     //light
-    lightShader.use();
-    camera.setViewAndProjection(lightShader);
+//    lightShader.use();
+//    camera.setViewAndProjection(lightShader);
     
     glm::vec3 lightColor(1.0);
     //    lightColor.x = sin(glfwGetTime() * 2.0f);
@@ -181,10 +191,11 @@ int main(int argc, char * argv[]) {
     //    light0.position = light.position;
     
     light0.diffuse = lightColor * glm::vec3(1); // Decrease the influence
-    light0.ambient = lightColor * glm::vec3(0.2f); // Low influence
+    light0.ambient = lightColor * glm::vec3(1); // Low influence
+    light0.specular = glm::vec3(0,0.3,0);
     
-    glUniform3fv(glGetUniformLocation(lightShader.program, "lightColor"), 1, glm::value_ptr(lightColor));
-    light.draw(lightShader);
+//    glUniform3fv(glGetUniformLocation(lightShader.program, "lightColor"), 1, glm::value_ptr(lightColor));
+//    light.draw(lightShader);
     
     //cube
     shader.use();

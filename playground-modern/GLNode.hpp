@@ -20,6 +20,11 @@
 #include "Light.hpp"
 
 class GLNode {
+private:
+  Material material = Material(glm::vec3(0.0215,0.1745,0.0215),
+                               glm::vec3(0.07568,0.61424,0.07568),
+                               glm::vec3(0.633,0.727811,0.633),
+                               0.6);//emerald
 protected:
   GLuint VAO, VBO;
   std::vector<GLfloat> vertices;
@@ -35,10 +40,6 @@ public:
   glm::vec3 rotation = glm::vec3(0,0,0);
   glm::vec3 position = glm::vec3(0,0,0);
   glm::vec3 scale = glm::vec3(1,1,1);
-  Material material = Material(glm::vec3(0.0215,0.1745,0.0215),
-                              glm::vec3(0.07568,0.61424,0.07568),
-                              glm::vec3(0.633,0.727811,0.633),
-                              0.6);//emerald
   
   GLNode();
 //  GLNode(const std::vector<GLfloat>& vertices, const std::vector<GLuint>& indices);
@@ -54,6 +55,8 @@ public:
   void setNormals(const std::vector<GLfloat>& normals);
   
   void setLight(Light* light) { this->light = light; };
+  
+  void setMaterial(Material material) { this->material = material; };
 };
 
 #endif /* GLNode_hpp */

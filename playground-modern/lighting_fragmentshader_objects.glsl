@@ -1,15 +1,13 @@
 #version 330 core
 
 struct Material {
-  vec3 ambient;
-  vec3 diffuse;
+  sampler2D diffuse;
   vec3 specular;
   float shininess;
 };
 
 struct Light {
   vec3 position;
-  
   vec3 ambient;
   vec3 diffuse;
   vec3 specular;
@@ -18,6 +16,7 @@ struct Light {
 in vec3 fColor;
 in vec3 fNormal;
 in vec3 fPosition;
+in vec2 fTexCoord;
 
 out vec4 color;
 
@@ -27,13 +26,15 @@ uniform vec3 eyePosition;
 
 void main() {
   
+  vec3 texColor = vec3(texture(material.diffuse, fTexCoord));
+  
   //ambient
-  vec3 ambient = light.ambient * material.ambient;
+  vec3 ambient = light.ambient * texColor;
 
   //diffuse
   vec3 normalizedVertexToLight = normalize(light.position - fPosition);
   float normalComponent = max(dot(normalizedVertexToLight, fNormal), 0);
-  vec3 diffuse = light.diffuse * (normalComponent * material.diffuse);
+  vec3 diffuse = light.diffuse * (normalComponent * texColor);
 
   //specular
   vec3 normalizedVertexToEye = normalize(eyePosition - fPosition);

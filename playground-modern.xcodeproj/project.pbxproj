@@ -13,12 +13,14 @@
 		51C6CB911E5EB50100225E1F /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CB8F1E5EB50100225E1F /* Camera.cpp */; };
 		51C6CBA41E60096100225E1F /* lighting_fragmentshader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51C6CBA01E60065D00225E1F /* lighting_fragmentshader.glsl */; };
 		51C6CBA61E600B2900225E1F /* GLNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CB9B1E5ED9AF00225E1F /* GLNode.cpp */; };
-		51C6CBA71E600B3200225E1F /* lighting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBA21E6006FD00225E1F /* lighting.cpp */; };
 		51C6CBAA1E60118000225E1F /* lighting_fragmentshader_objects.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51C6CBA91E60113000225E1F /* lighting_fragmentshader_objects.glsl */; };
 		51C6CBAC1E60125E00225E1F /* lighting_vertexshader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51C6CBAB1E60121A00225E1F /* lighting_vertexshader.glsl */; };
 		51C6CBB41E61759B00225E1F /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBB31E61759B00225E1F /* Material.cpp */; };
 		51C6CBB71E617DC800225E1F /* Light.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBB51E617DC800225E1F /* Light.cpp */; };
 		51C6CBBA1E618C4F00225E1F /* GLTextureNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBB81E618C4F00225E1F /* GLTextureNode.cpp */; };
+		51C6CBBF1E6272C600225E1F /* TextureMaterial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBBD1E6272C600225E1F /* TextureMaterial.cpp */; };
+		51C6CBC31E627B2D00225E1F /* texturelighting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBBB1E618C5E00225E1F /* texturelighting.cpp */; };
+		51C6CBC71E62893700225E1F /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBC61E62893700225E1F /* Texture.cpp */; };
 		51F36AD91E5E1B1F00210C78 /* fragment_shaderTexture.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AD71E5E138000210C78 /* fragment_shaderTexture.glsl */; };
 		51F36ADA1E5E1B2100210C78 /* vertex_shaderTexture.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AD61E5E136A00210C78 /* vertex_shaderTexture.glsl */; };
 		51F36AE11E5E1FC000210C78 /* texture1.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AE01E5E1FB900210C78 /* texture1.jpg */; };
@@ -81,9 +83,13 @@
 		51C6CBB81E618C4F00225E1F /* GLTextureNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLTextureNode.cpp; sourceTree = "<group>"; };
 		51C6CBB91E618C4F00225E1F /* GLTextureNode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GLTextureNode.hpp; sourceTree = "<group>"; };
 		51C6CBBB1E618C5E00225E1F /* texturelighting.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = texturelighting.cpp; sourceTree = "<group>"; };
+		51C6CBBD1E6272C600225E1F /* TextureMaterial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextureMaterial.cpp; sourceTree = "<group>"; };
+		51C6CBBE1E6272C600225E1F /* TextureMaterial.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextureMaterial.hpp; sourceTree = "<group>"; };
+		51C6CBC11E62733000225E1F /* Texture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Texture.hpp; sourceTree = "<group>"; };
+		51C6CBC61E62893700225E1F /* Texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
 		51F36AC71E5CEE8000210C78 /* vertex_shader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vertex_shader.glsl; path = "playground-modern/vertex_shader.glsl"; sourceTree = "<group>"; };
 		51F36AC81E5CF0F200210C78 /* fragment_shader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fragment_shader.glsl; path = "playground-modern/fragment_shader.glsl"; sourceTree = "<group>"; };
-		51F36ACF1E5E0C5B00210C78 /* texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = texture.cpp; sourceTree = "<group>"; };
+		51F36ACF1E5E0C5B00210C78 /* textureexample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = textureexample.cpp; sourceTree = "<group>"; };
 		51F36AD61E5E136A00210C78 /* vertex_shaderTexture.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vertex_shaderTexture.glsl; path = "playground-modern/vertex_shaderTexture.glsl"; sourceTree = "<group>"; };
 		51F36AD71E5E138000210C78 /* fragment_shaderTexture.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fragment_shaderTexture.glsl; path = "playground-modern/fragment_shaderTexture.glsl"; sourceTree = "<group>"; };
 		51F36AE01E5E1FB900210C78 /* texture1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = texture1.jpg; sourceTree = "<group>"; };
@@ -186,6 +192,10 @@
 				51C6CBB61E617DC800225E1F /* Light.hpp */,
 				51C6CBB81E618C4F00225E1F /* GLTextureNode.cpp */,
 				51C6CBB91E618C4F00225E1F /* GLTextureNode.hpp */,
+				51C6CBBD1E6272C600225E1F /* TextureMaterial.cpp */,
+				51C6CBBE1E6272C600225E1F /* TextureMaterial.hpp */,
+				51C6CBC61E62893700225E1F /* Texture.cpp */,
+				51C6CBC11E62733000225E1F /* Texture.hpp */,
 			);
 			name = util;
 			sourceTree = "<group>";
@@ -227,7 +237,7 @@
 		51F36ACE1E5E0C4600210C78 /* texture */ = {
 			isa = PBXGroup;
 			children = (
-				51F36ACF1E5E0C5B00210C78 /* texture.cpp */,
+				51F36ACF1E5E0C5B00210C78 /* textureexample.cpp */,
 				51F36AE01E5E1FB900210C78 /* texture1.jpg */,
 				51F36AE21E5E20E500210C78 /* texture2.jpg */,
 			);
@@ -311,10 +321,12 @@
 				51C6CBB71E617DC800225E1F /* Light.cpp in Sources */,
 				51C6CBA61E600B2900225E1F /* GLNode.cpp in Sources */,
 				51C6CBBA1E618C4F00225E1F /* GLTextureNode.cpp in Sources */,
+				51C6CBC71E62893700225E1F /* Texture.cpp in Sources */,
 				51C6CB911E5EB50100225E1F /* Camera.cpp in Sources */,
+				51C6CBBF1E6272C600225E1F /* TextureMaterial.cpp in Sources */,
 				51C6CB871E5D816700225E1F /* Shader.cpp in Sources */,
+				51C6CBC31E627B2D00225E1F /* texturelighting.cpp in Sources */,
 				51C6CBB41E61759B00225E1F /* Material.cpp in Sources */,
-				51C6CBA71E600B3200225E1F /* lighting.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

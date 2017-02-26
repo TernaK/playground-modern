@@ -12,10 +12,6 @@
 #include <OpenGL/OpenGL.h>
 #include <glm/glm.hpp>
 
-enum StockMaterialsEnum {
-  EMERALD=0
-};
-
 class Material {
 public:
   glm::vec3 ambient;
