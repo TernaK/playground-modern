@@ -97,7 +97,7 @@ void GLTextureNode::draw(Shader shader) {
   
   //texture
   material.texture.activate(shader);
-  glUniform1i(matDiffuseLoc, material.texture.texture);
+  glUniform1i(matDiffuseLoc, 0);
   glUniform3fv(matSpecularLoc, 1, glm::value_ptr(material.specular));
   glUniform1f(matShineLoc, material.shininess);
   
