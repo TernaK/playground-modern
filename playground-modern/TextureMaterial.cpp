@@ -12,8 +12,8 @@
 TextureMaterial::TextureMaterial() {
 }
 
-TextureMaterial::TextureMaterial(Texture texture, glm::vec3 specular, GLfloat shininess)
-:	texture(texture),
+TextureMaterial::TextureMaterial(Texture diffuse, Texture specular, GLfloat shininess)
+:	diffuse(diffuse),
 	specular(specular),
 	shininess(shininess){
 };

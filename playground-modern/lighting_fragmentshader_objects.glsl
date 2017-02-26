@@ -2,7 +2,7 @@
 
 struct Material {
   sampler2D diffuse;
-  vec3 specular;
+  sampler2D specular;
   float shininess;
 };
 
@@ -40,7 +40,7 @@ void main() {
   vec3 normalizedVertexToEye = normalize(eyePosition - fPosition);
   vec3 reflectDir = reflect(-normalizedVertexToEye, fNormal);
   float specularStrengthAtEye = pow(max(dot(normalizedVertexToEye, reflectDir), 0), material.shininess);
-  vec3 specular = light.specular * (specularStrengthAtEye * material.specular);
+  vec3 specular = light.specular * (specularStrengthAtEye * vec3(texture(material.specular, fTexCoord)));
   
   vec3 result = (diffuse + ambient + specular);
   

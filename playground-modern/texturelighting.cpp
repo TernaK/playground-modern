@@ -80,7 +80,7 @@ int main(int argc, char * argv[]) {
   
   //shader programs
   Shader shader("lighting_vertexshader.glsl","lighting_fragmentshader_objects.glsl");
-  Shader lightShader("lighting_vertexshader.glsl","lighting_fragmentshader.glsl");
+//  Shader lightShader("lighting_vertexshader.glsl","lighting_fragmentshader.glsl");
   
   vector<GLfloat> vertices = {
     -0.5f, -0.5f, 0.5f,
@@ -159,18 +159,17 @@ int main(int argc, char * argv[]) {
   
   glEnable(GL_DEPTH_TEST);
   
-  cube = GLTextureNode("texture2.jpg", vertices, indices, normals, texCoords);
+  TextureMaterial material = TextureMaterial(Texture("texture2.jpg"), Texture("texture1.jpg"), 1);
+  cube = GLTextureNode(material, vertices, indices, normals, texCoords);
   cube.scale = glm::vec3(1.5,1.5,1.5);
   cube.init();
   
-//  light = GLNode(vertices, indices, normals , texCoords);
-//  light.init();
-  
-//  light.position = glm::vec3(-1, 0.9, 2);
-  light.scale = glm::vec3(0.02,0.02,0.1);
-  
   Light light0 = Light(glm::vec3(0.1), glm::vec3(1), glm::vec3(0.3), glm::vec3(1));
-//  light0.position = glm::vec3(-0.5, 0.9, 3);
+  light0.position = glm::vec3(0, 5, 3);
+  light0.diffuse = glm::vec3(0.4); // Decrease the influence
+  light0.ambient = glm::vec3(0.2); // Low influence
+  light0.specular = glm::vec3(0.05);
+  
   cube.light = &light0;
   
   while(!glfwWindowShouldClose(window)){
@@ -179,30 +178,14 @@ int main(int argc, char * argv[]) {
     glClearColor(0.15, 0.15, 0.15, 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
+    //camera
     camera.look();
     camera.perspective(glm::radians(45.0f), GLfloat(width)/GLfloat(height), 0.1f, 50.0f);
     
-    //light
-//    lightShader.use();
-//    camera.setViewAndProjection(lightShader);
-    
-    glm::vec3 lightColor(1.0);
-    //    lightColor.x = sin(glfwGetTime() * 2.0f);
-    //    lightColor.y = sin(glfwGetTime() * 0.7f);
-    //    lightColor.z = sin(glfwGetTime() * 1.3f);Image result for opengl cube
-    //    light0.position = light.position;
-    
-    light0.diffuse = lightColor * glm::vec3(1); // Decrease the influence
-    light0.ambient = lightColor * glm::vec3(1); // Low influence
-    light0.specular = glm::vec3(0.3,0.5,0.3);
-    
-//    glUniform3fv(glGetUniformLocation(lightShader.program, "lightColor"), 1, glm::value_ptr(lightColor));
-//    light.draw(lightShader);
-    
     //cube
     shader.use();
-    camera.setViewAndProjection(shader);
     
+    camera.setViewAndProjection(shader);
     glUniform3fv(glGetUniformLocation(shader.program, "eyePosition"), 1,  glm::value_ptr(camera.eye));
     
     cube.rotation += glm::vec3(0, 0.01, 0);

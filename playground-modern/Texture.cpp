@@ -79,8 +79,8 @@ void Texture::init() {
   ready = true;
 };
 
-void Texture::activate(Shader shader) {
+void Texture::activate(Shader shader, GLenum textureUnit) {
   assert(ready);
-  glActiveTexture(GL_TEXTURE0);
+  glActiveTexture(GL_TEXTURE0+textureUnit);
   glBindTexture(GL_TEXTURE_2D, texture);
 }

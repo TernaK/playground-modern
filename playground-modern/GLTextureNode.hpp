@@ -23,11 +23,16 @@ protected:
   
 public:
   
-  GLTextureNode() { };
+  GLTextureNode();
+  
   GLTextureNode(TextureMaterial material, const std::vector<GLfloat>& vertices, const std::vector<GLuint>& indices, const std::vector<GLfloat>& normals, const std::vector<GLfloat>& texCoords);
+  
   GLTextureNode(std::string image, const std::vector<GLfloat>& vertices, const std::vector<GLuint>& indices, const std::vector<GLfloat>& normals, const std::vector<GLfloat>& texCoords);
+  
   void init();
+  
   void draw(Shader shader);
+  
   void setMaterial(TextureMaterial material) { this->material = material; };
 };
 
