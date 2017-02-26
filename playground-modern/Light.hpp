@@ -13,7 +13,7 @@
 #include <glm/glm.hpp>
 
 enum LightType {
-  DIRECTIONAL=0,POINT=1
+  DIRECTIONAL=0,POINT=1,SPOTLIGHT=2
 };
 
 class Light {
@@ -29,7 +29,9 @@ public:
   GLfloat linear = 0.09;
   GLfloat quadratic = 0.032;
   
-  LightType type = LightType::DIRECTIONAL;
+  GLfloat cutoff = cos(glm::radians(10.0));
+  
+  LightType type = LightType::SPOTLIGHT;
   
   Light();
   

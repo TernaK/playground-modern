@@ -122,16 +122,18 @@ void GLTextureNode::draw(Shader shader) {
   GLint lightConstantLoc 			= glGetUniformLocation(shader.program, "light.constant");
   GLint lightLinearLoc 			= glGetUniformLocation(shader.program, "light.linear");
   GLint lightQuadraticLoc 			= glGetUniformLocation(shader.program, "light.quadratic");
+  GLint lightCutoffLoc 			= glGetUniformLocation(shader.program, "light.cutoff");
   
   glUniform3fv(lightAmbientLoc, 1, glm::value_ptr(light->ambient));
   glUniform3fv(lightDiffuseLoc, 1, glm::value_ptr(light->diffuse));
   glUniform3fv(lightSpecularLoc, 1, glm::value_ptr(light->specular));
   glUniform3fv(lightPositionLoc, 1, glm::value_ptr(light->position));
-  glUniform3fv(lightDirectionLoc, 1, glm::value_ptr(light->direction));
+  glUniform3fv(lightDirectionLoc, 1, glm::value_ptr(glm::normalize(light->direction)));
   glUniform1i(lightTypeLoc, light->type);
   glUniform1f(lightConstantLoc, light->constant);
   glUniform1f(lightLinearLoc, light->linear);
   glUniform1f(lightQuadraticLoc, light->quadratic);
+  glUniform1f(lightCutoffLoc, light->cutoff);
   
   glBindVertexArray(VAO);
   {

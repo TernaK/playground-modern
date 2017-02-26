@@ -18,6 +18,7 @@ struct Light {
   float linear;
   float quadratic;
   
+  float cutoff;
   int type;
 };
 
@@ -39,19 +40,28 @@ void main() {
   
   vec3 texColor = vec3(texture(material.diffuse, fTexCoord));
   
+  float spotFactor = 1.0;
+  
   //ambient
   vec3 ambient = light.ambient * texColor;
 
   //diffuse
   vec3 normalizedVertexToLight;
   switch (light.type) {
-  case 0:
-    normalizedVertexToLight = normalize(-light.direction);
-    break;
-    
-  default:
-    normalizedVertexToLight = normalize(light.position - fPosition);
-    break;
+    case 1://POINT
+      normalizedVertexToLight = normalize(light.position - fPosition);
+      break;
+      
+    case 2://SPOT
+      normalizedVertexToLight = normalize(light.position - fPosition);
+      float cosAngleFromLight = dot(light.direction, -normalizedVertexToLight);
+      if(cosAngleFromLight < light.cutoff) spotFactor = 0;
+    	break;
+      
+    case 0://DIRECTIONAL
+    default:
+      normalizedVertexToLight = normalize(-light.direction);
+      break;
   }
   float normalComponent = max(dot(normalizedVertexToLight, fNormal), 0);
   vec3 diffuse = light.diffuse * (normalComponent * texColor);
@@ -62,7 +72,10 @@ void main() {
   float specularStrengthAtEye = pow(max(dot(normalizedVertexToEye, reflectDir), 0), material.shininess);
   vec3 specular = light.specular * (specularStrengthAtEye * vec3(texture(material.specular, fTexCoord)));
   
-  vec3 result = attenuation * (diffuse + ambient + specular);
+  diffuse *= spotFactor * attenuation;
+  specular *= spotFactor * attenuation;
+  
+  vec3 result = (diffuse + ambient + specular);
   
   color = vec4(result, 1.0f);
 }
