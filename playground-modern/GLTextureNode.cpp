@@ -27,6 +27,8 @@ GLTextureNode::GLTextureNode(std::string image, const std::vector<GLfloat>& vert
 }
 
 void GLTextureNode::init() {
+  material.texture.init();
+  assert(material.texture.ready);
   
   glGenVertexArrays(1, &VAO);
   glGenBuffers(1, &VBO);
@@ -39,8 +41,10 @@ void GLTextureNode::init() {
     vertNorTex.push_back(vertices[index * 3 +2]);
   }
   
-  if(!normals.empty())
-    vertNorTex.insert(vertNorTex.end(), normals.begin(), normals.end());
+//  if(!normals.empty())
+  vertNorTex.insert(vertNorTex.end(), normals.begin(), normals.end());
+  
+  vertNorTex.insert(vertNorTex.end(), texCoords.begin(), texCoords.end());
   
   //convert vcn to c array
   GLfloat verticesNormalTexArray[vertNorTex.size()];
@@ -49,7 +53,7 @@ void GLTextureNode::init() {
   
   //offsets in the vcn array
   auto normalsOffset = 3 * sizeof(GLfloat) * indices.size();
-  auto textureOffset = normalsOffset + normals.size();
+  auto textureOffset = normalsOffset + normals.size() * sizeof(GLfloat);
   
   glBindVertexArray(VAO);
   {
@@ -72,15 +76,11 @@ void GLTextureNode::init() {
   }
   glBindVertexArray(0);
   ready = true;
-  
-  material.texture.init();
-  assert(material.texture.ready);
 }
 
 void GLTextureNode::draw(Shader shader) {
   
-  assert(ready);
-  
+  assert(ready && material.texture.ready);
   
   //model
   model = glm::translate(glm::mat4(1.0f), position);
@@ -88,7 +88,6 @@ void GLTextureNode::draw(Shader shader) {
   model = glm::rotate(model, rotation.y, glm::vec3(0.0f, 1.0f, 0.0f));
   model = glm::rotate(model, rotation.z, glm::vec3(0.0f, 0.0f, 1.0f));
   model = glm::scale(model, scale);
-  
   glUniformMatrix4fv(glGetUniformLocation(shader.program, "model"), 1, GL_FALSE, glm::value_ptr(model));
   
   //material

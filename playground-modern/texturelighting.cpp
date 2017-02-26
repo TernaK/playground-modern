@@ -22,26 +22,27 @@ Camera camera(glm::vec3(0,0,5));
 //  Camera camera(glm::vec3(-2,-2,5));
 
 void keyboardCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
+  float d = 0.5;
   if(action == GLFW_PRESS && key == GLFW_KEY_ESCAPE) {
     glfwSetWindowShouldClose(window, GL_TRUE);
   }
   if(action == GLFW_PRESS && key == GLFW_KEY_UP) {
-    camera.eye.z -= 0.05;
+    camera.eye.z -= d;
   }
   if(action == GLFW_PRESS && key == GLFW_KEY_DOWN) {
-    camera.eye.z += 0.05;
+    camera.eye.z += d;
   }
   if(action == GLFW_PRESS && key == GLFW_KEY_LEFT) {
-    camera.eye.x -= 0.05;
+    camera.eye.x -= d;
   }
   if(action == GLFW_PRESS && key == GLFW_KEY_RIGHT) {
-    camera.eye.x += 0.05;
+    camera.eye.x += d;
   }
   if(action == GLFW_PRESS && key == GLFW_KEY_U) {
-    camera.eye.y += 0.05;
+    camera.eye.y += d;
   }
   if(action == GLFW_PRESS && key == GLFW_KEY_D) {
-    camera.eye.y -= 0.05;
+    camera.eye.y -= d;
   }
 }
 
@@ -148,17 +149,17 @@ int main(int argc, char * argv[]) {
   
   
   vector<GLfloat> texCoords = {
-    1,1, 0,0, 1,1,  1,0, 1,1, 0,0, //front
-    1,1, 0,0, 1,1,  1,0, 1,1, 0,0, //back
-    1,1, 0,0, 1,1,  1,0, 1,1, 0,0, //left
-    1,1, 0,0, 1,1,  1,0, 1,1, 0,0, //rigt
-    1,1, 0,0, 1,1,  1,0, 1,1, 0,0, //top
-    1,1, 0,0, 1,1,  1,0, 1,1, 0,0 //bottom
+    0,1, 0,0, 1,1,  1,0, 1,1, 0,0, //front
+    0,1, 0,0, 1,1,  1,0, 1,1, 0,0, //back
+    0,1, 0,0, 1,1,  1,0, 1,1, 0,0, //left
+    0,1, 0,0, 1,1,  1,0, 1,1, 0,0, //rigt
+    0,1, 0,0, 1,1,  1,0, 1,1, 0,0, //top
+    0,1, 0,0, 1,1,  1,0, 1,1, 0,0 //bottom
   };
   
   glEnable(GL_DEPTH_TEST);
   
-  cube = GLTextureNode("texture1.jpg", vertices, indices, normals, texCoords);
+  cube = GLTextureNode("texture2.jpg", vertices, indices, normals, texCoords);
   cube.scale = glm::vec3(1.5,1.5,1.5);
   cube.init();
   
@@ -192,7 +193,7 @@ int main(int argc, char * argv[]) {
     
     light0.diffuse = lightColor * glm::vec3(1); // Decrease the influence
     light0.ambient = lightColor * glm::vec3(1); // Low influence
-    light0.specular = glm::vec3(0,0.3,0);
+    light0.specular = glm::vec3(0.3,0.5,0.3);
     
 //    glUniform3fv(glGetUniformLocation(lightShader.program, "lightColor"), 1, glm::value_ptr(lightColor));
 //    light.draw(lightShader);
@@ -203,7 +204,7 @@ int main(int argc, char * argv[]) {
     
     glUniform3fv(glGetUniformLocation(shader.program, "eyePosition"), 1,  glm::value_ptr(camera.eye));
     
-    cube.rotation += glm::vec3(0.01, 0,0);
+//    cube.rotation += glm::vec3(0.01, 0,0);
     cube.draw(shader);
     
     glfwSwapBuffers(window);
