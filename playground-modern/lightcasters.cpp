@@ -19,27 +19,25 @@ using namespace std;
 Camera camera(glm::vec3(0,0,11.00));
 
 void keyboardCallback(GLFWwindow* window, int key, int scancode, int action, int mods) {
-  float d = 0.5;
-  if(action == GLFW_PRESS && key == GLFW_KEY_ESCAPE) {
+  
+  if(key == GLFW_KEY_ESCAPE) {
     glfwSetWindowShouldClose(window, GL_TRUE);
+    return;
   }
-  if(action == GLFW_PRESS && key == GLFW_KEY_UP) {
-    camera.eye.z -= d;
-  }
-  if(action == GLFW_PRESS && key == GLFW_KEY_DOWN) {
-    camera.eye.z += d;
-  }
-  if(action == GLFW_PRESS && key == GLFW_KEY_LEFT) {
-    camera.eye.x -= d;
-  }
-  if(action == GLFW_PRESS && key == GLFW_KEY_RIGHT) {
-    camera.eye.x += d;
-  }
-  if(action == GLFW_PRESS && key == GLFW_KEY_U) {
-    camera.eye.y += d;
-  }
-  if(action == GLFW_PRESS && key == GLFW_KEY_D) {
-    camera.eye.y -= d;
+  
+  float d = 0.5;
+  if(action == GLFW_REPEAT || action == GLFW_PRESS) {
+    switch (key) {
+      case GLFW_KEY_F: camera.eye.z -= d; break;
+      case GLFW_KEY_B: camera.eye.z += d; break;
+      case GLFW_KEY_LEFT: camera.eye.x -= d; break;
+      case GLFW_KEY_RIGHT: camera.eye.x += d; break;
+      case GLFW_KEY_UP: camera.eye.y += d; break;
+      case GLFW_KEY_DOWN: camera.eye.y -= d; break;
+        
+      default:
+        break;
+    }
   }
   printf("camera position: [%.2f,%.2f,%.2f]\n", camera.eye.x, camera.eye.y, camera.eye.z);
 }
@@ -158,8 +156,8 @@ int main(int argc, char * argv[]) {
   glEnable(GL_DEPTH_TEST);
   
   Light light0 = Light(glm::vec3(0.7), glm::vec3(0.7), glm::vec3(0.03));
-  light0.position = glm::vec3(0, 0, 4);
-  light0.direction = glm::vec3(-0.2f, -1.0f, -0.3f);
+  light0.position = glm::vec3(0, 0, -5);
+  light0.direction = glm::vec3(0, 0, 0.3f);
 //  light0.diffuse = glm::vec3(0.7);
 //  light0.ambient = glm::vec3(0.7);
 //  light0.specular = glm::vec3(0.05);
@@ -199,7 +197,7 @@ int main(int argc, char * argv[]) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     //camera
-    camera.look();
+    camera.lookTowards(camera.eye, glm::vec3(0));
     camera.perspective(glm::radians(45.0f), GLfloat(width)/GLfloat(height), 0.1f, 50.0f);
     
     //cube

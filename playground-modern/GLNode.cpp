@@ -87,7 +87,10 @@ void GLNode::draw(const Shader& shader) {
   model = glm::rotate(model, rotation.z, glm::vec3(0.0f, 0.0f, 1.0f));
   model = glm::scale(model, scale);
   
+  glm::mat3 normalTransform = glm::mat3(inverse(transpose(model)));
+  
   glUniformMatrix4fv(glGetUniformLocation(shader.program, "model"), 1, GL_FALSE, glm::value_ptr(model));
+  glUniformMatrix3fv(glGetUniformLocation(shader.program, "normalTransform"), 1, GL_FALSE, glm::value_ptr(normalTransform));
   
   //material
   GLint matAmbientLoc  = glGetUniformLocation(shader.program, "material.ambient");

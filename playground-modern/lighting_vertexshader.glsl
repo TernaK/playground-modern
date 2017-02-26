@@ -10,15 +10,14 @@ out vec2 fTexCoord;
 
 uniform vec3 objectColor;
 uniform mat4 model;
+uniform mat3 normalTransform;
 uniform mat4 view;
 uniform mat4 projection;
 
 void main() {
   fPosition = (model * vec4(position, 1.0)).xyz;
   gl_Position = projection * view * vec4(fPosition, 1.0);
-  mat3 normalTransform = mat3(inverse(transpose(model)));
   fNormal = normalize(normalTransform * normal);
   fColor = objectColor;
   fTexCoord = texCoord;
-  //TODO: please move the mormalTransform matrix to a uniform set externally
 }

@@ -32,7 +32,6 @@ protected:
   std::vector<GLfloat> normals;
   bool ready = false;
   glm::mat4 model;
-  
 
 public:
   Light* light;//TODO: implement multiple lights
