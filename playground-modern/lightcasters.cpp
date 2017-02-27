@@ -156,12 +156,12 @@ int main(int argc, char * argv[]) {
   glEnable(GL_DEPTH_TEST);
   
   Light light0 = Light(glm::vec3(0.7), glm::vec3(0.7), glm::vec3(0.03));
-  light0.position = glm::vec3(0, 0, 4.0f);
-  light0.direction = glm::vec3(0,0,-0.3f);
-//  light0.diffuse = glm::vec3(0.7);
-  light0.ambient = glm::vec3(0.2);
+  light0.position = glm::vec3(0, 0, 3);
+  light0.direction = glm::vec3(0,0,-1);
+//  light0.diffuse = glm::vec3(0.2);
+//  light0.ambient = glm::vec3(0.4);
 //  light0.specular = glm::vec3(0.2);
-  light0.cutoff = cos(glm::radians(20.0));
+//  light0.cutoff = cos(glm::radians(40.0));
   light0.type = LightType::SPOTLIGHT;
   
   TextureMaterial material = TextureMaterial(Texture("wood_diffuse.jpg"), Texture("wood_spec.jpg"), 0.5);
@@ -169,7 +169,7 @@ int main(int argc, char * argv[]) {
   vector<GLTextureNode> cubes;
   
   vector<glm::vec3> positions = {
-    glm::vec3(0,0,0),
+    glm::vec3(0.5,0.5,0.5),
     glm::vec3(-3,0,0),
     glm::vec3(0,2,-4),
     glm::vec3(3,3,1),

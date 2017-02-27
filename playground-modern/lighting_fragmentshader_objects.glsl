@@ -52,7 +52,7 @@ void main() {
       normalizedVertexToLight = normalize(light.position - fPosition);
       break;
       
-    case 2://SPOT
+    case 2://SPOTLIGHT
       normalizedVertexToLight = normalize(light.position - fPosition);
       float cosAngleFromLight = dot(light.direction, -normalizedVertexToLight);
       if(cosAngleFromLight < light.cutoff) spotFactor = 0;

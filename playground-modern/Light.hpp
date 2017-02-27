@@ -22,14 +22,14 @@ public:
   glm::vec3 direction = glm::vec3(0,0,-1);
   
   glm::vec3 ambient = glm::vec3(0.1);
-  glm::vec3 diffuse = glm::vec3(1);
-  glm::vec3 specular = glm::vec3(0.2);
+  glm::vec3 diffuse = glm::vec3(0.1);
+  glm::vec3 specular = glm::vec3(0.05);
   
   GLfloat constant = 1;
   GLfloat linear = 0.09;
   GLfloat quadratic = 0.032;
   
-  GLfloat cutoff = cos(glm::radians(10.0));
+  GLfloat cutoff = cos(glm::radians(20.0));
   
   LightType type = LightType::SPOTLIGHT;
   

@@ -45,15 +45,9 @@ void GLTextureNode::init() {
     vertNorTex.push_back(vertices[index * 3 +2]);
   }
   
-//  if(!normals.empty())
   vertNorTex.insert(vertNorTex.end(), normals.begin(), normals.end());
   
   vertNorTex.insert(vertNorTex.end(), texCoords.begin(), texCoords.end());
-  
-  //convert vcn to c array
-  GLfloat verticesNormalTexArray[vertNorTex.size()];
-  for(int i = 0 ; i < vertNorTex.size(); i++)
-    verticesNormalTexArray[i] = vertNorTex[i];
   
   //offsets in the vcn array
   auto normalsOffset = 3 * sizeof(GLfloat) * indices.size();
@@ -62,7 +56,7 @@ void GLTextureNode::init() {
   glBindVertexArray(VAO);
   {
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(verticesNormalTexArray), verticesNormalTexArray, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(GLfloat)*vertNorTex.size(), vertNorTex.data(), GL_STATIC_DRAW);
     
     //vertives
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3*sizeof(GLfloat), (GLvoid*)0);
