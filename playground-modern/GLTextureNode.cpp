@@ -45,13 +45,13 @@ void GLTextureNode::init() {
     vertNorTex.push_back(vertices[index * 3 +2]);
   }
   
-  vertNorTex.insert(vertNorTex.end(), normals.begin(), normals.end());
-  
   vertNorTex.insert(vertNorTex.end(), texCoords.begin(), texCoords.end());
   
+  vertNorTex.insert(vertNorTex.end(), normals.begin(), normals.end());
+  
   //offsets in the vcn array
-  auto normalsOffset = 3 * sizeof(GLfloat) * indices.size();
-  auto textureOffset = normalsOffset + normals.size() * sizeof(GLfloat);
+  auto textureOffset = 3 * sizeof(GLfloat) * indices.size();
+  auto normalsOffset = textureOffset + texCoords.size() * sizeof(GLfloat);
   
   glBindVertexArray(VAO);
   {
