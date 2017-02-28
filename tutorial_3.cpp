@@ -79,7 +79,7 @@ int main()
   }
   glBindVertexArray(0);
   
-  Shader shader(root+"playground-modern/vertex.glsl", root+"playground-modern/fragment.glsl");
+  Shader shader(root+"playground-modern/vertex1.glsl", root+"playground-modern/fragment1.glsl");
   GLfloat rotation = 0;
   
   while(!glfwWindowShouldClose(window))

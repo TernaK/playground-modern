@@ -6,7 +6,7 @@ layout (location = 2) in vec2 texCoord;
 
 out vec3 Color;
 out vec3 Position;
-out vec3 TexCoord;
+out vec2 TexCoord;
 
 uniform mat4 model;
 uniform mat4 view;
