@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		513D61511E6544E600576470 /* tutorial14.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 513D61501E6544E600576470 /* tutorial14.cpp */; };
+		513D61511E6544E600576470 /* framebuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 513D61501E6544E600576470 /* framebuffer.cpp */; };
 		51C6CB871E5D816700225E1F /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CB851E5D816700225E1F /* Shader.cpp */; };
 		51C6CB8A1E5D86E100225E1F /* fragment_shader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AC81E5CF0F200210C78 /* fragment_shader.glsl */; };
 		51C6CB8B1E5D86E300225E1F /* vertex_shader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AC71E5CEE8000210C78 /* vertex_shader.glsl */; };
@@ -64,7 +64,7 @@
 
 /* Begin PBXFileReference section */
 		513D614D1E651B2C00576470 /* tutorial4_6.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = tutorial4_6.cpp; path = "playground-modern/tutorial4_6.cpp"; sourceTree = "<group>"; };
-		513D61501E6544E600576470 /* tutorial14.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = tutorial14.cpp; path = "playground-modern/tutorial14.cpp"; sourceTree = "<group>"; };
+		513D61501E6544E600576470 /* framebuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = framebuffer.cpp; path = "playground-modern/framebuffer.cpp"; sourceTree = "<group>"; };
 		513D61521E654F6D00576470 /* fragmentFB.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fragmentFB.glsl; path = "playground-modern/fragmentFB.glsl"; sourceTree = "<group>"; };
 		513D61531E654F6D00576470 /* vertexFB.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vertexFB.glsl; path = "playground-modern/vertexFB.glsl"; sourceTree = "<group>"; };
 		5192B59D1E5C3C7200CC9A3B /* playground-modern */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "playground-modern"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -303,7 +303,7 @@
 				51F36AF41E64D0CF00210C78 /* tutorial1_2.cpp */,
 				51F36AF91E64E77C00210C78 /* tutorial3.cpp */,
 				513D614D1E651B2C00576470 /* tutorial4_6.cpp */,
-				513D61501E6544E600576470 /* tutorial14.cpp */,
+				513D61501E6544E600576470 /* framebuffer.cpp */,
 			);
 			name = "opengl-tutorial.com";
 			sourceTree = "<group>";
@@ -382,7 +382,7 @@
 				51C6CBA61E600B2900225E1F /* GLNode.cpp in Sources */,
 				51C6CBBA1E618C4F00225E1F /* GLTextureNode.cpp in Sources */,
 				51C6CBC71E62893700225E1F /* Texture.cpp in Sources */,
-				513D61511E6544E600576470 /* tutorial14.cpp in Sources */,
+				513D61511E6544E600576470 /* framebuffer.cpp in Sources */,
 				51C6CB911E5EB50100225E1F /* Camera.cpp in Sources */,
 				51C6CBBF1E6272C600225E1F /* TextureMaterial.cpp in Sources */,
 				51C6CB871E5D816700225E1F /* Shader.cpp in Sources */,

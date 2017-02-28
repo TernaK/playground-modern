@@ -69,7 +69,7 @@ int main()
   
   glfwSetKeyCallback(window, keyCallback);
   
-  Shader shader(root+"playground-modern/vertex1.glsl", root+"playground-modern/fragment1.glsl");
+  Shader framebufferShader(root+"playground-modern/vertex1.glsl", root+"playground-modern/fragment1.glsl");
   Shader postShader(root+"playground-modern/vertexFB.glsl", root+"playground-modern/fragmentFB.glsl");
   
   GLint width, height;
@@ -77,7 +77,7 @@ int main()
   
   glEnable(GL_DEPTH_TEST);
   
-  /* FRAMEBUFFER */
+  /* FRAMEBUFFER SETUP */
   
   //setup framebuffer
   GLuint framebuffer;
@@ -128,7 +128,6 @@ int main()
   }
   glBindVertexArray(0);
   
-  
   GLfloat rotation = 0;
   
   //texture
@@ -147,13 +146,13 @@ int main()
   }
   glBindTexture(GL_TEXTURE_2D, 0);
   SOIL_free_image_data(image);
+  /* END FRAMEBUFFER SETUP */
   
-//  glBindFramebuffer(GL_FRAMEBUFFER, 0);
   
+  /* POST BUFFER SETUP */
   
-  /* POST BUFFER */
-  
-  vector<GLfloat> texturePos {
+  vector<GLfloat> texturePos
+  {
     -1.0f, -1.0f, 0.0f,
     1.0f, -1.0f, 0.0f,
     -1.0f,  1.0f, 0.0f,
@@ -177,33 +176,25 @@ int main()
     glBindBuffer(GL_ARRAY_BUFFER, 0);
   }
   glBindVertexArray(0);
+  /* END POST BUFFER SETUP */
   
+  
+  /* LOOP */
   
   double lastTime = glfwGetTime();
   int nbFrames = 0;
   
   while(!glfwWindowShouldClose(window))
   {
-    // Measure speed
-    double currentTime = glfwGetTime();
-    nbFrames++;
-    if ( currentTime - lastTime >= 2.0 ){ // If last prinf() was more than 1 sec ago
-      // printf and reset timer
-      printf("%.1f ms/frame\n", 2000.0/double(nbFrames));
-      nbFrames = 0;
-      lastTime += 2.0;
-    }
-    
-    /* POLL EVENTS */
     glfwPollEvents();
     
-    /* FRAMEBUFFER */
+    /* FRAMEBUFFER RENDER */
     glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
     glViewport(0, 0, GLsizei(width), GLsizei(height));
     glClearColor(0.1, 0.3, 0.4, 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    shader.use();
+    framebufferShader.use();
     
     rotation += 0.05;
     
@@ -212,10 +203,11 @@ int main()
     glm::mat4 view = glm::lookAt(glm::vec3(0,0,3), glm::vec3(0,0,0), glm::vec3(0,1,0));
     glm::mat4 projection = glm::perspective(glm::radians(30.0f), GLfloat(width)/GLfloat(height), 0.1f, 100.0f);
     
-    GLint modelLoc = glGetUniformLocation(shader.program, "model");
-    GLint viewLoc = glGetUniformLocation(shader.program, "view");
-    GLint projectionLoc = glGetUniformLocation(shader.program, "projection");
+    GLint modelLoc = glGetUniformLocation(framebufferShader.program, "model");
+    GLint viewLoc = glGetUniformLocation(framebufferShader.program, "view");
+    GLint projectionLoc = glGetUniformLocation(framebufferShader.program, "projection");
     
+    //set uniforms
     glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
     glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
     glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
@@ -223,19 +215,20 @@ int main()
     //texture
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, texture);
-    GLint textureLoc = glGetUniformLocation(shader.program, "textureMap");
-    glUniform1i(textureLoc, 0);
+    //set uniforms
+    glUniform1i(glGetUniformLocation(framebufferShader.program, "textureMap"), 0);
+    glUniform1f(glGetUniformLocation(framebufferShader.program, "time"), (float)glfwGetTime());
     
-    glUniform1f(glGetUniformLocation(shader.program, "time"), (float)glfwGetTime());
-    
+    //draw
     glBindVertexArray(VAO_FB);
     {
       glDrawArrays(GL_TRIANGLES, 0, 3);
     }
     glBindVertexArray(0);
+    /* FRAMEBUFFER RENDER DONE */
     
     
-    /* POSTPROCESS */
+    /* POSTPROCESS RENDER */
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
     glViewport(0, 0, GLsizei(width), GLsizei(height));
     glClearColor(0.1, 0.3, 0.4, 1.0);
@@ -243,27 +236,45 @@ int main()
     
     //post process
     postShader.use();
+    
+    //texture
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, renderedTexture);
+    //set uniforms
     GLuint renderTexLoc = glGetUniformLocation(postShader.program, "renderedTexture");
     GLuint timeLoc = glGetUniformLocation(postShader.program, "time");
     glUniform1i(renderTexLoc, 0);
     glUniform1f(timeLoc, (float)glfwGetTime()*10.0f);
     
+    //draw
     glBindVertexArray(VAO);
     {
       glDrawArrays(GL_TRIANGLES, 0, 6);
     }
     glBindVertexArray(0);
+    /* POSTPROCESS RENDER DONE */
     
+    //render to screen
     glfwSwapBuffers(window);
+    
+    //timing
+    double currentTime = glfwGetTime();
+    nbFrames++;
+    if ( currentTime - lastTime >= 2.0 )
+    {
+      printf("%.1f ms/frame\n", 2000.0/double(nbFrames));
+      //reset timer
+      nbFrames = 0;
+      lastTime += 2.0;
+    }
   }
   
-  glDeleteTextures(1, &renderedTexture);
+  //cleanup
   glDeleteTextures(1, &texture);
+  glDeleteTextures(1, &renderedTexture);
   glDeleteBuffers(1, &VBO);
-  glDeleteVertexArrays(1, &VAO);
   glDeleteBuffers(1, &VBO_FB);
+  glDeleteVertexArrays(1, &VAO);
   glDeleteVertexArrays(1, &VAO_FB);
   glfwTerminate();
   exit(0);
