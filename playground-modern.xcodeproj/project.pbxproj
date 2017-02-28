@@ -20,7 +20,6 @@
 		51C6CBBA1E618C4F00225E1F /* GLTextureNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBB81E618C4F00225E1F /* GLTextureNode.cpp */; };
 		51C6CBBF1E6272C600225E1F /* TextureMaterial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBBD1E6272C600225E1F /* TextureMaterial.cpp */; };
 		51C6CBC71E62893700225E1F /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBC61E62893700225E1F /* Texture.cpp */; };
-		51C6CBCF1E62C6E900225E1F /* lightcasters.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBCD1E62C6E900225E1F /* lightcasters.cpp */; };
 		51C6CBD51E62D26A00225E1F /* specular.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51C6CBD41E62D26200225E1F /* specular.jpg */; };
 		51C6CBD81E62D38C00225E1F /* wood_diffuse.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51C6CBD61E62D38200225E1F /* wood_diffuse.jpg */; };
 		51C6CBD91E62D38F00225E1F /* wood_spec.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51C6CBD71E62D38200225E1F /* wood_spec.jpg */; };
@@ -32,6 +31,7 @@
 		51F36AEA1E5E31BE00210C78 /* vertex_shaderTranslate.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AE81E5E31A700210C78 /* vertex_shaderTranslate.glsl */; };
 		51F36AF01E5E4F4600210C78 /* fragment_shaderCamera.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AEE1E5E4C8B00210C78 /* fragment_shaderCamera.glsl */; };
 		51F36AF11E5E4F4900210C78 /* vertex_shaderCamera.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AEF1E5E4C8B00210C78 /* vertex_shaderCamera.glsl */; };
+		51F36AFA1E64E77C00210C78 /* tutorial_3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51F36AF91E64E77C00210C78 /* tutorial_3.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -112,6 +112,12 @@
 		51F36AEE1E5E4C8B00210C78 /* fragment_shaderCamera.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fragment_shaderCamera.glsl; path = "playground-modern/fragment_shaderCamera.glsl"; sourceTree = "<group>"; };
 		51F36AEF1E5E4C8B00210C78 /* vertex_shaderCamera.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vertex_shaderCamera.glsl; path = "playground-modern/vertex_shaderCamera.glsl"; sourceTree = "<group>"; };
 		51F36AF21E5FB72500210C78 /* render.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = render.png; sourceTree = "<group>"; };
+		51F36AF41E64D0CF00210C78 /* tutorial1_2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = tutorial1_2.cpp; path = "playground-modern/tutorial1_2.cpp"; sourceTree = "<group>"; };
+		51F36AF71E64DC0E00210C78 /* vertex.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vertex.glsl; path = "playground-modern/vertex.glsl"; sourceTree = "<group>"; };
+		51F36AF81E64DC1F00210C78 /* fragment.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fragment.glsl; path = "playground-modern/fragment.glsl"; sourceTree = "<group>"; };
+		51F36AF91E64E77C00210C78 /* tutorial_3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tutorial_3.cpp; sourceTree = "<group>"; };
+		51F36AFB1E64F51E00210C78 /* fragment1.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fragment1.glsl; path = "playground-modern/fragment1.glsl"; sourceTree = "<group>"; };
+		51F36AFC1E64F51E00210C78 /* vertex1.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vertex1.glsl; path = "playground-modern/vertex1.glsl"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +140,7 @@
 				51C6CB951E5EC80700225E1F /* experiments */,
 				5192B59F1E5C3C7200CC9A3B /* playground-modern */,
 				51C6CB7B1E5D69E100225E1F /* excercises */,
+				51F36AF31E64CC5100210C78 /* openg-tutorial.com */,
 				5192B59E1E5C3C7200CC9A3B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -277,6 +284,27 @@
 			name = camera;
 			sourceTree = "<group>";
 		};
+		51F36AF31E64CC5100210C78 /* openg-tutorial.com */ = {
+			isa = PBXGroup;
+			children = (
+				51F36AF61E64DBE400210C78 /* shaders */,
+				51F36AF41E64D0CF00210C78 /* tutorial1_2.cpp */,
+				51F36AF91E64E77C00210C78 /* tutorial_3.cpp */,
+			);
+			name = "openg-tutorial.com";
+			sourceTree = "<group>";
+		};
+		51F36AF61E64DBE400210C78 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				51F36AF71E64DC0E00210C78 /* vertex.glsl */,
+				51F36AF81E64DC1F00210C78 /* fragment.glsl */,
+				51F36AFC1E64F51E00210C78 /* vertex1.glsl */,
+				51F36AFB1E64F51E00210C78 /* fragment1.glsl */,
+			);
+			name = shaders;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -341,8 +369,8 @@
 				51C6CB911E5EB50100225E1F /* Camera.cpp in Sources */,
 				51C6CBBF1E6272C600225E1F /* TextureMaterial.cpp in Sources */,
 				51C6CB871E5D816700225E1F /* Shader.cpp in Sources */,
-				51C6CBCF1E62C6E900225E1F /* lightcasters.cpp in Sources */,
 				51C6CBB41E61759B00225E1F /* Material.cpp in Sources */,
+				51F36AFA1E64E77C00210C78 /* tutorial_3.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,7 +468,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"SRC=\\\"$(PROJECT_DIR)\\\"",
+				);
 				HEADER_SEARCH_PATHS = /usr/local/include;
+				INFOPLIST_PREPROCESSOR_DEFINITIONS = "";
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				OTHER_LDFLAGS = (
 					"-lSOIL",
@@ -459,7 +492,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"SRC=\\\"$(PROJECT_DIR)\\\"",
+				);
 				HEADER_SEARCH_PATHS = /usr/local/include;
+				INFOPLIST_PREPROCESSOR_DEFINITIONS = "";
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				OTHER_LDFLAGS = (
 					"-lSOIL",
