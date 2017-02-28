@@ -132,7 +132,7 @@ int main()
   
   //texture
   int tw, th;
-  GLubyte *image = SOIL_load_image("texture1.jpg", &tw, &th, 0, SOIL_LOAD_RGB);
+  GLubyte *image = SOIL_load_image("texture2.jpg", &tw, &th, 0, SOIL_LOAD_RGB);
   assert(image);
   
   GLuint texture;
@@ -191,12 +191,12 @@ int main()
     /* FRAMEBUFFER RENDER */
     glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
     glViewport(0, 0, GLsizei(width), GLsizei(height));
-    glClearColor(0.1, 0.3, 0.4, 1.0);
+    glClearColor(0.3, 0.1, 0.4, 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     framebufferShader.use();
     
-    rotation += 0.05;
+    rotation += 0.1;
     
     //transformation: set the camera in view
     glm::mat4 model = glm::rotate(glm::mat4(1.0f), glm::radians(rotation), glm::vec3(0,0,1));
