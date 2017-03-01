@@ -188,7 +188,6 @@ int main(int argc, char * argv[]) {
     /* draw object outline: by drawing the same object scaled up */
     glDisable(GL_DEPTH_TEST); //we're not interested in depth testing
     glStencilFunc(GL_NOTEQUAL, 1, 0xFF);//fragment only pass stencil test if not equal to ref (=1)
-    glStencilOp(GL_KEEP, GL_KEEP, GL_ZERO);//a fragment stencil value is set to 0 on passing test
     glStencilMask(0);//disable stencil buffer writing (because we don't want to do this)
     
     outlineShader.use();
