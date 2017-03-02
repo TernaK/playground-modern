@@ -1,62 +1,76 @@
 //
 //  Camera.hpp
-//  playground-modern
+//  myGLlib
 //
-//  Created by Terna Kpamber on 2/22/17.
+//  Created by Terna Kpamber on 2/26/17.
 //  Copyright © 2017 Terna Kpamber. All rights reserved.
 //
 
 #ifndef Camera_hpp
 #define Camera_hpp
 
-#include "Shader.hpp"
+// Std. Includes
+#include <vector>
+
+// GL Includes
 #include <GL/glew.h>
-#include <iostream>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
 
-class Camera {
+// Defines several possible options for camera movement. Used as abstraction to stay away from window-system specific input methods
+enum Camera_Movement {
+  FORWARD,
+  BACKWARD,
+  LEFT,
+  RIGHT
+};
+
+// Default camera values
+const GLfloat YAW        = -90.0f;
+const GLfloat PITCH      =  0.0f;
+const GLfloat SPEED      =  3.0f;
+const GLfloat SENSITIVTY =  0.25f;
+const GLfloat ZOOM       =  45.0f;
+
+
+// An abstract camera class that processes input and calculates the corresponding Eular Angles, Vectors and Matrices for use in OpenGL
+class Camera
+{
 public:
-  glm::vec3 eye;
-  glm::vec3 target;
+  // Camera Attributes
+  glm::vec3 position;
+  glm::vec3 front;
   glm::vec3 up;
-  glm::mat4 view;
-  glm::mat4 projection;
-  GLfloat fov = glm::radians(45.0f); //fov must be in radians
-  GLfloat aspect = 1.0f;             //aspect ratio
-  GLfloat zNear = 0.1;               //near clipping plane z
-  GLfloat zFar = 50.0f;                 //far clipping plane z
+  glm::vec3 right;
+  glm::vec3 worldUp;
+  // Eular Angles
+  GLfloat yaw;
+  GLfloat pitch;
+  // Camera options
+  GLfloat movementSpeed;
+  GLfloat mouseSensitivity;
+  GLfloat zoom;
   
-  Camera(glm::vec3 eye = glm::vec3(0,0,1),
-         glm::vec3 target = glm::vec3(0,0,0),
-         glm::vec3 up = glm::vec3(0,1,0));
+  // Constructor with vectors
+  Camera(glm::vec3 position = glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f), GLfloat yaw = YAW, GLfloat pitch = PITCH);
+  // Constructor with scalar values
+  Camera(GLfloat posX, GLfloat posY, GLfloat posZ, GLfloat upX, GLfloat upY, GLfloat upZ, GLfloat yaw, GLfloat pitch);
   
-  //use the internal eye point, target and up vectors
-  glm::mat4 look();
+  // Returns the view matrix calculated using Eular Angles and the LookAt Matrix
+  glm::mat4 GetViewMatrix();
   
-  //set a new eye point and look from there
-  glm::mat4 lookFrom(glm::vec3 eye);
+  // Processes input received from any keyboard-like input system. Accepts input parameter in the form of camera defined ENUM (to abstract it from windowing systems)
+  void ProcessKeyboard(Camera_Movement direction, GLfloat deltaTime);
   
-  //set a new eye point, target and up vector
-  glm::mat4 lookAt(glm::vec3 eye, glm::vec3 target, glm::vec3 up);
+  // Processes input received from a mouse input system. Expects the offset value in both the x and y direction.
+  void ProcessMouseMovement(GLfloat xoffset, GLfloat yoffset, GLboolean constrainPitch = true);
   
-  //set a new eye & target, then calculate the up vector and look
-  glm::mat4 lookTowards(glm::vec3 eye, glm::vec3 target);
+  // Processes input received from a mouse scroll-wheel event. Only requires input on the vertical wheel-axis
+  void ProcessMouseScroll(GLfloat yoffset);
   
-  //perspective projection using internal state
-  glm::mat4 perspective();
-  
-  //set the state for the projection
-  glm::mat4 perspective(GLfloat fov_radians, GLfloat aspect, GLfloat zNear, GLfloat zFar);
-  
-  //pass the view and projection matrices to a shader
-  void setViewAndProjection(Shader shader);
-  
-//  glm::mat4 getView() { return view; };
-//  glm::vec3 getEye() { return eye; }
-//  glm::vec3 getTarget() { return target; };
-//  glm::vec3 getUp() { return up; };
+private:
+  // Calculates the front vector from the Camera's (updated) Eular Angles
+  void updateCameraVectors();
 };
 
 #endif /* Camera_hpp */
