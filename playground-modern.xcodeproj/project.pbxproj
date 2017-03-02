@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		513D61571E67EBD300576470 /* skybox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 513D61561E67EBD300576470 /* skybox.cpp */; };
 		513D615B1E67F43200576470 /* skybox_vertexshader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 513D61591E67F0F100576470 /* skybox_vertexshader.glsl */; };
 		513D615C1E67F43400576470 /* skybox_fragmentshader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 513D615A1E67F19700576470 /* skybox_fragmentshader.glsl */; };
 		513D615F1E68044B00576470 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 513D615D1E68044B00576470 /* Camera.cpp */; };
+		513D61601E6811AB00576470 /* skybox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 513D61561E67EBD300576470 /* skybox.cpp */; };
 		5189748D1E677A8B00AE5290 /* fragment_shaderStencil.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5189748C1E67793500AE5290 /* fragment_shaderStencil.glsl */; };
 		51C6CB871E5D816700225E1F /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CB851E5D816700225E1F /* Shader.cpp */; };
 		51C6CB8A1E5D86E100225E1F /* fragment_shader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AC81E5CF0F200210C78 /* fragment_shader.glsl */; };
@@ -347,7 +347,7 @@
 				51C6CBBA1E618C4F00225E1F /* GLTextureNode.cpp in Sources */,
 				51C6CBC71E62893700225E1F /* Texture.cpp in Sources */,
 				513D615F1E68044B00576470 /* Camera.cpp in Sources */,
-				513D61571E67EBD300576470 /* skybox.cpp in Sources */,
+				513D61601E6811AB00576470 /* skybox.cpp in Sources */,
 				51C6CBBF1E6272C600225E1F /* TextureMaterial.cpp in Sources */,
 				51C6CB871E5D816700225E1F /* Shader.cpp in Sources */,
 				51C6CBB41E61759B00225E1F /* Material.cpp in Sources */,

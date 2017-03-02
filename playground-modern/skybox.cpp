@@ -250,36 +250,17 @@ int main()
     glfwPollEvents();
     
     glClearColor(0.1, 0.3, 0.4, 1.0);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    
-		/* render skybox */
-    {
-      glDepthMask(GL_FALSE);
-      skyboxShader.use();
-      glm::mat4 view = glm::mat4( glm::mat3(camera.GetViewMatrix()) );
-      glm::mat4 projection = glm::perspective(glm::radians(45.0f), GLfloat(width)/GLfloat(height), 0.1f, 100.0f);
-      
-      GLint viewLoc = glGetUniformLocation(skyboxShader.program, "view");
-      GLint projectionLoc = glGetUniformLocation(skyboxShader.program, "projection");
-      
-      glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
-      glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
-      
-      GLuint skyboxUniformLoc = glGetUniformLocation(skyboxShader.program, "skybox");
-      glUniform1f(skyboxUniformLoc, 0);
-      
-      glBindVertexArray(VAO_SKY);
-      {
-        glBindTexture(GL_TEXTURE_CUBE_MAP, skyboxTexture);
-        glDrawArrays(GL_TRIANGLES, 0, (GLsizei)skyboxVertices.size()/3);
-      }
-      glBindVertexArray(0);
-      glDepthMask(GL_TRUE);
-  	}
-    /* render skybox end */
     
     /* render object */
     {
+      glDisable(GL_DEPTH_TEST);
+      glEnable(GL_STENCIL_TEST);
+      glStencilMask(0xFF);
+      glStencilFunc(GL_ALWAYS, 1, 0xFF);
+      glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
+      
+      glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+      
       shader.use();
       
       rotation += 1;
@@ -307,10 +288,42 @@ int main()
         glDrawArrays(GL_TRIANGLES, 0, 3);
       }
       glBindVertexArray(0);
-      /* render object end */
-      
-      glfwSwapBuffers(window);
     }
+    /* render object end */
+    
+		/* render skybox */
+    {
+      glDisable(GL_DEPTH_TEST);
+      glEnable(GL_STENCIL_TEST);
+      glStencilMask(0);
+      glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
+      glStencilOp(GL_KEEP, GL_KEEP, GL_ZERO);
+      glDepthMask(GL_FALSE);
+      
+      skyboxShader.use();
+      glm::mat4 view = glm::mat4( glm::mat3(camera.GetViewMatrix()) );
+      glm::mat4 projection = glm::perspective(glm::radians(45.0f), GLfloat(width)/GLfloat(height), 0.1f, 100.0f);
+      
+      GLint viewLoc = glGetUniformLocation(skyboxShader.program, "view");
+      GLint projectionLoc = glGetUniformLocation(skyboxShader.program, "projection");
+      
+      glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
+      glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
+      
+      GLuint skyboxUniformLoc = glGetUniformLocation(skyboxShader.program, "skybox");
+      glUniform1f(skyboxUniformLoc, 0);
+      
+      glBindVertexArray(VAO_SKY);
+      {
+        glBindTexture(GL_TEXTURE_CUBE_MAP, skyboxTexture);
+        glDrawArrays(GL_TRIANGLES, 0, (GLsizei)skyboxVertices.size()/3);
+      }
+      glBindVertexArray(0);
+      glDepthMask(GL_TRUE);
+  	}
+    /* render skybox end */
+    
+    glfwSwapBuffers(window);
   }
   
   glDeleteTextures(1, &skyboxTexture);
