@@ -298,7 +298,6 @@ int main()
       glStencilMask(0);
       glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
       glStencilOp(GL_KEEP, GL_KEEP, GL_ZERO);
-      glDepthMask(GL_FALSE);
       
       skyboxShader.use();
       glm::mat4 view = glm::mat4( glm::mat3(camera.GetViewMatrix()) );
