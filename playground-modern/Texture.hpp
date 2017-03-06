@@ -10,41 +10,26 @@
 #define Texture_hpp
 
 #include <GL/glew.h>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-#include <glm/glm.hpp>
 #include <SOIL/SOIL.h>
 #include <iostream>
-#include <vector>
+#include <assert.h>
 #include "Shader.hpp"
 
 class Texture {
-private:
-  
 public:
-  bool ready = false;
-  GLuint texture;
-  GLubyte* data = nullptr;
-  int width = 0, height = 0, channels = 0;
-  
-  Texture();
-  
-  Texture(GLubyte* data, int width, int height, int channels);
-  
+  /* methods */
+  Texture(){};
+  Texture(GLubyte *data, int width, int height, int channels);
   Texture(std::string imageFile);
   
-  Texture& operator = (Texture from);
+  void activate(Shader shader, GLenum textureUnit = 0);
   
-  Texture(const Texture& from);
+  /* members */
+  GLuint textureId;
+  int width = 0, height = 0, channels = 0;
   
-  void assign(GLubyte* data, int width, int height, int channels);
-  
-  ~Texture();
-  
-  void init();
-  
-  void activate(Shader shader, GLenum texture);
-  
+private:
+  void init(GLubyte *data);
 };
 
 #endif /* Texture_hpp */

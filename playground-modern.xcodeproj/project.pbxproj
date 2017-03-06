@@ -7,38 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		513D615B1E67F43200576470 /* skybox_vertexshader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 513D61591E67F0F100576470 /* skybox_vertexshader.glsl */; };
-		513D615C1E67F43400576470 /* skybox_fragmentshader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 513D615A1E67F19700576470 /* skybox_fragmentshader.glsl */; };
-		513D615F1E68044B00576470 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 513D615D1E68044B00576470 /* Camera.cpp */; };
-		513D61631E69377900576470 /* environmentmapping.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 513D61611E69377900576470 /* environmentmapping.cpp */; };
-		513D61661E6939F400576470 /* environmentmapping_vertexshader.glsl in Sources */ = {isa = PBXBuildFile; fileRef = 513D61641E6939F400576470 /* environmentmapping_vertexshader.glsl */; };
-		513D61671E693A9D00576470 /* environmentmapping_vertexshader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 513D61641E6939F400576470 /* environmentmapping_vertexshader.glsl */; };
-		513D616B1E69473B00576470 /* environ_vertexshader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 513D616A1E69473600576470 /* environ_vertexshader.glsl */; };
-		513D616D1E694AA800576470 /* environ_fragmentshader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 513D616C1E694AA300576470 /* environ_fragmentshader.glsl */; };
-		5189748D1E677A8B00AE5290 /* fragment_shaderStencil.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 5189748C1E67793500AE5290 /* fragment_shaderStencil.glsl */; };
 		51C6CB871E5D816700225E1F /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CB851E5D816700225E1F /* Shader.cpp */; };
-		51C6CB8A1E5D86E100225E1F /* fragment_shader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AC81E5CF0F200210C78 /* fragment_shader.glsl */; };
-		51C6CB8B1E5D86E300225E1F /* vertex_shader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AC71E5CEE8000210C78 /* vertex_shader.glsl */; };
-		51C6CBA41E60096100225E1F /* lighting_fragmentshader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51C6CBA01E60065D00225E1F /* lighting_fragmentshader.glsl */; };
-		51C6CBA61E600B2900225E1F /* GLNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CB9B1E5ED9AF00225E1F /* GLNode.cpp */; };
-		51C6CBAA1E60118000225E1F /* lighting_fragmentshader_objects.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51C6CBA91E60113000225E1F /* lighting_fragmentshader_objects.glsl */; };
-		51C6CBAC1E60125E00225E1F /* lighting_vertexshader.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51C6CBAB1E60121A00225E1F /* lighting_vertexshader.glsl */; };
-		51C6CBB41E61759B00225E1F /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBB31E61759B00225E1F /* Material.cpp */; };
-		51C6CBB71E617DC800225E1F /* Light.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBB51E617DC800225E1F /* Light.cpp */; };
-		51C6CBBA1E618C4F00225E1F /* GLTextureNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBB81E618C4F00225E1F /* GLTextureNode.cpp */; };
-		51C6CBBF1E6272C600225E1F /* TextureMaterial.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBBD1E6272C600225E1F /* TextureMaterial.cpp */; };
 		51C6CBC71E62893700225E1F /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBC61E62893700225E1F /* Texture.cpp */; };
-		51C6CBD51E62D26A00225E1F /* specular.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51C6CBD41E62D26200225E1F /* specular.jpg */; };
-		51C6CBD81E62D38C00225E1F /* wood_diffuse.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51C6CBD61E62D38200225E1F /* wood_diffuse.jpg */; };
-		51C6CBD91E62D38F00225E1F /* wood_spec.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51C6CBD71E62D38200225E1F /* wood_spec.jpg */; };
-		51F36AD91E5E1B1F00210C78 /* fragment_shaderTexture.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AD71E5E138000210C78 /* fragment_shaderTexture.glsl */; };
-		51F36ADA1E5E1B2100210C78 /* vertex_shaderTexture.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AD61E5E136A00210C78 /* vertex_shaderTexture.glsl */; };
-		51F36AE11E5E1FC000210C78 /* texture1.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AE01E5E1FB900210C78 /* texture1.jpg */; };
-		51F36AE31E5E20F200210C78 /* texture2.jpg in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AE21E5E20E500210C78 /* texture2.jpg */; };
-		51F36AE91E5E31BB00210C78 /* fragment_shaderTranslate.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AE71E5E31A700210C78 /* fragment_shaderTranslate.glsl */; };
-		51F36AEA1E5E31BE00210C78 /* vertex_shaderTranslate.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AE81E5E31A700210C78 /* vertex_shaderTranslate.glsl */; };
-		51F36AF01E5E4F4600210C78 /* fragment_shaderCamera.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AEE1E5E4C8B00210C78 /* fragment_shaderCamera.glsl */; };
-		51F36AF11E5E4F4900210C78 /* vertex_shaderCamera.glsl in CopyFiles */ = {isa = PBXBuildFile; fileRef = 51F36AEF1E5E4C8B00210C78 /* vertex_shaderCamera.glsl */; };
+		51CF98C71E6CE08300EBA6B2 /* ResourceManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51CF98C51E6CE08300EBA6B2 /* ResourceManager.cpp */; };
+		51CF98C91E6CE0A800EBA6B2 /* testResourceManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51CF98C81E6CE0A800EBA6B2 /* testResourceManager.cpp */; };
+		51CF98CA1E6CE63400EBA6B2 /* resources in CopyFiles */ = {isa = PBXBuildFile; fileRef = 513D61581E67EDD700576470 /* resources */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -48,28 +21,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 6;
 			files = (
-				513D616D1E694AA800576470 /* environ_fragmentshader.glsl in CopyFiles */,
-				513D616B1E69473B00576470 /* environ_vertexshader.glsl in CopyFiles */,
-				513D61671E693A9D00576470 /* environmentmapping_vertexshader.glsl in CopyFiles */,
-				513D615B1E67F43200576470 /* skybox_vertexshader.glsl in CopyFiles */,
-				513D615C1E67F43400576470 /* skybox_fragmentshader.glsl in CopyFiles */,
-				5189748D1E677A8B00AE5290 /* fragment_shaderStencil.glsl in CopyFiles */,
-				51F36AF01E5E4F4600210C78 /* fragment_shaderCamera.glsl in CopyFiles */,
-				51F36AEA1E5E31BE00210C78 /* vertex_shaderTranslate.glsl in CopyFiles */,
-				51F36AE91E5E31BB00210C78 /* fragment_shaderTranslate.glsl in CopyFiles */,
-				51C6CBAC1E60125E00225E1F /* lighting_vertexshader.glsl in CopyFiles */,
-				51F36AE11E5E1FC000210C78 /* texture1.jpg in CopyFiles */,
-				51F36AE31E5E20F200210C78 /* texture2.jpg in CopyFiles */,
-				51C6CBD51E62D26A00225E1F /* specular.jpg in CopyFiles */,
-				51C6CBD81E62D38C00225E1F /* wood_diffuse.jpg in CopyFiles */,
-				51C6CBD91E62D38F00225E1F /* wood_spec.jpg in CopyFiles */,
-				51C6CBAA1E60118000225E1F /* lighting_fragmentshader_objects.glsl in CopyFiles */,
-				51C6CBA41E60096100225E1F /* lighting_fragmentshader.glsl in CopyFiles */,
-				51C6CB8A1E5D86E100225E1F /* fragment_shader.glsl in CopyFiles */,
-				51C6CB8B1E5D86E300225E1F /* vertex_shader.glsl in CopyFiles */,
-				51F36AD91E5E1B1F00210C78 /* fragment_shaderTexture.glsl in CopyFiles */,
-				51F36AF11E5E4F4900210C78 /* vertex_shaderCamera.glsl in CopyFiles */,
-				51F36ADA1E5E1B2100210C78 /* vertex_shaderTexture.glsl in CopyFiles */,
+				51CF98CA1E6CE63400EBA6B2 /* resources in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,8 +49,8 @@
 		51C6CB7C1E5D6A1300225E1F /* multipleshaders.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = multipleshaders.cpp; path = "playground-modern/multipleshaders.cpp"; sourceTree = "<group>"; };
 		51C6CB7F1E5D79D600225E1F /* uniform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = uniform.cpp; path = "playground-modern/uniform.cpp"; sourceTree = "<group>"; };
 		51C6CB821E5D7D5A00225E1F /* coord+color.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "coord+color.cpp"; path = "playground-modern/coord+color.cpp"; sourceTree = "<group>"; };
-		51C6CB851E5D816700225E1F /* Shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shader.cpp; sourceTree = "<group>"; };
-		51C6CB861E5D816700225E1F /* Shader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Shader.hpp; sourceTree = "<group>"; };
+		51C6CB851E5D816700225E1F /* Shader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Shader.cpp; path = "playground-modern/Shader.cpp"; sourceTree = "<group>"; };
+		51C6CB861E5D816700225E1F /* Shader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Shader.hpp; path = "playground-modern/Shader.hpp"; sourceTree = "<group>"; };
 		51C6CB881E5D864200225E1F /* shaderTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = shaderTest.cpp; path = "playground-modern/shaderTest.cpp"; sourceTree = "<group>"; };
 		51C6CB8C1E5E9B4A00225E1F /* camerarevolve.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = camerarevolve.cpp; path = "playground-modern/camerarevolve.cpp"; sourceTree = "<group>"; };
 		51C6CB921E5EB50E00225E1F /* cameraTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = cameraTest.cpp; path = "playground-modern/cameraTest.cpp"; sourceTree = "<group>"; };
@@ -118,13 +70,16 @@
 		51C6CBBB1E618C5E00225E1F /* texturelighting.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = texturelighting.cpp; path = "playground-modern/texturelighting.cpp"; sourceTree = "<group>"; };
 		51C6CBBD1E6272C600225E1F /* TextureMaterial.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextureMaterial.cpp; sourceTree = "<group>"; };
 		51C6CBBE1E6272C600225E1F /* TextureMaterial.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextureMaterial.hpp; sourceTree = "<group>"; };
-		51C6CBC11E62733000225E1F /* Texture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Texture.hpp; sourceTree = "<group>"; };
-		51C6CBC61E62893700225E1F /* Texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Texture.cpp; sourceTree = "<group>"; };
+		51C6CBC11E62733000225E1F /* Texture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Texture.hpp; path = "playground-modern/Texture.hpp"; sourceTree = "<group>"; };
+		51C6CBC61E62893700225E1F /* Texture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Texture.cpp; path = "playground-modern/Texture.cpp"; sourceTree = "<group>"; };
 		51C6CBCC1E62B4FE00225E1F /* render.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = render.gif; sourceTree = "<group>"; };
 		51C6CBCD1E62C6E900225E1F /* lightcasters.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = lightcasters.cpp; path = "playground-modern/lightcasters.cpp"; sourceTree = "<group>"; };
 		51C6CBD41E62D26200225E1F /* specular.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = specular.jpg; path = "playground-modern/specular.jpg"; sourceTree = "<group>"; };
 		51C6CBD61E62D38200225E1F /* wood_diffuse.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = wood_diffuse.jpg; path = "playground-modern/wood_diffuse.jpg"; sourceTree = "<group>"; };
 		51C6CBD71E62D38200225E1F /* wood_spec.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = wood_spec.jpg; path = "playground-modern/wood_spec.jpg"; sourceTree = "<group>"; };
+		51CF98C51E6CE08300EBA6B2 /* ResourceManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ResourceManager.cpp; path = "playground-modern/ResourceManager.cpp"; sourceTree = "<group>"; };
+		51CF98C61E6CE08300EBA6B2 /* ResourceManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ResourceManager.hpp; path = "playground-modern/ResourceManager.hpp"; sourceTree = "<group>"; };
+		51CF98C81E6CE0A800EBA6B2 /* testResourceManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testResourceManager.cpp; sourceTree = "<group>"; };
 		51F36AC71E5CEE8000210C78 /* vertex_shader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vertex_shader.glsl; path = "playground-modern/vertex_shader.glsl"; sourceTree = "<group>"; };
 		51F36AC81E5CF0F200210C78 /* fragment_shader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fragment_shader.glsl; path = "playground-modern/fragment_shader.glsl"; sourceTree = "<group>"; };
 		51F36ACF1E5E0C5B00210C78 /* textureexample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = textureexample.cpp; path = "playground-modern/textureexample.cpp"; sourceTree = "<group>"; };
@@ -220,6 +175,7 @@
 		5192B5941E5C3C7200CC9A3B = {
 			isa = PBXGroup;
 			children = (
+				51CF98C41E6CE03F00EBA6B2 /* resource_manager */,
 				513D61581E67EDD700576470 /* resources */,
 				513D61681E6941F700576470 /* experiments */,
 				51C6CB841E5D811C00225E1F /* util */,
@@ -250,8 +206,6 @@
 			children = (
 				51C6CB9B1E5ED9AF00225E1F /* GLNode.cpp */,
 				51C6CB9C1E5ED9AF00225E1F /* GLNode.hpp */,
-				51C6CB851E5D816700225E1F /* Shader.cpp */,
-				51C6CB861E5D816700225E1F /* Shader.hpp */,
 				513D615D1E68044B00576470 /* Camera.cpp */,
 				513D615E1E68044B00576470 /* Camera.hpp */,
 				51C6CBB01E61700700225E1F /* Material.hpp */,
@@ -262,8 +216,6 @@
 				51C6CBB91E618C4F00225E1F /* GLTextureNode.hpp */,
 				51C6CBBD1E6272C600225E1F /* TextureMaterial.cpp */,
 				51C6CBBE1E6272C600225E1F /* TextureMaterial.hpp */,
-				51C6CBC61E62893700225E1F /* Texture.cpp */,
-				51C6CBC11E62733000225E1F /* Texture.hpp */,
 			);
 			name = util;
 			path = "playground-modern";
@@ -288,6 +240,20 @@
 				513D61641E6939F400576470 /* environmentmapping_vertexshader.glsl */,
 			);
 			name = shaders;
+			sourceTree = "<group>";
+		};
+		51CF98C41E6CE03F00EBA6B2 /* resource_manager */ = {
+			isa = PBXGroup;
+			children = (
+				51C6CB851E5D816700225E1F /* Shader.cpp */,
+				51C6CB861E5D816700225E1F /* Shader.hpp */,
+				51C6CBC61E62893700225E1F /* Texture.cpp */,
+				51C6CBC11E62733000225E1F /* Texture.hpp */,
+				51CF98C51E6CE08300EBA6B2 /* ResourceManager.cpp */,
+				51CF98C61E6CE08300EBA6B2 /* ResourceManager.hpp */,
+				51CF98C81E6CE0A800EBA6B2 /* testResourceManager.cpp */,
+			);
+			name = resource_manager;
 			sourceTree = "<group>";
 		};
 		51F36AF31E64CC5100210C78 /* opengl-tutorial.com */ = {
@@ -373,16 +339,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51C6CBB71E617DC800225E1F /* Light.cpp in Sources */,
-				51C6CBA61E600B2900225E1F /* GLNode.cpp in Sources */,
-				513D61661E6939F400576470 /* environmentmapping_vertexshader.glsl in Sources */,
-				51C6CBBA1E618C4F00225E1F /* GLTextureNode.cpp in Sources */,
-				513D61631E69377900576470 /* environmentmapping.cpp in Sources */,
 				51C6CBC71E62893700225E1F /* Texture.cpp in Sources */,
-				513D615F1E68044B00576470 /* Camera.cpp in Sources */,
-				51C6CBBF1E6272C600225E1F /* TextureMaterial.cpp in Sources */,
+				51CF98C71E6CE08300EBA6B2 /* ResourceManager.cpp in Sources */,
 				51C6CB871E5D816700225E1F /* Shader.cpp in Sources */,
-				51C6CBB41E61759B00225E1F /* Material.cpp in Sources */,
+				51CF98C91E6CE0A800EBA6B2 /* testResourceManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,9 +16,24 @@
 
 class Shader {
 public:
-  GLuint program;
+  /* methods */
+  Shader(){};
+  
+  // create shader using file paths
   Shader(std::string vertexShaderPath, std::string fragmentShaderPath);
-  void use();
+  
+  // generate shader using sources
+  static Shader ShaderFromSources(std::string vertexShaderSource, std::string fragmentShaderSource);
+  
+  // use shader
+  const Shader& use();
+  
+  /* members */
+  GLuint program;
+  
+private:
+  // helper method for creating shader
+  static GLuint createShaderProgram(std::string vertexShaderSource, std::string fragmentShaderSource);
 };
 
 #endif /* Shader_hpp */
