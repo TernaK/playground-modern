@@ -30,7 +30,7 @@ public:
   const Shader& use();
   
   /* members */
-  GLuint program;
+  GLuint program = 0;
   
 private:
   // helper method for creating shader

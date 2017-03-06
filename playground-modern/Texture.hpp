@@ -26,7 +26,7 @@ public:
   void activate(Shader shader, GLenum textureUnit = 0);
   
   /* members */
-  GLuint textureId;
+  GLuint textureId = 0;
   int width = 0, height = 0, channels = 0;
   
 private:
