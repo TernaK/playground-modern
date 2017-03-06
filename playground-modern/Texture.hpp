@@ -15,7 +15,8 @@
 #include <assert.h>
 #include "Shader.hpp"
 
-class Texture {
+class Texture
+{
 public:
   /* methods */
   Texture(){};

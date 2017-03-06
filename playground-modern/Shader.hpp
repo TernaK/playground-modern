@@ -14,7 +14,8 @@
 #include <iostream>
 #include <sstream>
 
-class Shader {
+class Shader
+{
 public:
   /* methods */
   Shader(){};

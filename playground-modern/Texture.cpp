@@ -43,7 +43,8 @@ void Texture::init(GLubyte *data) {
   glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-void Texture::activate(Shader shader, GLenum textureUnit) {
+void Texture::activate(Shader shader, GLenum textureUnit)
+{
   glActiveTexture(GL_TEXTURE0+textureUnit);
   glBindTexture(GL_TEXTURE_2D, textureId);
 }

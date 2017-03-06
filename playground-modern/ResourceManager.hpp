@@ -10,5 +10,11 @@
 #define ResourceManager_hpp
 
 #include "Shader.hpp"
+#include "Texture.hpp"
+
+class ResourceManager
+{
+  
+};
 
 #endif /* ResourceManager_hpp */
