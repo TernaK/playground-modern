@@ -9,10 +9,12 @@
 #ifndef Shader_hpp
 #define Shader_hpp
 
-#include <GL/glew.h>
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <GL/glew.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 class Shader
 {
@@ -28,6 +30,14 @@ public:
   
   // use shader
   const Shader& use();
+  
+  /* for setting uniforms */
+  void setFloat(std::string name, GLfloat value, GLboolean useShader = false);
+  void setInteger(std::string name, GLint value, GLboolean useShader = false);
+  void setVector2f(std::string name, const glm::vec2& value, GLboolean useShader = false);
+  void setVector3f(std::string name, const glm::vec3 &value, GLboolean useShader = false);
+  void setVector4f(std::string name, const glm::vec4 &value, GLboolean useShader = false);
+  void setMatrix4(std::string name, const glm::mat4 &matrix, GLboolean useShader = false);
   
   /* members */
   GLuint program = 0;

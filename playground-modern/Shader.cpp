@@ -100,3 +100,42 @@ const Shader& Shader::use(){
   glUseProgram(this->program);
   return *this;
 }
+
+
+void Shader::setFloat(std::string name, GLfloat value, GLboolean useShader)
+{
+  if(useShader) this->use();
+  glUniform1f(glGetUniformLocation(this->program, name.c_str()), value);
+}
+
+void Shader::setInteger(std::string name, GLint value, GLboolean useShader)
+{
+  if(useShader) this->use();
+  GLint loc = glGetUniformLocation(this->program, name.c_str());
+  glUniform1i(loc, value);
+}
+
+void Shader::setVector2f(std::string name, const glm::vec2 &value, GLboolean useShader)
+{
+  if(useShader) this->use();
+  glUniform2fv(glGetUniformLocation(this->program, name.c_str()), 1, value_ptr(value));
+}
+
+void Shader::setVector3f(std::string name, const glm::vec3 &value, GLboolean useShader)
+{
+  if(useShader) this->use();
+  glUniform3fv(glGetUniformLocation(this->program, name.c_str()), 1, value_ptr(value));
+}
+
+void Shader::setVector4f(std::string name, const glm::vec4 &value, GLboolean useShader)
+{
+  if(useShader) this->use();
+  glUniform4fv(glGetUniformLocation(this->program, name.c_str()), 1, value_ptr(value));
+}
+
+void Shader::setMatrix4(std::string name, const glm::mat4 &matrix, GLboolean useShader)
+{
+  if(useShader) this->use();
+  GLint loc = glGetUniformLocation(this->program, name.c_str());
+  glUniformMatrix4fv(loc, 1, GL_FALSE, value_ptr(matrix));
+}

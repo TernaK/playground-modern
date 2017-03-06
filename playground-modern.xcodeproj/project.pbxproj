@@ -10,8 +10,8 @@
 		51C6CB871E5D816700225E1F /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CB851E5D816700225E1F /* Shader.cpp */; };
 		51C6CBC71E62893700225E1F /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBC61E62893700225E1F /* Texture.cpp */; };
 		51CF98C71E6CE08300EBA6B2 /* ResourceManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51CF98C51E6CE08300EBA6B2 /* ResourceManager.cpp */; };
-		51CF98C91E6CE0A800EBA6B2 /* ResourceManagerTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51CF98C81E6CE0A800EBA6B2 /* ResourceManagerTest.cpp */; };
 		51CF98CA1E6CE63400EBA6B2 /* resources in CopyFiles */ = {isa = PBXBuildFile; fileRef = 513D61581E67EDD700576470 /* resources */; };
+		51CF98D11E6D023C00EBA6B2 /* SimpleResourceManagerApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51CF98D01E6D023C00EBA6B2 /* SimpleResourceManagerApp.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -79,7 +79,8 @@
 		51C6CBD71E62D38200225E1F /* wood_spec.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = wood_spec.jpg; path = "playground-modern/wood_spec.jpg"; sourceTree = "<group>"; };
 		51CF98C51E6CE08300EBA6B2 /* ResourceManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ResourceManager.cpp; path = "playground-modern/ResourceManager.cpp"; sourceTree = "<group>"; };
 		51CF98C61E6CE08300EBA6B2 /* ResourceManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ResourceManager.hpp; path = "playground-modern/ResourceManager.hpp"; sourceTree = "<group>"; };
-		51CF98C81E6CE0A800EBA6B2 /* ResourceManagerTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ResourceManagerTest.cpp; sourceTree = "<group>"; };
+		51CF98D01E6D023C00EBA6B2 /* SimpleResourceManagerApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SimpleResourceManagerApp.cpp; path = "playground-modern/SimpleResourceManagerApp.cpp"; sourceTree = "<group>"; };
+		51CF98D21E6D025900EBA6B2 /* ResourceManagerTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ResourceManagerTest.cpp; path = "playground-modern/ResourceManagerTest.cpp"; sourceTree = "<group>"; };
 		51F36AC71E5CEE8000210C78 /* vertex_shader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vertex_shader.glsl; path = "playground-modern/vertex_shader.glsl"; sourceTree = "<group>"; };
 		51F36AC81E5CF0F200210C78 /* fragment_shader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fragment_shader.glsl; path = "playground-modern/fragment_shader.glsl"; sourceTree = "<group>"; };
 		51F36ACF1E5E0C5B00210C78 /* textureexample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = textureexample.cpp; path = "playground-modern/textureexample.cpp"; sourceTree = "<group>"; };
@@ -245,6 +246,7 @@
 		51CF98C41E6CE03F00EBA6B2 /* resource_manager */ = {
 			isa = PBXGroup;
 			children = (
+				51CF98CF1E6D021E00EBA6B2 /* applications */,
 				51CF98CB1E6CF54000EBA6B2 /* unittests */,
 				51C6CB851E5D816700225E1F /* Shader.cpp */,
 				51C6CB861E5D816700225E1F /* Shader.hpp */,
@@ -259,9 +261,17 @@
 		51CF98CB1E6CF54000EBA6B2 /* unittests */ = {
 			isa = PBXGroup;
 			children = (
-				51CF98C81E6CE0A800EBA6B2 /* ResourceManagerTest.cpp */,
+				51CF98D21E6D025900EBA6B2 /* ResourceManagerTest.cpp */,
 			);
 			name = unittests;
+			sourceTree = "<group>";
+		};
+		51CF98CF1E6D021E00EBA6B2 /* applications */ = {
+			isa = PBXGroup;
+			children = (
+				51CF98D01E6D023C00EBA6B2 /* SimpleResourceManagerApp.cpp */,
+			);
+			name = applications;
 			sourceTree = "<group>";
 		};
 		51F36AF31E64CC5100210C78 /* opengl-tutorial.com */ = {
@@ -350,7 +360,7 @@
 				51C6CBC71E62893700225E1F /* Texture.cpp in Sources */,
 				51CF98C71E6CE08300EBA6B2 /* ResourceManager.cpp in Sources */,
 				51C6CB871E5D816700225E1F /* Shader.cpp in Sources */,
-				51CF98C91E6CE0A800EBA6B2 /* ResourceManagerTest.cpp in Sources */,
+				51CF98D11E6D023C00EBA6B2 /* SimpleResourceManagerApp.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
