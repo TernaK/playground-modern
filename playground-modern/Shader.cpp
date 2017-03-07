@@ -29,7 +29,7 @@ Shader::Shader(std::string vertexShaderPath, std::string fragmentShaderPath)
   // fragment shader
   ifs = ifstream(fragmentShaderPath);
   if(!ifs.is_open()){
-    puts("ERROR::SHADER::could not find vertex shader");
+    puts("ERROR::SHADER::could not find fragment shader");
     exit(-1);
   }
   ss.str("");//clear string
@@ -106,7 +106,8 @@ const Shader& Shader::use() const
 void Shader::setFloat(std::string name, GLfloat value, GLboolean useShader) const
 {
   if(useShader) this->use();
-  glUniform1f(glGetUniformLocation(this->program, name.c_str()), value);
+  GLint loc = glGetUniformLocation(this->program, name.c_str());
+  glUniform1f(loc, value);
 }
 
 void Shader::setInteger(std::string name, GLint value, GLboolean useShader) const
@@ -119,19 +120,22 @@ void Shader::setInteger(std::string name, GLint value, GLboolean useShader) cons
 void Shader::setVector2f(std::string name, const glm::vec2 &value, GLboolean useShader) const
 {
   if(useShader) this->use();
-  glUniform2fv(glGetUniformLocation(this->program, name.c_str()), 1, value_ptr(value));
+  GLint loc = glGetUniformLocation(this->program, name.c_str());
+  glUniform2fv(loc, 1, value_ptr(value));
 }
 
 void Shader::setVector3f(std::string name, const glm::vec3 &value, GLboolean useShader) const
 {
   if(useShader) this->use();
-  glUniform3fv(glGetUniformLocation(this->program, name.c_str()), 1, value_ptr(value));
+  GLint loc = glGetUniformLocation(this->program, name.c_str());
+  glUniform3fv(loc, 1, value_ptr(value));
 }
 
 void Shader::setVector4f(std::string name, const glm::vec4 &value, GLboolean useShader) const
 {
   if(useShader) this->use();
-  glUniform4fv(glGetUniformLocation(this->program, name.c_str()), 1, value_ptr(value));
+  GLint loc = glGetUniformLocation(this->program, name.c_str());
+  glUniform4fv(loc, 1, value_ptr(value));
 }
 
 void Shader::setMatrix4(std::string name, const glm::mat4 &matrix, GLboolean useShader) const

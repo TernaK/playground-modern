@@ -11,11 +11,10 @@ struct Material
 in vec3 f_Normal;
 in vec3 f_Position;
 
-uniform Material material;/* set by Material */
 uniform vec3 lightColor;/* set by object or otherwise */
 uniform vec3 lightPosition;/* set by object or otherwise */
-
 uniform vec3 eyePosition;
+uniform Material material;/* set by Material */
 
 out vec4 color;
 
@@ -31,10 +30,10 @@ void main()
   vec3 diffuse = lightColor * (diffuseStrength * material.diffuse);
   
   /* specular */
-  vec3 incidentLight = normalize(f_Position - eyePosition);
-  vec3 reflection = reflect(incidentLight, normal);
-  float specularStrength = pow(max(dot(reflection, viewDir), 0.0), material.shininess);
+  vec3 toEye = normalize(eyePosition - f_Position);
+  vec3 reflection = reflect(-lightDirection, normal);
+  float specularStrength = pow(max(dot(reflection, toEye), 0.0), material.shininess);
   vec3 specular = lightColor * (specularStrength * material.specular);
 
-  color = vec4((ambient + diffuse + specular;), 1.0f);
+  color = vec4((ambient + diffuse + specular), 1.0f);
 }

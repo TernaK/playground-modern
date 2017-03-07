@@ -1,5 +1,5 @@
 //
-//  SimpleResourceManagerApp.cpp
+//  ResourceManagerApp.cpp
 //  playground-modern
 //
 //  Created by Terna Kpamber on 3/5/17.
@@ -13,13 +13,11 @@
 #include <vector>
 #include <glm/gtc/matrix_transform.hpp>
 
-GLFWwindow* glSetup(void);
-void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mode);
 
 int main(int argc, char * argv[])
 {
   
-  GLFWwindow *window = glGetWindow();
+  window = glGetWindow();
   
   //callback
   glfwSetKeyCallback(window, keyCallback);

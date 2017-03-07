@@ -20,7 +20,7 @@ public:
   Material(glm::vec3 ambient,
            glm::vec3 diffuse,
            glm::vec3 specular, GLfloat shininess);
-  void setInShaderWithName(const Shader& shader, std::string uniformName = "material",
+  void setInShader(const Shader& shader, std::string uniformName = "material",
                            bool useShader = false);
   
   /* members */

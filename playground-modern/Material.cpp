@@ -20,19 +20,12 @@ Material::Material(glm::vec3 ambient,
   this->shininess = shininess;
 };
 
-void Material::setInShaderWithName(const Shader& shader, std::string uniformName,
+void Material::setInShader(const Shader& shader, std::string uniformName,
                          bool useShader)
 {
-  if(useShader) shader.use();
-  
-  GLint loc = glGetUniformLocation(shader.program, uniformName.c_str());
-  if(loc < 0)
-    cerr << "ERROR::MATERIAL:: could not set material in shader: " << uniformName << endl;
-  
-  shader.setVector3f(uniformName+".ambient", this->ambient);
-  shader.setVector3f(uniformName+".diffuse", this->diffuse);
-  shader.setVector3f(uniformName+".specular", this->specular);
-  shader.setFloat(uniformName+".shininess", this->shininess);
-  
+  shader.setVector3f(uniformName+".ambient", this->ambient, useShader);
+  shader.setVector3f(uniformName+".diffuse", this->diffuse, useShader);
+  shader.setVector3f(uniformName+".specular", this->specular, useShader);
+  shader.setFloat(uniformName+".shininess", this->shininess, useShader);
 }
 #include "Shader.hpp"

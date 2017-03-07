@@ -7,12 +7,12 @@ out vec3 f_Position;
 out vec3 f_Normal;
 
 uniform mat4 model;
-uniform mat3 normalTransform;
+uniform mat4 normalTransform;
 uniform mat4 view;
 uniform mat4 projection;
 
 void main() {
   f_Position = (model * vec4(position, 1.0)).xyz;
   gl_Position = projection * view * vec4(f_Position, 1.0);
-  f_Normal = normalize(normalTransform * normal);
+  f_Normal = normalize(mat3(normalTransform) * normal);
 }
