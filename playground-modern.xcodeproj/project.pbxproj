@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		516B56971E6E73A3008D89C2 /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBB31E61759B00225E1F /* Material.cpp */; };
-		518974E31E6F3D3600AE5290 /* MaterialApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 516B569F1E6E9083008D89C2 /* MaterialApp.cpp */; };
+		518974E41E6F654400AE5290 /* GLNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CB9B1E5ED9AF00225E1F /* GLNode.cpp */; };
 		51C6CB871E5D816700225E1F /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CB851E5D816700225E1F /* Shader.cpp */; };
 		51C6CBC71E62893700225E1F /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBC61E62893700225E1F /* Texture.cpp */; };
 		51CF98C71E6CE08300EBA6B2 /* ResourceManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51CF98C51E6CE08300EBA6B2 /* ResourceManager.cpp */; };
 		51CF98CA1E6CE63400EBA6B2 /* resources in CopyFiles */ = {isa = PBXBuildFile; fileRef = 513D61581E67EDD700576470 /* resources */; };
+		51F07BE41E6F6BB000CE66C7 /* Material+GLNodeApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51F07BE31E6F6BB000CE66C7 /* Material+GLNodeApp.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,8 +58,8 @@
 		51C6CB881E5D864200225E1F /* shaderTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = shaderTest.cpp; path = "playground-modern/shaderTest.cpp"; sourceTree = "<group>"; };
 		51C6CB8C1E5E9B4A00225E1F /* camerarevolve.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = camerarevolve.cpp; path = "playground-modern/camerarevolve.cpp"; sourceTree = "<group>"; };
 		51C6CB921E5EB50E00225E1F /* cameraTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = cameraTest.cpp; path = "playground-modern/cameraTest.cpp"; sourceTree = "<group>"; };
-		51C6CB9B1E5ED9AF00225E1F /* GLNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLNode.cpp; sourceTree = "<group>"; };
-		51C6CB9C1E5ED9AF00225E1F /* GLNode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GLNode.hpp; sourceTree = "<group>"; };
+		51C6CB9B1E5ED9AF00225E1F /* GLNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GLNode.cpp; path = "playground-modern/GLNode.cpp"; sourceTree = "<group>"; };
+		51C6CB9C1E5ED9AF00225E1F /* GLNode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = GLNode.hpp; path = "playground-modern/GLNode.hpp"; sourceTree = "<group>"; };
 		51C6CB9D1E5ED9AF00225E1F /* objectTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = objectTest.cpp; path = "playground-modern/objectTest.cpp"; sourceTree = "<group>"; };
 		51C6CBA01E60065D00225E1F /* lighting_fragmentshader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lighting_fragmentshader.glsl; path = "playground-modern/lighting_fragmentshader.glsl"; sourceTree = "<group>"; };
 		51C6CBA21E6006FD00225E1F /* lighting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = lighting.cpp; path = "playground-modern/lighting.cpp"; sourceTree = "<group>"; };
@@ -84,6 +85,7 @@
 		51CF98C61E6CE08300EBA6B2 /* ResourceManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ResourceManager.hpp; path = "playground-modern/ResourceManager.hpp"; sourceTree = "<group>"; };
 		51CF98D01E6D023C00EBA6B2 /* ResourceManagerApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ResourceManagerApp.cpp; path = "playground-modern/ResourceManagerApp.cpp"; sourceTree = "<group>"; };
 		51CF98D21E6D025900EBA6B2 /* ResourceManagerTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ResourceManagerTest.cpp; path = "playground-modern/ResourceManagerTest.cpp"; sourceTree = "<group>"; };
+		51F07BE31E6F6BB000CE66C7 /* Material+GLNodeApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "Material+GLNodeApp.cpp"; path = "playground-modern/Material+GLNodeApp.cpp"; sourceTree = "<group>"; };
 		51F36AC71E5CEE8000210C78 /* vertex_shader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = vertex_shader.glsl; path = "playground-modern/vertex_shader.glsl"; sourceTree = "<group>"; };
 		51F36AC81E5CF0F200210C78 /* fragment_shader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fragment_shader.glsl; path = "playground-modern/fragment_shader.glsl"; sourceTree = "<group>"; };
 		51F36ACF1E5E0C5B00210C78 /* textureexample.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = textureexample.cpp; path = "playground-modern/textureexample.cpp"; sourceTree = "<group>"; };
@@ -208,8 +210,6 @@
 		51C6CB841E5D811C00225E1F /* util */ = {
 			isa = PBXGroup;
 			children = (
-				51C6CB9B1E5ED9AF00225E1F /* GLNode.cpp */,
-				51C6CB9C1E5ED9AF00225E1F /* GLNode.hpp */,
 				513D615D1E68044B00576470 /* Camera.cpp */,
 				513D615E1E68044B00576470 /* Camera.hpp */,
 				51C6CBB51E617DC800225E1F /* Light.cpp */,
@@ -255,6 +255,8 @@
 				51C6CBC11E62733000225E1F /* Texture.hpp */,
 				51C6CBB31E61759B00225E1F /* Material.cpp */,
 				51C6CBB01E61700700225E1F /* Material.hpp */,
+				51C6CB9B1E5ED9AF00225E1F /* GLNode.cpp */,
+				51C6CB9C1E5ED9AF00225E1F /* GLNode.hpp */,
 				51CF98C51E6CE08300EBA6B2 /* ResourceManager.cpp */,
 				51CF98C61E6CE08300EBA6B2 /* ResourceManager.hpp */,
 			);
@@ -275,6 +277,7 @@
 			children = (
 				51CF98D01E6D023C00EBA6B2 /* ResourceManagerApp.cpp */,
 				516B569F1E6E9083008D89C2 /* MaterialApp.cpp */,
+				51F07BE31E6F6BB000CE66C7 /* Material+GLNodeApp.cpp */,
 			);
 			name = applications;
 			sourceTree = "<group>";
@@ -362,11 +365,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51F07BE41E6F6BB000CE66C7 /* Material+GLNodeApp.cpp in Sources */,
 				51C6CBC71E62893700225E1F /* Texture.cpp in Sources */,
 				51CF98C71E6CE08300EBA6B2 /* ResourceManager.cpp in Sources */,
+				518974E41E6F654400AE5290 /* GLNode.cpp in Sources */,
 				51C6CB871E5D816700225E1F /* Shader.cpp in Sources */,
 				516B56971E6E73A3008D89C2 /* Material.cpp in Sources */,
-				518974E31E6F3D3600AE5290 /* MaterialApp.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
