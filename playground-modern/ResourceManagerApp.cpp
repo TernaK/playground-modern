@@ -13,7 +13,6 @@
 #include <vector>
 #include <glm/gtc/matrix_transform.hpp>
 
-
 int main(int argc, char * argv[])
 {
   
