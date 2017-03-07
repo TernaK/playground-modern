@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		516B56971E6E73A3008D89C2 /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBB31E61759B00225E1F /* Material.cpp */; };
+		516B569E1E6E8F8E008D89C2 /* SimpleResourceManagerApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51CF98D01E6D023C00EBA6B2 /* SimpleResourceManagerApp.cpp */; };
 		51C6CB871E5D816700225E1F /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CB851E5D816700225E1F /* Shader.cpp */; };
 		51C6CBC71E62893700225E1F /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBC61E62893700225E1F /* Texture.cpp */; };
 		51CF98C71E6CE08300EBA6B2 /* ResourceManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51CF98C51E6CE08300EBA6B2 /* ResourceManager.cpp */; };
 		51CF98CA1E6CE63400EBA6B2 /* resources in CopyFiles */ = {isa = PBXBuildFile; fileRef = 513D61581E67EDD700576470 /* resources */; };
-		51CF98D11E6D023C00EBA6B2 /* SimpleResourceManagerApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51CF98D01E6D023C00EBA6B2 /* SimpleResourceManagerApp.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,6 +43,7 @@
 		513D61641E6939F400576470 /* environmentmapping_vertexshader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = environmentmapping_vertexshader.glsl; path = "playground-modern/environmentmapping_vertexshader.glsl"; sourceTree = "<group>"; };
 		513D616A1E69473600576470 /* environ_vertexshader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = environ_vertexshader.glsl; path = "playground-modern/environ_vertexshader.glsl"; sourceTree = "<group>"; };
 		513D616C1E694AA300576470 /* environ_fragmentshader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = environ_fragmentshader.glsl; path = "playground-modern/environ_fragmentshader.glsl"; sourceTree = "<group>"; };
+		516B569B1E6E8B87008D89C2 /* AppTestUtility.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = AppTestUtility.hpp; path = "playground-modern/AppTestUtility.hpp"; sourceTree = "<group>"; };
 		5189748A1E6771FE00AE5290 /* stenciloutline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = stenciloutline.cpp; path = "playground-modern/stenciloutline.cpp"; sourceTree = "<group>"; };
 		5189748C1E67793500AE5290 /* fragment_shaderStencil.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fragment_shaderStencil.glsl; path = "playground-modern/fragment_shaderStencil.glsl"; sourceTree = "<group>"; };
 		5192B59D1E5C3C7200CC9A3B /* playground-modern */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "playground-modern"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -263,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				51CF98D21E6D025900EBA6B2 /* ResourceManagerTest.cpp */,
+				516B569B1E6E8B87008D89C2 /* AppTestUtility.hpp */,
 			);
 			name = unittests;
 			sourceTree = "<group>";
@@ -358,11 +360,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				516B569E1E6E8F8E008D89C2 /* SimpleResourceManagerApp.cpp in Sources */,
 				51C6CBC71E62893700225E1F /* Texture.cpp in Sources */,
 				51CF98C71E6CE08300EBA6B2 /* ResourceManager.cpp in Sources */,
 				51C6CB871E5D816700225E1F /* Shader.cpp in Sources */,
 				516B56971E6E73A3008D89C2 /* Material.cpp in Sources */,
-				51CF98D11E6D023C00EBA6B2 /* SimpleResourceManagerApp.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

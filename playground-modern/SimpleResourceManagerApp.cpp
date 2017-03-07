@@ -9,11 +9,9 @@
 #include "ResourceManager.hpp"
 #include "Texture.hpp"
 #include "Shader.hpp"
-#include <GL/glew.h>
-#include <GLFW/glfw3.h>
+#include "AppTestUtility.hpp"
 #include <vector>
 #include <glm/gtc/matrix_transform.hpp>
-using namespace std;
 
 GLFWwindow* glSetup(void);
 void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mode);
@@ -21,7 +19,7 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
 int main(int argc, char * argv[])
 {
   
-  GLFWwindow *window = glSetup();
+  GLFWwindow *window = glGetWindow();
   
   //callback
   glfwSetKeyCallback(window, keyCallback);
@@ -106,36 +104,6 @@ int main(int argc, char * argv[])
   
   glfwTerminate();
 }
-
-GLFWwindow* glSetup()
-{
-  //glfw
-  glfwInit();
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-  glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-  glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
-  glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-  
-  GLFWwindow *window = glfwCreateWindow(640, 480, "hello modern opengl", nullptr, nullptr);
-  if(window == nullptr){
-    puts("failed to create glfw window");
-    glfwTerminate();
-    exit(-1);
-  }
-  glfwMakeContextCurrent(window);
-  
-  //glew
-  glewExperimental = GL_TRUE;
-  if(glewInit() != GLEW_OK){
-    puts("failed to create init glew");
-    glfwTerminate();
-    exit(-1);
-  }
-  
-  return window;
-}
-
 
 void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
