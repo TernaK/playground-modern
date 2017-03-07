@@ -17,7 +17,7 @@
 int main(int argc, char * argv[])
 {
   
-  window = glGetWindow();
+  GLFWwindow *window = glGetWindow();
   
   //callback
   glfwSetKeyCallback(window, keyCallback);

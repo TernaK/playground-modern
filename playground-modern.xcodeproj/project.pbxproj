@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		516B56971E6E73A3008D89C2 /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBB31E61759B00225E1F /* Material.cpp */; };
-		518974DF1E6F3BC200AE5290 /* ResourceManagerTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51CF98D21E6D025900EBA6B2 /* ResourceManagerTest.cpp */; };
+		518974E31E6F3D3600AE5290 /* MaterialApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 516B569F1E6E9083008D89C2 /* MaterialApp.cpp */; };
 		51C6CB871E5D816700225E1F /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CB851E5D816700225E1F /* Shader.cpp */; };
 		51C6CBC71E62893700225E1F /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBC61E62893700225E1F /* Texture.cpp */; };
 		51CF98C71E6CE08300EBA6B2 /* ResourceManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51CF98C51E6CE08300EBA6B2 /* ResourceManager.cpp */; };
@@ -362,11 +362,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				518974DF1E6F3BC200AE5290 /* ResourceManagerTest.cpp in Sources */,
 				51C6CBC71E62893700225E1F /* Texture.cpp in Sources */,
 				51CF98C71E6CE08300EBA6B2 /* ResourceManager.cpp in Sources */,
 				51C6CB871E5D816700225E1F /* Shader.cpp in Sources */,
 				516B56971E6E73A3008D89C2 /* Material.cpp in Sources */,
+				518974E31E6F3D3600AE5290 /* MaterialApp.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
