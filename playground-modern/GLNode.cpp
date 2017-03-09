@@ -44,7 +44,7 @@ GLNode::~GLNode()
 void GLNode::init(const std::vector<GLfloat>& vertices, const std::vector<GLfloat>& normals)
 {
   // set number of primitives for draw call
-  this->numPrimitives = GLsizei(vertices.size() / 3);
+  this->numTriangles = GLsizei(vertices.size() / 3);
   
   //  generate buffers
   glGenVertexArrays(1, &this->VAO);
@@ -72,14 +72,10 @@ void GLNode::init(const std::vector<GLfloat>& vertices, const std::vector<GLfloa
   glBindVertexArray(0);
 }
 
-void GLNode::setUniformsInShader(const Shader& shader)
+void GLNode::setUniformsInShader(const Shader& shader, const glm::mat4& model)
 {
   //model
-  glm::mat4 model = glm::translate(glm::mat4(1.0f), position);
-  model = glm::rotate(model, rotation.x, glm::vec3(1.0f, 0.0f, 0.0f));
-  model = glm::rotate(model, rotation.y, glm::vec3(0.0f, 1.0f, 0.0f));
-  model = glm::rotate(model, rotation.z, glm::vec3(0.0f, 0.0f, 1.0f));
-  model = glm::scale(model, scale);
+//  glm::mat4 model = parentModel * computeModel();
   shader.setMatrix4("model", model);
   
   //normal transform
@@ -101,13 +97,32 @@ void GLNode::setUniformsInShader(const Shader& shader)
 //  glUniform3fv(lightPositionLoc, 1, glm::value_ptr(light->position));
 }
 
-void GLNode::draw(const Shader& shader)
+glm::mat4 GLNode::computeModel(const glm::mat4& parentModel)
 {
-  this->setUniformsInShader(shader);
+  glm::mat4 model = glm::translate(parentModel, position);
+  model = glm::rotate(model, rotation.x, glm::vec3(1.0f, 0.0f, 0.0f));
+  model = glm::rotate(model, rotation.y, glm::vec3(0.0f, 1.0f, 0.0f));
+  model = glm::rotate(model, rotation.z, glm::vec3(0.0f, 0.0f, 1.0f));
+  model = glm::scale(model, scale);
+  return model;
+}
+
+void GLNode::draw(const Shader& shader, glm::mat4 parentModel)
+{
+  glm::mat4 model = computeModel(parentModel);
   
-  glBindVertexArray(VAO);
+  if(this->numTriangles > 0)
   {
-    glDrawArrays(GL_TRIANGLES, 0, this->numPrimitives * 3 );
+    //update the parent model to this node's model for the children
+    this->setUniformsInShader(shader, model);
+    
+    glBindVertexArray(VAO);
+    glDrawArrays(GL_TRIANGLES, 0, this->numTriangles * 3 );
+    glBindVertexArray(0);
   }
-  glBindVertexArray(0);
+  
+  for(GLNode* child: children)
+  {
+    child->draw(shader, model);
+  }
 }
