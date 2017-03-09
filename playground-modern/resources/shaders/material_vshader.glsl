@@ -3,7 +3,7 @@
 layout (location = 0) in vec3 position;
 layout (location = 1) in vec3 normal;
 
-out vs_data
+out v_data
 {
   vec3 f_Normal;
   vec3 f_Position;

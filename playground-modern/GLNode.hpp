@@ -20,9 +20,6 @@
 class GLNode
 {
 private:
-  /* methods */
-  void setMaterial(const Material& material) { this->material = material; };
-  
   /* members */
   Material material;
   
@@ -43,6 +40,7 @@ public:
   GLNode(const std::vector<GLfloat>& vertices, const std::vector<GLfloat>& normals, const std::vector<GLuint>& indices);
   ~GLNode();
   
+  void setMaterial(const Material& material) { this->material = material; };
   void draw(const Shader& shader, glm::mat4 parentModel = glm::mat4(1.0f));
   void addChild(GLNode *child) { this->children.push_back(child); };
   void detachChildren() { this->children.clear(); };

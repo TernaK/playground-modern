@@ -124,6 +124,13 @@ int main(int argc, char * argv[])
   GLNode cube = GLNode(vertices, normals, indices);
   cube.scale = glm::vec3(0.7);
   
+  /* setup another material */
+  Material whiteMaterial = Material(glm::vec3(1.0),
+                                  glm::vec3(1.0),
+                                  glm::vec3(1.0),
+                                  0.5);
+  Material greenMaterial = Material();
+  
   /* shader */
   Shader cubeShader = Shader("resources/shaders/material_vshader.glsl", "resources/shaders/material_fshader.glsl");
   Shader cubeFrameShader = Shader("resources/shaders/material_vshader.glsl", "resources/shaders/material_fshader.glsl", "resources/shaders/material_gshader.glsl");
@@ -138,12 +145,7 @@ int main(int argc, char * argv[])
     glClearColor(0.1, 0.1, 0.1, 1.0);
     
     /* select and shader */
-    //TODO: could not use both shaders in the same render loop, investigate
-    double leftover = fmod(glfwGetTime(),4);
-    if(leftover > 2)
-    	cubeFrameShader.use();
-    else
-      cubeShader.use();
+    cubeShader.use();
     
     /* setup model/view/projection */
     glm::vec3 eye = glm::vec3(-5,5,9);
@@ -164,28 +166,31 @@ int main(int argc, char * argv[])
     updatePositions(cubePositions, glfwGetTime());
     for(auto position: cubePositions)
     {
+      cube.setMaterial(greenMaterial);
       cube.position = position;
+      cube.scale = glm::vec3(0.7);
       cube.draw(cubeShader);
     }
     
     /* wire frame */
-//    cubeFrameShader.use();
+    cubeFrameShader.use();
     
-//    cubeFrameShader.setMatrix4("view", view);
-//    cubeFrameShader.setMatrix4("projection", projection);
-//    
-//    /* setup light */
-//    cubeFrameShader.setVector3f("eyePosition", eye);
-//    cubeFrameShader.setVector3f("lightColor", lightColor);
-//    cubeFrameShader.setVector3f("lightPosition", ligthPosition);
-//    
-//    /* render */
-//    for(auto position: cubePositions)
-//    {
-////      cube.position = position;
-//      cube.draw(cubeFrameShader);
-//    }
+    cubeFrameShader.setMatrix4("view", view);
+    cubeFrameShader.setMatrix4("projection", projection);
     
+    /* setup light */
+    cubeFrameShader.setVector3f("eyePosition", eye);
+    cubeFrameShader.setVector3f("lightColor", lightColor);
+    cubeFrameShader.setVector3f("lightPosition", ligthPosition);
+    
+    /* render */
+    for(auto position: cubePositions)
+    {
+      cube.setMaterial(whiteMaterial);
+      cube.position = position;
+      cube.scale = glm::vec3(0.8);
+      cube.draw(cubeFrameShader);
+    }
     
     glfwSwapBuffers(window);
   }

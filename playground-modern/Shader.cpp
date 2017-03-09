@@ -146,7 +146,6 @@ const Shader& Shader::use() const
   return *this;
 }
 
-
 void Shader::setFloat(std::string name, GLfloat value, GLboolean useShader) const
 {
   if(useShader) this->use();
