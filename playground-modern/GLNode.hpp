@@ -29,7 +29,7 @@ private:
 protected:
   /* methods */
   void init(const std::vector<GLfloat>& vertices, const std::vector<GLfloat>& normals);
-  void setUniformsInShader(const Shader& shader, glm::mat4 parentModel);
+  glm::mat4 setUniformsInShader(const Shader& shader, glm::mat4 parentModel);
   glm::mat4 computeModel(glm::mat4 parentModel);
   
   /* members */
