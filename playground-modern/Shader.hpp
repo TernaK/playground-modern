@@ -23,10 +23,14 @@ public:
   Shader(){};
   
   // create shader using file paths
-  Shader(std::string vertexShaderPath, std::string fragmentShaderPath);
+  Shader(std::string vertexShaderPath,
+         std::string fragmentShaderPath,
+         std::string geometryShaderPath = "");
   
   // generate shader using sources
-  static Shader ShaderFromSources(std::string vertexShaderSource, std::string fragmentShaderSource);
+  static Shader ShaderFromSources(std::string vertexShaderSource,
+                                  std::string fragmentShaderSource,
+                                  std::string geometryShaderSource = "");
   
   // use shader
   const Shader& use() const;
@@ -44,7 +48,7 @@ public:
   
 private:
   // helper method for creating shader
-  static GLuint createShaderProgram(std::string vertexShaderSource, std::string fragmentShaderSource);
+  static GLuint createShaderProgram(std::string vertexShaderSource, std::string fragmentShaderSource, std::string geometryShaderSource);
 };
 
 #endif /* Shader_hpp */

@@ -9,24 +9,27 @@
 #include "Shader.hpp"
 using namespace std;
 
-Shader::Shader(std::string vertexShaderPath, std::string fragmentShaderPath)
+Shader::Shader(std::string vertexShaderPath,
+               std::string fragmentShaderPath,
+               std::string geometryShaderPath)
 {
   ifstream ifs;
   stringstream ss;
-  string fileText;
+//  string fileText;
   
-  // vertex shader
+  bool useGeoShader = !geometryShaderPath.empty();
+  
+  /* vertex shader */
   ifs = ifstream(vertexShaderPath);
   if(!ifs.is_open()){
     puts("ERROR::SHADER::could not find vertex shader");
     exit(-1);
   }
   ss << ifs.rdbuf();
-//  string vSring = ss.str();
-  string vertexShaderStr = ss.str();//.c_str();
+  string vertexShaderStr = ss.str();
   ifs.close();
   
-  // fragment shader
+  /* fragment shader */
   ifs = ifstream(fragmentShaderPath);
   if(!ifs.is_open()){
     puts("ERROR::SHADER::could not find fragment shader");
@@ -34,30 +37,52 @@ Shader::Shader(std::string vertexShaderPath, std::string fragmentShaderPath)
   }
   ss.str("");//clear string
   ss << ifs.rdbuf();
-//  fileText = ss.str();
   string fragmentShaderStr = ss.str();
   
-  // create shader
-  this->program = createShaderProgram(vertexShaderStr, fragmentShaderStr);
+  /* geometry shader */
+  string geometryShaderStr = "";
+  if(useGeoShader)
+  {
+    ifs = ifstream(geometryShaderPath);
+    if(!ifs.is_open()){
+      puts("ERROR::SHADER::could not find geometry shader");
+      exit(-1);
+    }
+    ss.str("");//clear string
+    ss << ifs.rdbuf();
+    geometryShaderStr = ss.str();
+  }
+  
+  this->program = createShaderProgram(vertexShaderStr,
+                                      fragmentShaderStr,
+                                      geometryShaderStr);
   
   ifs.close();
 }
 
-Shader Shader::ShaderFromSources(std::string vertexShaderSource, std::string fragmentShaderSource)
+Shader Shader::ShaderFromSources(std::string vertexShaderSource,
+                                 std::string fragmentShaderSource,
+                                 std::string geometryShaderSource)
 {
   Shader s;
-  s.program = createShaderProgram(vertexShaderSource, fragmentShaderSource);
+  s.program = createShaderProgram(vertexShaderSource,
+                                  fragmentShaderSource,
+                                  geometryShaderSource);
   return s;
 }
 
-GLuint Shader::createShaderProgram(std::string vertexShaderSource, std::string fragmentShaderSource)
+GLuint Shader::createShaderProgram(std::string vertexShaderSource,
+                                   std::string fragmentShaderSource,
+                                   std::string geometryShaderSource)
 {
   GLint success;
   GLchar infoLog[512];
   
-  const GLchar *vertex_src = vertexShaderSource.c_str();
-  const GLchar *fragment_src = fragmentShaderSource.c_str();
   
+  bool useGeoShader = !geometryShaderSource.empty();
+  
+  /* vertex shader */
+  const GLchar *vertex_src = vertexShaderSource.c_str();
   GLint vertexShader = glCreateShader(GL_VERTEX_SHADER);
   glShaderSource(vertexShader, 1, &vertex_src, nullptr);
   glCompileShader(vertexShader);
@@ -68,6 +93,8 @@ GLuint Shader::createShaderProgram(std::string vertexShaderSource, std::string f
     exit(-1);
   }
   
+  /* fragment shader */
+  const GLchar *fragment_src = fragmentShaderSource.c_str();
   GLint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
   glShaderSource(fragmentShader, 1, &fragment_src, nullptr);
   glCompileShader(fragmentShader);
@@ -78,10 +105,27 @@ GLuint Shader::createShaderProgram(std::string vertexShaderSource, std::string f
     exit(-1);
   }
   
-  //shader program
+  /* geometry shader */
+  GLint geometryShader = -1;
+  if(useGeoShader)
+  {
+    const GLchar *geometry_src = geometryShaderSource.c_str();
+    geometryShader = glCreateShader(GL_GEOMETRY_SHADER);
+    glShaderSource(geometryShader, 1, &geometry_src, nullptr);
+    glCompileShader(geometryShader);
+    glGetShaderiv(geometryShader, GL_COMPILE_STATUS, &success);
+    if(!success) {
+      glGetShaderInfoLog(geometryShader, 512, NULL, infoLog);
+      std::cout << "ERROR::SHADER::GEOMETRY::compilation failed\n" << infoLog << std::endl;
+      exit(-1);
+    }
+  }
+  
+  /* shader program */
   GLuint shaderProgram = glCreateProgram();
   glAttachShader(shaderProgram, vertexShader);
   glAttachShader(shaderProgram, fragmentShader);
+  if(useGeoShader) glAttachShader(shaderProgram, geometryShader);
   glLinkProgram(shaderProgram);
   glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
   if(!success) {
