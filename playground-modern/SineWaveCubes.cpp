@@ -148,7 +148,7 @@ int main(int argc, char * argv[])
     
     /* setup light */
     glm::vec3 lightColor = glm::vec3(1.0);
-    glm::vec3 ligthPosition = glm::vec3(0,0.7,0.7);
+    glm::vec3 ligthPosition = glm::vec3(0,2,2);
     cubeShader.setVector3f("eyePosition", eye);
     cubeShader.setVector3f("lightColor", lightColor);
     cubeShader.setVector3f("lightPosition", ligthPosition);
