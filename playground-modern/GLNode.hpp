@@ -29,8 +29,8 @@ private:
 protected:
   /* methods */
   void init(const std::vector<GLfloat>& vertices, const std::vector<GLfloat>& normals);
-  glm::mat4 setUniformsInShader(const Shader& shader, glm::mat4 parentModel);
-  glm::mat4 computeModel(glm::mat4 parentModel);
+  void setUniformsInShader(const Shader& shader, const glm::mat4& model);
+  glm::mat4 computeModel(const glm::mat4& parentModel);
   
   /* members */
   GLsizei numTriangles = 0;

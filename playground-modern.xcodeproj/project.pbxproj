@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		510E03981E70DAC800B3175D /* NestedGLNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 510E03971E70DAC800B3175D /* NestedGLNode.cpp */; };
 		516B56971E6E73A3008D89C2 /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBB31E61759B00225E1F /* Material.cpp */; };
-		516B56A31E6FE523008D89C2 /* SineWaveCubes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 516B56A21E6FE523008D89C2 /* SineWaveCubes.cpp */; };
 		518974E41E6F654400AE5290 /* GLNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CB9B1E5ED9AF00225E1F /* GLNode.cpp */; };
 		51C6CB871E5D816700225E1F /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CB851E5D816700225E1F /* Shader.cpp */; };
 		51C6CBC71E62893700225E1F /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBC61E62893700225E1F /* Texture.cpp */; };
@@ -30,6 +30,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		510E03971E70DAC800B3175D /* NestedGLNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NestedGLNode.cpp; path = "playground-modern/NestedGLNode.cpp"; sourceTree = "<group>"; };
 		513D614D1E651B2C00576470 /* tutorial4_6.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = tutorial4_6.cpp; path = "playground-modern/tutorial4_6.cpp"; sourceTree = "<group>"; };
 		513D61501E6544E600576470 /* framebuffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = framebuffer.cpp; path = "playground-modern/framebuffer.cpp"; sourceTree = "<group>"; };
 		513D61521E654F6D00576470 /* fragmentFB.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fragmentFB.glsl; path = "playground-modern/fragmentFB.glsl"; sourceTree = "<group>"; };
@@ -280,6 +281,7 @@
 				516B569F1E6E9083008D89C2 /* MaterialApp.cpp */,
 				51F07BE31E6F6BB000CE66C7 /* Material+GLNodeApp.cpp */,
 				516B56A21E6FE523008D89C2 /* SineWaveCubes.cpp */,
+				510E03971E70DAC800B3175D /* NestedGLNode.cpp */,
 			);
 			name = applications;
 			sourceTree = "<group>";
@@ -367,10 +369,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				516B56A31E6FE523008D89C2 /* SineWaveCubes.cpp in Sources */,
 				51C6CBC71E62893700225E1F /* Texture.cpp in Sources */,
 				51CF98C71E6CE08300EBA6B2 /* ResourceManager.cpp in Sources */,
 				518974E41E6F654400AE5290 /* GLNode.cpp in Sources */,
+				510E03981E70DAC800B3175D /* NestedGLNode.cpp in Sources */,
 				51C6CB871E5D816700225E1F /* Shader.cpp in Sources */,
 				516B56971E6E73A3008D89C2 /* Material.cpp in Sources */,
 			);

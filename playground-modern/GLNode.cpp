@@ -72,10 +72,10 @@ void GLNode::init(const std::vector<GLfloat>& vertices, const std::vector<GLfloa
   glBindVertexArray(0);
 }
 
-glm::mat4 GLNode::setUniformsInShader(const Shader& shader, glm::mat4 parentModel)
+void GLNode::setUniformsInShader(const Shader& shader, const glm::mat4& model)
 {
   //model
-  glm::mat4 model = computeModel(parentModel);
+//  glm::mat4 model = parentModel * computeModel();
   shader.setMatrix4("model", model);
   
   //normal transform
@@ -95,10 +95,9 @@ glm::mat4 GLNode::setUniformsInShader(const Shader& shader, glm::mat4 parentMode
 //  glUniform3fv(lightDiffuseLoc, 1, glm::value_ptr(light->diffuse));
 //  glUniform3fv(lightSpecularLoc, 1, glm::value_ptr(light->specular));
 //  glUniform3fv(lightPositionLoc, 1, glm::value_ptr(light->position));
-  return model;
 }
 
-glm::mat4 GLNode::computeModel(glm::mat4 parentModel)
+glm::mat4 GLNode::computeModel(const glm::mat4& parentModel)
 {
   glm::mat4 model = glm::translate(parentModel, position);
   model = glm::rotate(model, rotation.x, glm::vec3(1.0f, 0.0f, 0.0f));
@@ -110,16 +109,21 @@ glm::mat4 GLNode::computeModel(glm::mat4 parentModel)
 
 void GLNode::draw(const Shader& shader, glm::mat4 parentModel)
 {
+  glm::mat4 model = computeModel(parentModel);
+  
   if(this->numTriangles > 0)
   {
     //update the parent model to this node's model for the children
-    parentModel = this->setUniformsInShader(shader, parentModel);
+    this->setUniformsInShader(shader, model);
     
     glBindVertexArray(VAO);
     glDrawArrays(GL_TRIANGLES, 0, this->numTriangles * 3 );
     glBindVertexArray(0);
   }
   
-  for(GLNode child: children)
-    child.draw(shader, parentModel);
+  GLNode *child = children.data();
+  for(int i = 0 ; i < children.size(); i++, child++)
+  {
+    child->draw(shader, model);
+  }
 }
