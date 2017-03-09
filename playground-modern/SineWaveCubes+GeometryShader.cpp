@@ -138,6 +138,7 @@ int main(int argc, char * argv[])
     glClearColor(0.1, 0.1, 0.1, 1.0);
     
     /* select and shader */
+    //TODO: could not use both shaders in the same render loop, investigate
     double leftover = fmod(glfwGetTime(),4);
     if(leftover > 2)
     	cubeFrameShader.use();
