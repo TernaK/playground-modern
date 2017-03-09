@@ -77,8 +77,7 @@ GLuint Shader::createShaderProgram(std::string vertexShaderSource,
 {
   GLint success;
   GLchar infoLog[512];
-  
-  
+    
   bool useGeoShader = !geometryShaderSource.empty();
   
   /* vertex shader */
@@ -125,7 +124,8 @@ GLuint Shader::createShaderProgram(std::string vertexShaderSource,
   GLuint shaderProgram = glCreateProgram();
   glAttachShader(shaderProgram, vertexShader);
   glAttachShader(shaderProgram, fragmentShader);
-  if(useGeoShader) glAttachShader(shaderProgram, geometryShader);
+  if(useGeoShader)
+    glAttachShader(shaderProgram, geometryShader);
   glLinkProgram(shaderProgram);
   glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
   if(!success) {
