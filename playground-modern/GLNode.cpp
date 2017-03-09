@@ -121,8 +121,7 @@ void GLNode::draw(const Shader& shader, glm::mat4 parentModel)
     glBindVertexArray(0);
   }
   
-  GLNode *child = children.data();
-  for(int i = 0 ; i < children.size(); i++, child++)
+  for(GLNode* child: children)
   {
     child->draw(shader, model);
   }
