@@ -92,16 +92,17 @@ int main(int argc, char * argv[])
   
   /* objects to render */
   GLNode cube1 = GLNode(vertices, normals, indices);
-  cube1.scale = glm::vec3(0.2,0.5,0.2);
+  cube1.scale = glm::vec3(0.2,1,0.2);
   
   GLNode cube2(cube1);
-  cube1.scale = glm::vec3(0.2,1,0.2);
-  cube2.rotation = glm::vec3(glm::radians(45.0f),0,0);
+  cube2.scale = glm::vec3(0.2,0.5,0.2);
+  cube2.rotation = glm::vec3(glm::radians(60.0f),0,0);
+  cube2.position = glm::vec3(0,0,0);
   cube2.position = glm::vec3(0,1,0);
   
   GLNode body;
-  body.children.push_back(cube1);
-  body.children.push_back(cube2);
+  body.addChild(&cube1);
+  body.addChild(&cube2);
   
   /* shader */
   Shader cubeShader = Shader("resources/shaders/material_vshader.glsl", "resources/shaders/material_fshader.glsl");
@@ -135,11 +136,8 @@ int main(int argc, char * argv[])
     /* render */
     body.rotation += glm::vec3(0,glm::radians(1.0f),0);
     body.draw(cubeShader);
-//    cube1.rotation += glm::vec3(0,glm::radians(1.0f),0);
-//    cube1.draw(cubeShader);
     
-//    cube2.rotation += glm::vec3(0,0,glm::radians(1.0f));
-//    cube2.draw(cubeShader);
+    cube2.rotation += glm::vec3(0,glm::radians(1.0f),0);
     
     glfwSwapBuffers(window);
   }
