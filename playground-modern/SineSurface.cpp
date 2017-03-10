@@ -32,7 +32,7 @@ int main(int argc, char * argv[])
   GLfloat aspectRatio = GLfloat(width)/height;
   
   /* shader */
-  Shader shader = Shader("resources/shaders/material_vshader.glsl", "resources/shaders/material_fshader.glsl");
+  Shader shader = Shader("resources/shaders/material_vshader.glsl", "resources/shaders/material_fshader.glsl", "resources/shaders/material_gshader.glsl");
   
   /* light */
   Light light;

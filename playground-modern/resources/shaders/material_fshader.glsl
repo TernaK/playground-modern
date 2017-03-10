@@ -29,7 +29,7 @@ in v_data
 
 uniform vec3 eyePosition;
 uniform Material material;/* set by Material */
-uniform Light light;
+uniform Light light;/* set by Light */
 
 out vec4 color;
 

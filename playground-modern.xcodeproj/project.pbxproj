@@ -51,6 +51,7 @@
 		516B56A21E6FE523008D89C2 /* SineWaveCubes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SineWaveCubes.cpp; path = "playground-modern/SineWaveCubes.cpp"; sourceTree = "<group>"; };
 		516B56A41E7135CB008D89C2 /* SineWaveCubes+GeometryShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "SineWaveCubes+GeometryShader.cpp"; path = "playground-modern/SineWaveCubes+GeometryShader.cpp"; sourceTree = "<group>"; };
 		516B56A61E7270A3008D89C2 /* SineSurface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SineSurface.cpp; path = "playground-modern/SineSurface.cpp"; sourceTree = "<group>"; };
+		516B56AC1E729E13008D89C2 /* geomerty_shader_wave.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = geomerty_shader_wave.gif; sourceTree = "<group>"; };
 		5189748A1E6771FE00AE5290 /* stenciloutline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = stenciloutline.cpp; path = "playground-modern/stenciloutline.cpp"; sourceTree = "<group>"; };
 		5189748C1E67793500AE5290 /* fragment_shaderStencil.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = fragment_shaderStencil.glsl; path = "playground-modern/fragment_shaderStencil.glsl"; sourceTree = "<group>"; };
 		5192B59D1E5C3C7200CC9A3B /* playground-modern */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "playground-modern"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,6 +187,7 @@
 		5192B5941E5C3C7200CC9A3B = {
 			isa = PBXGroup;
 			children = (
+				516B56AC1E729E13008D89C2 /* geomerty_shader_wave.gif */,
 				51CF98C41E6CE03F00EBA6B2 /* resource_manager */,
 				513D61581E67EDD700576470 /* resources */,
 				513D61681E6941F700576470 /* experiments */,
