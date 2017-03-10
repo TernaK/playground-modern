@@ -83,8 +83,7 @@ int numZ = 5;//make odd
 
 void updatePositions(vector<glm::vec3>& cubePositions, float t)
 {
-  
-  float TX = 8;//x perios
+  float TX = 8;//x period
   float dOffset = 0.0f;//z offset
   float speedUp = 5;
   

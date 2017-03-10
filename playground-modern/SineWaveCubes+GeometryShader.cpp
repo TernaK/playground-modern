@@ -78,13 +78,13 @@ vector<GLfloat> normals = {
   0.0f, -1.0f,  0.0f
 };
 
-int numX = 9;//make odd
-int numZ = 3;//make odd
+int numX = 15;//make odd
+int numZ = 5;//make odd
 
 void updatePositions(vector<glm::vec3>& cubePositions, float t)
 {
   
-  float TX = 8;//x perios
+  float TX = 8;//x period
   float dOffset = 0.0f;//z offset
   float speedUp = 5;
   
@@ -148,7 +148,7 @@ int main(int argc, char * argv[])
     cubeShader.use();
     
     /* setup model/view/projection */
-    glm::vec3 eye = glm::vec3(-5,5,9);
+    glm::vec3 eye = glm::vec3(-8,8,13);
     glm::mat4 view = glm::lookAt(eye, glm::vec3(0), glm::vec3(0,1,0));
     glm::mat4 projection = glm::perspective(glm::radians(45.0f), aspectRatio, 0.1f, 100.0f);
     cubeShader.setMatrix4("view", view);
