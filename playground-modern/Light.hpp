@@ -11,31 +11,30 @@
 
 #include <GL/glew.h>
 #include <glm/glm.hpp>
+#include "Shader.hpp"
 
-enum LightType {
-  DIRECTIONAL=0,POINT=1,SPOTLIGHT=2
-};
-
-class Light {
+class Light
+{
 public:
+  /* methods */
+  Light(glm::vec3 ambient = glm::vec3(1.0),
+        glm::vec3 diffuse = glm::vec3(1.0),
+        glm::vec3 specular = glm::vec3(1.0),
+        glm::vec3 position = glm::vec3(0,0,5),
+        glm::vec3 direction = glm::vec3(0,0,-1));
+  void setInShader(const Shader& shader, std::string uniformName = "light",
+                   bool useShader = false);
+  
+  /* members */
   glm::vec3 position = glm::vec3(0,0,5);
-  glm::vec3 direction = glm::vec3(0,0,-1);
   
   glm::vec3 ambient = glm::vec3(0.1);
   glm::vec3 diffuse = glm::vec3(0.1);
   glm::vec3 specular = glm::vec3(0.05);
   
-  GLfloat constant = 1;
-  GLfloat linear = 0.09;
-  GLfloat quadratic = 0.032;
-  
-  GLfloat cutoff = cos(glm::radians(20.0));
-  
-  LightType type = LightType::SPOTLIGHT;
-  
-  Light();
-  
-  Light(glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular, glm::vec3 position = glm::vec3(0,0,5), glm::vec3 direction = glm::vec3(0,0,-1));
+  GLfloat Kc = 1;			//constant
+  GLfloat Kl = 0.09;	//linear
+  GLfloat Kq = 0.032; //quadratic
 };
 
 #endif /* Light_hpp */

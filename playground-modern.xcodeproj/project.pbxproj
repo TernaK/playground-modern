@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		516B56971E6E73A3008D89C2 /* Material.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBB31E61759B00225E1F /* Material.cpp */; };
 		516B56A71E7270A3008D89C2 /* SineSurface.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 516B56A61E7270A3008D89C2 /* SineSurface.cpp */; };
+		516B56AB1E729214008D89C2 /* Light.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBB51E617DC800225E1F /* Light.cpp */; };
 		518974E41E6F654400AE5290 /* GLNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CB9B1E5ED9AF00225E1F /* GLNode.cpp */; };
 		51C6CB871E5D816700225E1F /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CB851E5D816700225E1F /* Shader.cpp */; };
 		51C6CBC71E62893700225E1F /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 51C6CBC61E62893700225E1F /* Texture.cpp */; };
@@ -71,8 +72,8 @@
 		51C6CBAB1E60121A00225E1F /* lighting_vertexshader.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = lighting_vertexshader.glsl; path = "playground-modern/lighting_vertexshader.glsl"; sourceTree = "<group>"; };
 		51C6CBB01E61700700225E1F /* Material.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Material.hpp; path = "playground-modern/Material.hpp"; sourceTree = "<group>"; };
 		51C6CBB31E61759B00225E1F /* Material.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Material.cpp; path = "playground-modern/Material.cpp"; sourceTree = "<group>"; };
-		51C6CBB51E617DC800225E1F /* Light.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Light.cpp; sourceTree = "<group>"; };
-		51C6CBB61E617DC800225E1F /* Light.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Light.hpp; sourceTree = "<group>"; };
+		51C6CBB51E617DC800225E1F /* Light.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Light.cpp; path = "playground-modern/Light.cpp"; sourceTree = "<group>"; };
+		51C6CBB61E617DC800225E1F /* Light.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = Light.hpp; path = "playground-modern/Light.hpp"; sourceTree = "<group>"; };
 		51C6CBB81E618C4F00225E1F /* GLTextureNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GLTextureNode.cpp; sourceTree = "<group>"; };
 		51C6CBB91E618C4F00225E1F /* GLTextureNode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GLTextureNode.hpp; sourceTree = "<group>"; };
 		51C6CBBB1E618C5E00225E1F /* texturelighting.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = texturelighting.cpp; path = "playground-modern/texturelighting.cpp"; sourceTree = "<group>"; };
@@ -216,8 +217,6 @@
 			children = (
 				513D615D1E68044B00576470 /* Camera.cpp */,
 				513D615E1E68044B00576470 /* Camera.hpp */,
-				51C6CBB51E617DC800225E1F /* Light.cpp */,
-				51C6CBB61E617DC800225E1F /* Light.hpp */,
 				51C6CBB81E618C4F00225E1F /* GLTextureNode.cpp */,
 				51C6CBB91E618C4F00225E1F /* GLTextureNode.hpp */,
 				51C6CBBD1E6272C600225E1F /* TextureMaterial.cpp */,
@@ -261,6 +260,8 @@
 				51C6CBB01E61700700225E1F /* Material.hpp */,
 				51C6CB9B1E5ED9AF00225E1F /* GLNode.cpp */,
 				51C6CB9C1E5ED9AF00225E1F /* GLNode.hpp */,
+				51C6CBB51E617DC800225E1F /* Light.cpp */,
+				51C6CBB61E617DC800225E1F /* Light.hpp */,
 				51CF98C51E6CE08300EBA6B2 /* ResourceManager.cpp */,
 				51CF98C61E6CE08300EBA6B2 /* ResourceManager.hpp */,
 			);
@@ -373,6 +374,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				516B56AB1E729214008D89C2 /* Light.cpp in Sources */,
 				51C6CBC71E62893700225E1F /* Texture.cpp in Sources */,
 				51CF98C71E6CE08300EBA6B2 /* ResourceManager.cpp in Sources */,
 				518974E41E6F654400AE5290 /* GLNode.cpp in Sources */,

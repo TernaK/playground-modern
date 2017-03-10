@@ -11,9 +11,78 @@
 #include "AppTestUtility.hpp"
 #include <vector>
 #include <glm/gtc/matrix_transform.hpp>
+#include "Light.hpp"
 
 int numX = 21;//make odd
 int numZ = 13;//make odd
+
+void createSurface(vector<GLfloat>& vertices, vector<GLfloat>& normals, float t);
+
+int main(int argc, char * argv[])
+{
+  
+  GLFWwindow *window = glGetWindow();
+  
+  //callback
+  glfwSetKeyCallback(window, keyCallback);
+  
+  int width, height;
+  glfwGetFramebufferSize(window, &width, &height);
+  glViewport(0, 0, width, height);
+  GLfloat aspectRatio = GLfloat(width)/height;
+  
+  /* shader */
+  Shader shader = Shader("resources/shaders/material_vshader.glsl", "resources/shaders/material_fshader.glsl");
+  
+  /* light */
+  Light light;
+  
+  /* render loop */
+  while(!glfwWindowShouldClose(window))
+  {
+    glfwPollEvents();
+    
+    glEnable(GL_DEPTH_TEST);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glClearColor(0.1, 0.1, 0.1, 1.0);
+    
+    /* object to render */
+    vector<GLfloat> vertices;
+    vector<GLfloat> normals;
+    createSurface(vertices, normals, glfwGetTime());//not very efficient!
+    
+    /* objects to render */
+    GLNode surface = GLNode(vertices, normals);
+    
+    /* select and shader */
+    shader.use();
+    
+    /* setup model/view/projection */
+    glm::vec3 eye = glm::vec3(-1.5,2,4);
+    glm::mat4 view = glm::lookAt(eye, glm::vec3(0), glm::vec3(0,1,0));
+    glm::mat4 projection = glm::perspective(glm::radians(45.0f), aspectRatio, 0.1f, 10.0f);
+    shader.setMatrix4("view", view);
+    shader.setMatrix4("projection", projection);
+    
+    /* setup light */
+    light.position = glm::vec3(0,0.7,0.7);
+    shader.setVector3f("eyePosition", eye);
+    light.setInShader(shader);
+    
+    /* render */
+    surface.draw(shader);
+    
+    glfwSwapBuffers(window);
+  }
+  
+  glfwTerminate();
+}
+
+void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mode)
+{
+  if(key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+    glfwSetWindowShouldClose(window, GL_TRUE);
+}
 
 void createSurface(vector<GLfloat>& vertices, vector<GLfloat>& normals, float t)
 {
@@ -75,69 +144,3 @@ void createSurface(vector<GLfloat>& vertices, vector<GLfloat>& normals, float t)
   
   /* form normals */
 }
-
-int main(int argc, char * argv[])
-{
-  
-  GLFWwindow *window = glGetWindow();
-  
-  //callback
-  glfwSetKeyCallback(window, keyCallback);
-  
-  int width, height;
-  glfwGetFramebufferSize(window, &width, &height);
-  glViewport(0, 0, width, height);
-  GLfloat aspectRatio = GLfloat(width)/height;
-  
-  /* shader */
-  Shader shader = Shader("resources/shaders/material_vshader.glsl", "resources/shaders/material_fshader.glsl");
-  
-  /* render loop */
-  while(!glfwWindowShouldClose(window))
-  {
-    glfwPollEvents();
-    
-    glEnable(GL_DEPTH_TEST);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glClearColor(0.1, 0.1, 0.1, 1.0);
-    
-    /* object to render */
-    vector<GLfloat> vertices;
-    vector<GLfloat> normals;
-    createSurface(vertices, normals, glfwGetTime());//not very efficient!
-    
-    /* objects to render */
-    GLNode surface = GLNode(vertices, normals);
-    
-    /* select and shader */
-    shader.use();
-    
-    /* setup model/view/projection */
-    glm::vec3 eye = glm::vec3(-1.5,2,4);
-    glm::mat4 view = glm::lookAt(eye, glm::vec3(0), glm::vec3(0,1,0));
-    glm::mat4 projection = glm::perspective(glm::radians(45.0f), aspectRatio, 0.1f, 10.0f);
-    shader.setMatrix4("view", view);
-    shader.setMatrix4("projection", projection);
-    
-    /* setup light */
-    glm::vec3 lightColor = glm::vec3(1.0);
-    glm::vec3 ligthPosition = glm::vec3(0,0.7,0.7);
-    shader.setVector3f("eyePosition", eye);
-    shader.setVector3f("lightColor", lightColor);
-    shader.setVector3f("lightPosition", ligthPosition);
-    
-    /* render */
-    surface.draw(shader);
-    
-    glfwSwapBuffers(window);
-  }
-  
-  glfwTerminate();
-}
-
-void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mode)
-{
-  if(key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
-    glfwSetWindowShouldClose(window, GL_TRUE);
-}
-

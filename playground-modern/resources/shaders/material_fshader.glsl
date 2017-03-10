@@ -8,35 +8,47 @@ struct Material
   float shininess;
 };
 
+struct Light
+{
+  vec3 position;
+  
+  vec3 ambient;
+  vec3 diffuse;
+  vec3 specular;
+  
+  float Kc;	//constant
+  float Kl;	//linear
+  float Kq;	//quadratic
+};
+
 in v_data
 {
   vec3 f_Position;
   vec3 f_Normal;
 } fs_in;
 
-uniform vec3 lightColor;/* set by object or otherwise */
-uniform vec3 lightPosition;/* set by object or otherwise */
 uniform vec3 eyePosition;
 uniform Material material;/* set by Material */
+uniform Light light;
 
 out vec4 color;
 
 void main()
 {
   /* ambient */
-  vec3 ambient = lightColor * material.ambient;
+  vec3 ambient = light.ambient * material.ambient;
   
   /* diffuse */
   vec3 normal = normalize(fs_in.f_Normal);
-  vec3 lightDirection = normalize(lightPosition - fs_in.f_Position);
+  vec3 lightDirection = normalize(light.position - fs_in.f_Position);
   float diffuseStrength = max(dot(lightDirection, normal), 0.0);
-  vec3 diffuse = lightColor * (diffuseStrength * material.diffuse);
+  vec3 diffuse = light.diffuse * (diffuseStrength * material.diffuse);
   
   /* specular */
   vec3 toEye = normalize(eyePosition - fs_in.f_Position);
   vec3 reflection = reflect(-lightDirection, normal);
   float specularStrength = pow(max(dot(reflection, toEye), 0.0), material.shininess);
-  vec3 specular = lightColor * (specularStrength * material.specular);
+  vec3 specular = light.specular * (specularStrength * material.specular);
 
   color = vec4((ambient + diffuse + specular), 1.0f);
 }
