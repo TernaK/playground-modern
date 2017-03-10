@@ -20,8 +20,7 @@ public:
   Light(glm::vec3 ambient = glm::vec3(1.0),
         glm::vec3 diffuse = glm::vec3(1.0),
         glm::vec3 specular = glm::vec3(1.0),
-        glm::vec3 position = glm::vec3(0,0,5),
-        glm::vec3 direction = glm::vec3(0,0,-1));
+        glm::vec3 position = glm::vec3(0,0,5));
   void setInShader(const Shader& shader, std::string uniformName = "light",
                    bool useShader = false);
   

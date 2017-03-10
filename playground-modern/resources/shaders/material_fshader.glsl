@@ -49,6 +49,10 @@ void main()
   vec3 reflection = reflect(-lightDirection, normal);
   float specularStrength = pow(max(dot(reflection, toEye), 0.0), material.shininess);
   vec3 specular = light.specular * (specularStrength * material.specular);
+  
+  /* attenuation */
+  float r = length(light.position - fs_in.f_Position);
+  float attenuation = 1/(light.Kc + light.Kl * r + light.Kq * r * r );
 
-  color = vec4((ambient + diffuse + specular), 1.0f);
+  color = vec4( (ambient + (diffuse + specular) * attenuation), 1.0f);
 }

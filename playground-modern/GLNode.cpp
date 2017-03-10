@@ -75,7 +75,6 @@ void GLNode::init(const std::vector<GLfloat>& vertices, const std::vector<GLfloa
 void GLNode::setUniformsInShader(const Shader& shader, const glm::mat4& model)
 {
   //model
-//  glm::mat4 model = parentModel * computeModel();
   shader.setMatrix4("model", model);
   
   //normal transform
@@ -84,17 +83,6 @@ void GLNode::setUniformsInShader(const Shader& shader, const glm::mat4& model)
   
   //material
   this->material.setInShader(shader);
-  
-//  //light
-//  GLint lightAmbientLoc  = glGetUniformLocation(shader.program, "light.ambient");
-//  GLint lightDiffuseLoc  = glGetUniformLocation(shader.program, "light.diffuse");
-//  GLint lightSpecularLoc = glGetUniformLocation(shader.program, "light.specular");
-//  GLint lightPositionLoc    = glGetUniformLocation(shader.program, "light.position");
-//  
-//  glUniform3fv(lightAmbientLoc, 1, glm::value_ptr(light->ambient));
-//  glUniform3fv(lightDiffuseLoc, 1, glm::value_ptr(light->diffuse));
-//  glUniform3fv(lightSpecularLoc, 1, glm::value_ptr(light->specular));
-//  glUniform3fv(lightPositionLoc, 1, glm::value_ptr(light->position));
 }
 
 glm::mat4 GLNode::computeModel(const glm::mat4& parentModel)

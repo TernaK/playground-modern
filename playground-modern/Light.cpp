@@ -9,13 +9,12 @@
 #include "Light.hpp"
 
 Light::Light(glm::vec3 ambient, glm::vec3 diffuse, glm::vec3 specular,
-             glm::vec3 position, glm::vec3 direction)
+             glm::vec3 position)
 {
   this->ambient = ambient;
   this->diffuse = diffuse;
   this->specular = specular;
   this->position = position;
-//  this->direction = direction;
 }
 
 void Light::setInShader(const Shader& shader, std::string uniformName,
